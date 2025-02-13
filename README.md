@@ -1,6 +1,6 @@
 # 🎬 StreamFlix  
 
-A Netflix clone built with **Vite + React + TypeScript + Tailwind + Motion**.  
+A Netflix clone app built with **Vite + React + TypeScript + Tailwind + Motion**.  
 
 ## 🚀 Features  
 ✅ Movie catalog with external API  
