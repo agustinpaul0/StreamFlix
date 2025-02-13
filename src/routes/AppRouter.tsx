@@ -6,15 +6,15 @@ import Splash from "../screens/Splash";
 const Home = lazy(() => import("../screens/Home"));
 
 const AppRouter = () => {
-  // Code to show the splash screen on every reload
-  const navigate = useNavigate();
 
+  // Code to navigate to splash screen on every app reload
+  const navigate = useNavigate();
   useEffect(() => {
     if (window.location.pathname !== "/") {
-      navigate("/");
+      navigate("/"); 
     }
   }, []);
-
+  
   return (
     <Suspense fallback={<Splash />}>
       <Routes>

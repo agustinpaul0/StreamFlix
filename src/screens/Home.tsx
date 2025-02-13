@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <main className="min-h-screen bg-[#080808] text-white font-family-inter">
       <header className="flex p-4 gap-4">
-        <img src={logo} alt="App Logo" />
+        <img src={ logo } alt="App Logo" />
         <input
           type="text"
           placeholder="Type a title, genre, or actor..."
@@ -19,7 +19,7 @@ const Home = () => {
         <button className="p-3 flex-grow-3 max-w-[40%] rounded-full border-2 border-[#ADADAD]">
           <span className="inline-flex items-center gap-2">
             CATEGORIES
-            <img src={dropdown} alt="Dropdown Icon" />
+            <img src={ dropdown } alt="Dropdown Icon" />
           </span>
         </button>
         <button className="p-3 flex-grow-1 rounded-full border-2 border-[#ADADAD]">
@@ -33,12 +33,12 @@ const Home = () => {
       <section className="relative p-4">
         <figure
           className="relative w-full h-[500px] bg-cover bg-center"
-          style={{ backgroundImage: `url(${bannerPelicula})` }}
+          style={{ backgroundImage: `url(${ bannerPelicula })` }}
         >
           <figcaption className="absolute inset-0 flex flex-col justify-end items-center text-white bg-opacity-50">
             <h2 className="text-4xl font-bold mb-2">Título de la Película</h2>
             <div className="flex items-center gap-2 mb-4">
-              <img src={mediaBannerAppLogo} alt="Media Banner App logo"/>
+              <img src={ mediaBannerAppLogo } alt="Media Banner App logo"/>
               <p className="text-lg">Película</p>
             </div>
           </figcaption>
