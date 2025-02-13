@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import banner from "../assets/img/banner.svg";
 
 const Splash = () => {
-  
+
   // Code to show the Splash Screen for 3 seconds (minimum)
   const navigate = useNavigate();
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate("/home");
+      navigate("/streamflix/home");
     }, 2000);
 
     return () => clearTimeout(timer);

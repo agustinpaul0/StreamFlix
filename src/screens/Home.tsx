@@ -1,21 +1,11 @@
-import logo from "../assets/img/logo.svg";
 import dropdown from "../assets/img/dropdown-icon.svg";
 import bannerPelicula from "../assets/img/series-banner.svg";
 import mediaBannerAppLogo from "../assets/img/media-banner-app-logo.svg";
 
 const Home = () => {
   return (
-    <main className="min-h-screen bg-[#080808] text-white font-family-inter">
-      <header className="flex p-4 gap-4">
-        <img src={ logo } alt="App Logo" />
-        <input
-          type="text"
-          placeholder="Type a title, genre, or actor..."
-          className="rounded-full bg-[#1E1E1E] text-[#827E7E] flex-grow pl-3"
-        />
-      </header>
-
-      <section className="flex justify-between pl-4 pr-4 gap-3">
+    <>
+      <section className="flex justify-between pl-4 pr-4 gap-3 mt-4">
         <button className="p-3 flex-grow-3 max-w-[40%] rounded-full border-2 border-[#ADADAD]">
           <span className="inline-flex items-center gap-2">
             CATEGORIES
@@ -59,7 +49,7 @@ const Home = () => {
           <div className="w-32 h-48 bg-gray-700 rounded-lg"></div>
         </div>
       </section>
-    </main>
+    </>
   );
 };
 

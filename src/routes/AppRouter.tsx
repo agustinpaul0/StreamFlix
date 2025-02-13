@@ -1,27 +1,25 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { lazy, Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import Splash from "../screens/Splash";
-
-// Lazy Loading of Home Screen
-const Home = lazy(() => import("../screens/Home"));
+import Layout from "../screens/Layout";
+import Home from "../screens/Home";
 
 const AppRouter = () => {
-
   // Code to navigate to splash screen on every app reload
   const navigate = useNavigate();
   useEffect(() => {
     if (window.location.pathname !== "/") {
-      navigate("/"); 
+      navigate("/");
     }
   }, []);
-  
+
   return (
-    <Suspense fallback={<Splash />}>
-      <Routes>
-        <Route path="/" element={<Splash />} />
-        <Route path="/home" element={<Home />} />
-      </Routes>
-    </Suspense>
+    <Routes>
+      <Route path="/" element={<Splash />} />
+      <Route path="/streamflix" element={<Layout />}>
+        <Route path="home" element={<Home />} />
+      </Route>
+    </Routes>
   );
 };
 
