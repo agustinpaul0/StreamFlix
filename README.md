@@ -17,8 +17,8 @@ A Netflix clone app built with **Vite + React + TypeScript + Tailwind + Motion**
 ## 🔧 Installation  
 Clone the repository and run the project locally:  
 ```sh
-git clone <REPO_URL>
-cd netflix-clone-app
+git clone https://github.com/agustinpaul0/StreamFlix
+cd streamflix
 npm install
 npm run dev
 ``` 
