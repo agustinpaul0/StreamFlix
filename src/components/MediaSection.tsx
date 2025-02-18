@@ -1,6 +1,4 @@
-interface MediaSectionProps {
-  title: string;
-}
+import { MediaSectionProps } from "../types/MediaSection";
 
 const MediaSection = ({ title }: MediaSectionProps) => {
   return (
