@@ -20,7 +20,7 @@ const Home = () => {
 
       <section className="relative flex justify-center p-4">
         <figure
-          className="relative w-full aspect-[4/5] max-h-[700px] max-w-[600px] bg-cover bg-center"
+          className="relative w-full aspect-[4/5] max-h-[700px] max-w-[600px] bg-cover bg-center rounded-md"
           style={{
             backgroundImage: `url(${ bannerPelicula })`,
           }}
