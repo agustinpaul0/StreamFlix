@@ -1,3 +1,3 @@
-export interface MediaSectionProps {
+export default interface MediaSectionProps {
   title: string;
 }

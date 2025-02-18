@@ -1,4 +1,3 @@
-// AppRouter.tsx
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import appRoutes from "../data/app-routes";

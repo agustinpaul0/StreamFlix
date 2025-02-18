@@ -1,8 +1,8 @@
-import { MediaSectionProps } from "../types/MediaSection";
+import MediaSectionProps from "../types/MediaSection";
 
 const MediaSection = ({ title }: MediaSectionProps) => {
   return (
-    <section className="px-4 py-1">
+    <section className="p-4">
       <h3 className="text-2xl font-medium">{title}</h3>
       <div className="flex overflow-x-auto gap-2 mt-2">
         {[1, 2, 3].map((index) => (

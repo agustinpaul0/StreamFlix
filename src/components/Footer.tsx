@@ -4,7 +4,7 @@ import settings from "../assets/img/settings-icon.svg";
 
 const Footer = () => {
   return (
-    <footer className="fixed bottom-0 w-full flex justify-center gap-[10vw] bg-[#080808] p-4">
+    <footer className="fixed bottom-0 w-full flex justify-center gap-[10vw] bg-[#080808] p-4 h-[7vh]">
       <button className="cursor-pointer">
         <img src={home} alt="Home Icon" className="w-8 h-8" />
       </button>

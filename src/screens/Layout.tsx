@@ -6,7 +6,7 @@ const Layout = () => {
   return (
     <>
       <NavBar />
-      <main className="min-h-screen bg-[#080808] text-[#FFFFFF] font-family-inter pt-[70px]">
+      <main className="min-h-screen bg-[#080808] text-[#FFFFFF] font-family-inter pt-[70px] mb-[7vh]">
         <Outlet />
       </main>
       <Footer />
