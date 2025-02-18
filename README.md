@@ -12,7 +12,7 @@ A Netflix clone app built with **Vite + React + TypeScript + Tailwind + Motion**
 ## 🛠 Technologies Used  
 - **Frontend:** React, TypeScript, Tailwind, Motion  
 - **Bundler:** Vite  
-- **Movie API:** TMDB (or similar)  
+- **Movie API:** TMDB
 
 ## 🔧 Installation  
 Clone the repository and run the project locally:  
