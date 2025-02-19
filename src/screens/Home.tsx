@@ -1,7 +1,7 @@
 import HeaderNav from "../components/HeaderNav";
 import FeaturedMedia from "../components/FeaturedMedia";
 import MediaSection from "../components/MediaSection";
-import TrendingMovies from "../components/TrendingMovies";
+import Catalogue from "../components/Catalogue";
 
 const Home = () => {
   return (
@@ -9,13 +9,7 @@ const Home = () => {
       <HeaderNav />
       <FeaturedMedia />
       <MediaSection title="Catalogue">
-        <TrendingMovies />
-      </MediaSection>
-      <MediaSection title="Movies">
-        <TrendingMovies />
-      </MediaSection>
-      <MediaSection title="Series">
-        <TrendingMovies />
+        <Catalogue />
       </MediaSection>
     </>
   );
