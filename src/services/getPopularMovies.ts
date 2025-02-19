@@ -1,7 +1,7 @@
 import axios from "axios";
 import Movie from "../types/Movie";
 
-const getAllMovies = async (url: string) => {
+const getPopularMovies = async (url: string) => {
   const TOKEN = import.meta.env.VITE_TMDB_ACCESS_TOKEN;
   const MAX_PAGES = 3;
   const allMoviesMap = new Map<number, Movie>();
@@ -25,9 +25,9 @@ const getAllMovies = async (url: string) => {
 
     return Array.from(allMoviesMap.values());
   } catch (e) {
-    console.error("Unexpected error while fetching all movies: ", e);
+    console.error("Unexpected error while fetching popular movies: ", e);
     throw e;
   }
 };
 
-export default getAllMovies;
+export default getPopularMovies;

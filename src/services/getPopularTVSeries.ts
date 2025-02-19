@@ -1,7 +1,7 @@
 import axios from "axios";
 import Series from "../types/Series";
 
-const getAllTVSeries = async (url: string) => {
+const getPopularTVSeries = async (url: string) => {
   const TOKEN = import.meta.env.VITE_TMDB_ACCESS_TOKEN;
   const MAX_PAGES = 3;
   const allTVShowsMap = new Map<number, Series>();
@@ -25,9 +25,9 @@ const getAllTVSeries = async (url: string) => {
 
     return Array.from(allTVShowsMap.values());
   } catch (e) {
-    console.error("Unexpected error while fetching all TV shows: ", e);
+    console.error("Unexpected error while fetching popular TV shows: ", e);
     throw e;
   }
 };
 
-export default getAllTVSeries;
+export default getPopularTVSeries;
