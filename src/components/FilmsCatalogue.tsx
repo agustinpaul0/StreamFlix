@@ -1,7 +1,7 @@
 import useFetch from "../hooks/useFetch";
 import getAllMovies from "../services/getAllMovies";
 import Movie from "../types/Movie";
-import MovieCard from "./MovieCard";
+import MovieCard from "./MediaCard";
 
 const FilmsCatalogue = () => {
   const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;

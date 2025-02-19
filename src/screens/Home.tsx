@@ -3,6 +3,7 @@ import FeaturedMedia from "../components/FeaturedMedia";
 import MediaSection from "../components/MediaSection";
 import Catalogue from "../components/Catalogue";
 import FilmsCatalogue from "../components/FilmsCatalogue";
+import SeriesCatalogue from "../components/SeriesCatalogue";
 
 const Home = () => {
   return (
@@ -14,6 +15,9 @@ const Home = () => {
       </MediaSection>
       <MediaSection title="Films">
         <FilmsCatalogue />
+      </MediaSection>
+      <MediaSection title="Series">
+        <SeriesCatalogue />
       </MediaSection>
     </>
   );

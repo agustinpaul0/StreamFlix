@@ -3,7 +3,7 @@ import getAllMovies from "../services/getAllMovies";
 import getAllTVSeries from "../services/getAllTVSeries";
 import Movie from "../types/Movie";
 import Series from "../types/Series";
-import MovieCard from "./MovieCard";
+import MediaCard from "./MediaCard";
 
 const AllMedia = () => {
   const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
@@ -23,10 +23,10 @@ const AllMedia = () => {
   return (
     <>
       {movieData && movieData.map((movie: Movie) => (
-        <MovieCard key={movie.id} posterPath={movie.poster_path} />
+        <MediaCard key={movie.id} posterPath={movie.poster_path} />
       ))}
       {tvData && tvData.map((series: Series) => (
-        <MovieCard key={series.id} posterPath={series.poster_path} />
+        <MediaCard key={series.id} posterPath={series.poster_path} />
       ))}
     </>
   );
