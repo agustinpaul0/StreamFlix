@@ -8,11 +8,15 @@ const Home = () => {
     <>
       <HeaderNav />
       <FeaturedMedia />
-      <MediaSection title="Catalogue" />
-      <MediaSection title="Movies" />
-      <MediaSection title="Series" />
-      <MediaSection title="My List" />
-      <TrendingMovies />
+      <MediaSection title="Catalogue">
+        <TrendingMovies />
+      </MediaSection>
+      <MediaSection title="Movies">
+        <TrendingMovies />
+      </MediaSection>
+      <MediaSection title="Series">
+        <TrendingMovies />
+      </MediaSection>
     </>
   );
 };

@@ -1,5 +1,6 @@
 import useFetch from "../hooks/useFetch";
 import getTrendingMovies from "../services/getTrendingMovies";
+import MovieCard from "./MovieCard";
 
 const TrendingMovies = () => {
   const apiUrl =
@@ -11,13 +12,14 @@ const TrendingMovies = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <ul>
-      {data?.results ? (
-        data.results.map((movie: any) => <li key={movie.id} className="p-4">{movie.title}</li>)
-      ) : (
-        <div>No movies found.</div>
-      )}
-    </ul>
+    <>
+      {data.results.map((movie: any) => (
+        <MovieCard
+          key={movie.id}
+          posterPath={movie.poster_path} 
+        />
+      ))}
+    </>
   );
 };
 
