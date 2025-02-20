@@ -1,25 +1,10 @@
-import { useState, useEffect } from "react";
 import banner from "../assets/img/banner.svg";
 
 const Splash = () => {
-  const [isSplashVisible, setIsSplashVisible] = useState(true);
-
-  useEffect(() => {
-    const splashTimer = setTimeout(() => {
-      setIsSplashVisible(false); 
-    }, 2000);
-
-    return () => clearTimeout(splashTimer);
-  }, []);
-
   return (
-    <div
-      className={`relative min-h-screen bg-black flex items-center justify-center transition-opacity duration-500 ${
-        isSplashVisible ? "opacity-100" : "opacity-0"
-      }`}
-    >
+    <section className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-[#080808]">
       <img src={banner} alt="Splash Screen Banner" />
-    </div>
+    </section>
   );
 };
 

@@ -5,7 +5,7 @@ import MediaCard from "./MediaCard";
 
 const SeriesCatalogue = () => {
   const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
-  const ALL_SERIES_URL = `${BASE_URL}aaaadiscover/tv?language=en-US`;
+  const ALL_SERIES_URL = `${BASE_URL}discover/tv?language=en-US`;
 
   const { data, error, isLoading } = useSuspenseQuery<Series[], Error>({
     queryKey: ["tvSeriesCatalogue"],
