@@ -19,13 +19,13 @@ const FeaturedMediaCard: React.FC<{ media: Media }> = ({ media }) => {
 
   return (
     <section className="relative flex flex-col justify-center p-4">
-      <div className="shadow-[0_4px_10px_rgba(255,255,255,0.1)] w-full h-full border-t-2 border-l-3 border-r-3 rounded-tl-md rounded-tr-md border-[#FFFFFF]">
+      <button className="shadow-[0_4px_10px_rgba(255,255,255,0.1)] w-full h-full border-t-2 border-l-3 border-r-3 rounded-tl-md rounded-tr-md border-[#FFFFFF] hover:cursor-pointer">
         <img
           src={BANNER_URL}
           alt="Banner Popular Media"
-          className="object-fill max-h-[450px] w-full p-1"
+          className="object-fill max-h-[450px] w-full p-1" 
         />
-      </div>
+      </button>
 
       <div className="shadow-[0_4px_10px_rgba(255,255,255,0.1)] p-3 bg-[#080808] border-b-3 border-l-3 border-r-3 rounded-bl-md rounded-br-md border-[#FFFFFF]">
         <div className="flex justify-center items-center gap-2">
