@@ -1,5 +1,4 @@
 import React from "react";
-import useGenres from "../hooks/useGenres";
 import play from "../assets/img/play-icon.svg";
 import add from "../assets/img/add-icon.svg";
 import mediaBannerAppLogo from "../assets/img/media-banner-app-logo.svg";
@@ -7,9 +6,7 @@ import Media from "../types/Media";
 import { getMediaGenres } from "../utils/mediaUtils";
 
 const FeaturedMediaCard: React.FC<{ media: Media }> = ({ media }) => {
-  
-  const { movieGenres, seriesGenres } = useGenres();
-  const selectedMediaGenres = getMediaGenres(media, movieGenres, seriesGenres); 
+  const mediaGenres = getMediaGenres(media);
   const BANNER_URL = `https://image.tmdb.org/t/p/w500${media.poster_path}`;
 
   return (
@@ -34,7 +31,7 @@ const FeaturedMediaCard: React.FC<{ media: Media }> = ({ media }) => {
           </p>
         </div>
 
-        <h3 className="text-lg text-white text-center p-2">{selectedMediaGenres}</h3>
+        <h3 className="text-lg text-white text-center p-2">{mediaGenres}</h3>
 
         <div className="flex gap-4 w-full">
           <button className="bg-[#FFFFFF] flex-grow p-3 text-[#141414] rounded-md hover:bg-[#efe6e6e6] cursor-pointer max-w-[50%] flex items-center justify-center">

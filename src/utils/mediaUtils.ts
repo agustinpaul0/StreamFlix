@@ -6,6 +6,7 @@ import Series from "../types/Series";
 import Media from "../types/Media";
 import getPopularMovies from "../services/getPopularMovies";
 import getPopularTVSeries from "../services/getPopularTVSeries";
+import { fetchGenres } from "./fetchUtils";
 
 export const getAllMedia = () => {
   const { data: movies } = getAllMoviesCatalogue();
@@ -37,7 +38,7 @@ export const getAllMoviesCatalogue = () => {
 export const getAllPopularMedia = () => {
   const { data: movieData } = getAllPopularMoviesCatalogue();
   const { data: seriesData } = getAllPopularTVSeriesCatalogue();
-
+  
   return [...movieData, ...seriesData];
 };
 
@@ -61,9 +62,11 @@ export const getAllPopularTVSeriesCatalogue = () => {
   });
 };
 
-export const getMediaGenres = (media: Media, movieGenres: Record<number, string>, tvGenres: Record<number, string>): string => {
-  const genresMap = media.media_type === "movie" ? movieGenres : tvGenres;
+export const getMediaGenres = async (media: Media): Promise<string> => {
+  const genresRecord = media.media_type === "movie" ? await fetchGenres("movie") : await fetchGenres("tv");
   return media.genre_ids
-    .map((genreId) => genresMap[genreId] || "Unknown")
+    .map((genreId) => (
+      genresRecord[genreId] || "Unknown"
+    ))
     .join(" | ");
 };
