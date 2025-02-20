@@ -4,17 +4,12 @@ import play from "../assets/img/play-icon.svg";
 import add from "../assets/img/add-icon.svg";
 import mediaBannerAppLogo from "../assets/img/media-banner-app-logo.svg";
 import Media from "../types/Media";
+import { getMediaGenres } from "../utils/mediaUtils";
 
 const FeaturedMediaCard: React.FC<{ media: Media }> = ({ media }) => {
-  const { movieGenres, tvGenres } = useGenres();
   
-  const getMediaGenres = (media: Media): string => {
-    const genresMap = media.media_type === "movie" ? movieGenres : tvGenres;
-    return media.genre_ids
-      .map((genreId) => genresMap[genreId] || "Unknown")
-      .join(" | ");
-  };
-
+  const { movieGenres, seriesGenres } = useGenres();
+  const selectedMediaGenres = getMediaGenres(media, movieGenres, seriesGenres); 
   const BANNER_URL = `https://image.tmdb.org/t/p/w500${media.poster_path}`;
 
   return (
@@ -23,7 +18,7 @@ const FeaturedMediaCard: React.FC<{ media: Media }> = ({ media }) => {
         <img
           src={BANNER_URL}
           alt="Banner Popular Media"
-          className="object-fill max-h-[450px] w-full p-1" 
+          className="object-fill max-h-[450px] w-full p-1"
         />
       </button>
 
@@ -39,9 +34,7 @@ const FeaturedMediaCard: React.FC<{ media: Media }> = ({ media }) => {
           </p>
         </div>
 
-        <h3 className="text-lg text-white text-center p-2">
-          {getMediaGenres(media)}
-        </h3>
+        <h3 className="text-lg text-white text-center p-2">{selectedMediaGenres}</h3>
 
         <div className="flex gap-4 w-full">
           <button className="bg-[#FFFFFF] flex-grow p-3 text-[#141414] rounded-md hover:bg-[#efe6e6e6] cursor-pointer max-w-[50%] flex items-center justify-center">

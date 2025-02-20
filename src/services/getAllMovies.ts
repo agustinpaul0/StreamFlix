@@ -1,25 +1,18 @@
-import axios from "axios";
+import { fetchMediaFromPage, addMediaToMap } from "../utils/fetchUtils";
 import Movie from "../types/Movie";
+import Media from "../types/Media";
 
 const getAllMovies = async (url: string) => {
-  const TOKEN = import.meta.env.VITE_TMDB_ACCESS_TOKEN;
   const MAX_PAGES = 3;
   const allMoviesMap = new Map<number, Movie>();
+  const mediaType = "movies";
+  
   let page = 1;
 
   try {
     while (page <= MAX_PAGES) {
-      const res = await axios.get(`${url}&page=${page}`, {
-        headers: {
-          Authorization: `Bearer ${TOKEN}`,
-          accept: "application/json",
-        },
-      });
-
-      res.data.results.forEach((movie: Omit<Movie, "media_type">) => {
-        allMoviesMap.set(movie.id, {...movie, media_type: "movie"} as Movie);
-      });
-
+      const movies: Omit<Media, "media_type">[] = await fetchMediaFromPage(url, page);
+      addMediaToMap(movies, allMoviesMap, mediaType);
       page++;
     }
 

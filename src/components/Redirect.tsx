@@ -1,12 +1,14 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import RedirectProps from "../types/RedirectProps";
 
-const Redirect = () => {
+const Redirect = ({ url }: RedirectProps) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    navigate("/streamflix/home", { replace: true });
-  }, [navigate]);
+    navigate(url, { replace: location.pathname === "/" });
+  }, [url]);
 
   return null;
 };

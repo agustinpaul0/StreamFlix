@@ -1,11 +1,10 @@
-// Layout.tsx
 import { Outlet } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
-import Splash from "./Splash";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import OperationFailed from "./OperationFailed"; 
+import OperationFailed from "./OperationFailed";
+import Splash from "./Splash";
 
 const Layout = () => {
   return (

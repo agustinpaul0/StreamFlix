@@ -1,4 +1,4 @@
-export default interface TVShow {
+export default interface Series {
   backdrop_path: string;
   first_air_date: string;
   genre_ids: number[];
@@ -12,5 +12,5 @@ export default interface TVShow {
   poster_path: string;
   vote_average: number;
   vote_count: number;
-  media_type: string;
+  media_type: "series";
 }
