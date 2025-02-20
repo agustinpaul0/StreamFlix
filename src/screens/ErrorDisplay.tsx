@@ -1,7 +1,7 @@
 import { FallbackProps } from "react-error-boundary";
 
 const ErrorDisplay = ({ error }: FallbackProps) => {
-  console.log(error);
+  console.log("Caught error: ", error);
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-[#080808] overflow-hidden">
       <div className="flex items-center justify-center gap-1 text-[#FF0000]">

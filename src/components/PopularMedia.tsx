@@ -11,29 +11,17 @@ const PopularMedia = () => {
   const POPULAR_MOVIES_URL = `${BASE_URL}movie/popular?language=en-US`;
   const POPULAR_SERIES_URL = `${BASE_URL}tv/popular?language=en-US`;
 
-  const { data: movieData, error: movieError, isLoading: isLoadingMovies } = useSuspenseQuery<Movie[], Error>({
+  const { data: movieData } = useSuspenseQuery<Movie[], Error>({
     queryKey: ["popularMovies"],
     queryFn: () => getPopularMovies(POPULAR_MOVIES_URL),
   });
 
-  const { data: tvData, error: tvError, isLoading: isLoadingTV } = useSuspenseQuery<Series[], Error>({
+  const { data: tvData } = useSuspenseQuery<Series[], Error>({
     queryKey: ["popularTVSeries"],
     queryFn: () => getPopularTVSeries(POPULAR_SERIES_URL),
   });
 
-  if (movieError || tvError) {
-    console.error(movieError || tvError);
-    return null;
-  }
-
-  if (isLoadingMovies || isLoadingTV) {
-    return <></>;  
-  }
-
-  const movies = movieData ?? [];
-  const tvShows = tvData ?? [];
-
-  const combinedMedia: Media[] = [...movies, ...tvShows];
+  const combinedMedia: Media[] = [...movieData, ...tvData];
   const randomMedia: Media = combinedMedia[Math.floor(Math.random() * combinedMedia.length)];
 
   return <FeaturedMediaCard media={randomMedia} />;

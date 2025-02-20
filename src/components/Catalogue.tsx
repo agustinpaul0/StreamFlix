@@ -26,10 +26,10 @@ const Catalogue = () => {
 
   return (
     <>
-      {movieData && movieData.map((movie: Movie) => (
+      {movieData.map((movie: Movie) => (
         <MediaCard key={movie.id} posterPath={movie.poster_path} />
       ))}
-      {tvData && tvData.map((series: Series) => (
+      {tvData.map((series: Series) => (
         <MediaCard key={series.id} posterPath={series.poster_path} />
       ))}
     </>
