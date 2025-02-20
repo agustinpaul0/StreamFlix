@@ -1,9 +1,9 @@
 import { FallbackProps } from "react-error-boundary";
 
-const ErrorDisplay = ({ error }: FallbackProps) => {
+const OperationFailed = ({ error }: FallbackProps) => {
   console.log("Caught error: ", error);
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-[#080808] overflow-hidden">
+    <section className="flex flex-col items-center justify-center h-screen bg-[#080808] overflow-hidden">
       <div className="flex items-center justify-center gap-1 text-[#FF0000]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -23,8 +23,8 @@ const ErrorDisplay = ({ error }: FallbackProps) => {
       </div>
       <h2 className="text-2xl text-[#FFFFFF]">Something went wrong</h2>
       <h3 className="text-lg text-[#FFFFFF]">Check error on console</h3>
-    </div>
+    </section>
   );
 };
 
-export default ErrorDisplay;
+export default OperationFailed;

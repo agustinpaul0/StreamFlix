@@ -5,11 +5,11 @@ import Footer from "../components/Footer";
 import Splash from "./Splash";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import ErrorDisplay from "./ErrorDisplay"; 
+import OperationFailed from "./OperationFailed"; 
 
 const Layout = () => {
   return (
-    <ErrorBoundary FallbackComponent={ErrorDisplay}>
+    <ErrorBoundary FallbackComponent={OperationFailed}>
       <Suspense fallback={<Splash />}>
         <NavBar />
         <main className="min-h-screen bg-[#080808] text-[#FFFFFF] font-family-inter pt-[70px] mb-[7vh]">
