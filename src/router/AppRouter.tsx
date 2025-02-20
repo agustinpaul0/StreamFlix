@@ -7,7 +7,7 @@ const AppRouter = () => {
 
   useEffect(() => {
     if (window.location.pathname !== "/") {
-      navigate("/");
+      navigate("/streamflix/home", { replace: true });
     }
   }, []);
 

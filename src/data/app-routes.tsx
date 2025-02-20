@@ -1,19 +1,21 @@
 import AppRoute from "../types/AppRoute";
-import Splash from "../screens/Splash";
+import { lazy } from "react";
+import Redirect from "../components/Redirect";
 import Layout from "../screens/Layout";
-import Home from "../screens/Home";
+
+const Home = lazy(() => import("../screens/Home"));
 
 const appRoutes: AppRoute[] = [
   {
     path: "/",
-    element: <Splash />
+    element: <Redirect />
   },
   {
     path: "/streamflix",
     element: <Layout />,
     children: [
       {
-        path: "home",
+        path: "home", 
         element: <Home />
       }
     ]
