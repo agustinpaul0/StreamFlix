@@ -1,9 +1,10 @@
-import React from "react";
-import play from "../assets/img/play-icon.svg";
-import add from "../assets/img/add-icon.svg";
+import playIcon from "../assets/img/play-icon.svg";
+import addToMyListAIcon from "../assets/img/add-icon.svg";
 import mediaBannerAppLogo from "../assets/img/media-banner-app-logo.svg";
 import Media from "../types/Media";
 import { getMediaGenres } from "../utils/mediaUtils";
+import PlayButton from "./PlayButton";
+import AddToMyListButton from "./AddToMyListButton";
 
 const FeaturedMediaCard: React.FC<{ media: Media }> = ({ media }) => {
   const mediaGenres = getMediaGenres(media);
@@ -34,19 +35,8 @@ const FeaturedMediaCard: React.FC<{ media: Media }> = ({ media }) => {
         <h3 className="text-lg text-white text-center p-2">{mediaGenres}</h3>
 
         <div className="flex gap-4 w-full">
-          <button className="bg-[#FFFFFF] flex-grow p-3 text-[#141414] rounded-md hover:bg-[#efe6e6e6] cursor-pointer max-w-[50%] flex items-center justify-center">
-            <span className="inline-flex items-center gap-2">
-              <img src={play} alt="Play Media Icon" />
-              Play
-            </span>
-          </button>
-          <button className="relative px-3 flex-grow text-[#FFFFFF] rounded-md overflow-hidden hover:bg-[#6F6F6F] cursor-pointer max-w-[50%] flex items-center justify-center">
-            <div className="absolute inset-0 bg-[#868181] opacity-75 rounded-md"></div>
-            <span className="inline-flex items-center gap-2 relative">
-              <img src={add} alt="Add To My List Icon" />
-              My List
-            </span>
-          </button>
+          <PlayButton playIcon={playIcon} />
+          <AddToMyListButton addToMyListIcon={addToMyListAIcon} />
         </div>
       </div>
     </section>
