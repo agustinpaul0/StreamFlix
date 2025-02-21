@@ -1,8 +1,13 @@
+import PopularSeries from "../components/PopularSeries";
+import SeriesCatalogueByGenre from "../components/SeriesCatalogueByGenre";
+
 const Series = () => {
   return (
-    <div className="min-h-screen bg-[#080808] text-[#FFFFFF] flex items-center justify-center">
-      <h1 className="text-3xl">Series</h1>
-    </div>
+    <>
+      <h3 className="text-2xl font-medium pl-4 pt-4">Our Recommendation</h3>
+      <PopularSeries />
+      <SeriesCatalogueByGenre />
+    </>
   );
 };
 

@@ -38,7 +38,7 @@ export const getAllMoviesCatalogue = () => {
 export const getAllPopularMedia = () => {
   const { data: movieData } = getAllPopularMoviesCatalogue();
   const { data: seriesData } = getAllPopularTVSeriesCatalogue();
-  
+
   return [...movieData, ...seriesData];
 };
 
@@ -69,4 +69,35 @@ export const getMediaGenres = async (media: Media): Promise<string> => {
       genresRecord[genreId] || "Unknown"
     ))
     .join(" | ");
+};
+
+export const getMoviesGenres = async (): Promise<Record<number, string>> => {
+  const genresRecord = await fetchGenres("movie");
+  return genresRecord;
+};
+
+export const getSeriesGenres = async (): Promise<Record<number, string>> => {
+  const genresRecord = await fetchGenres("tv");
+  return genresRecord;
+};
+
+export const groupMediaByGenre = <T extends Media>(
+  mediaCatalogue: T[], 
+  genres: Record<number, string>
+): Map<string, T[]> => {
+  const groupedMedia = new Map<string, T[]>();
+
+  mediaCatalogue.forEach((media) => {
+    media.genre_ids.forEach((id) => {
+      const genreName = genres[id];
+      if (genreName) {
+        if (!groupedMedia.has(genreName)) {
+          groupedMedia.set(genreName, []);
+        }
+        groupedMedia.get(genreName)?.push(media);
+      }
+    });
+  });
+
+  return groupedMedia;
 };
