@@ -1,25 +1,18 @@
-import axios from "axios";
+import { fetchMediaFromPage, addMediaToMap } from "../utils/fetchUtils";
 import Series from "../types/Series";
+import Media from "../types/Media";
 
 const getPopularTVSeries = async (url: string) => {
-  const TOKEN = import.meta.env.VITE_TMDB_ACCESS_TOKEN;
   const MAX_PAGES = 3;
   const allTVShowsMap = new Map<number, Series>();
+  const mediaType = "series";
+
   let page = 1;
 
   try {
     while (page <= MAX_PAGES) {
-      const res = await axios.get(`${url}&page=${page}`, {
-        headers: {
-          Authorization: `Bearer ${TOKEN}`,
-          accept: "application/json",
-        },
-      });
-
-      res.data.results.forEach((series: Omit<Series, "media_type">) => {
-        allTVShowsMap.set(series.id, {...series, media_type: "series"} as Series);
-      });
-
+      const series: Omit<Media, "media_type">[] = await fetchMediaFromPage(url, page);
+      addMediaToMap(series, allTVShowsMap, mediaType);
       page++;
     }
 

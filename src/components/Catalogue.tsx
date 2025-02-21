@@ -5,13 +5,13 @@ import MediaCard from "./MediaCard";
 
 const Catalogue = () => {
   const { movies, series } = getAllMedia();
-  
+
   return (
     <>
-      {movies.map((movie: Movie) => (
+      {movies.slice().reverse().map((movie: Movie) => (
         <MediaCard key={movie.id} posterPath={movie.poster_path} />
       ))}
-      {series.map((series: Series) => (
+      {series.slice().reverse().map((series: Series) => (
         <MediaCard key={series.id} posterPath={series.poster_path} />
       ))}
     </>
