@@ -1,9 +1,9 @@
-import { useState } from 'react'; 
 import Redirect from './Redirect';
+import { useRedirect } from '../context/RedirectContext';
 
 const HeaderNav = () => {
   const BASE_URL = "/streamflix/";
-  const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
+  const { redirectUrl, setRedirectUrl } = useRedirect();
 
   const handleClick = (url: string) => {
     setRedirectUrl(url);
