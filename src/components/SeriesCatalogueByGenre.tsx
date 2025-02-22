@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { getAllSeriesCatalogue, getSeriesGenres, groupMediaByGenre } from "../utils/mediaUtils";
+import { getAllPopularTVSeriesCatalogue, getAllSeriesCatalogue, getSeriesGenres, groupMediaByGenre } from "../utils/mediaUtils";
 import MovieCard from "./MediaCard";
 import MediaSection from "./MediaSection";
 import Series from "../types/Series";
 
 const SeriesCatalogueByGenre = () => {
   const { data: series } = getAllSeriesCatalogue();
+  const { data: popularSeriesCatalogue } = getAllPopularTVSeriesCatalogue();
   const [genres, setGenres] = useState<Record<number, string>>({});
   const [seriesByGenre, setMoviesByGenre] = useState<Map<string, Series[]>>(new Map<string, Series[]>());
 
@@ -21,6 +22,11 @@ const SeriesCatalogueByGenre = () => {
 
   return (
     <>
+      <MediaSection title="Popular Series">
+        {popularSeriesCatalogue.map((series)=>(
+          <MovieCard key={series.id} posterPath={series.poster_path} />
+        ))}
+      </MediaSection>
       {Array.from(seriesByGenre.entries())
         .sort(([genreA], [genreB]) => genreA.localeCompare(genreB))
         .map(([genre, movies]) => (

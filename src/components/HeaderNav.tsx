@@ -1,13 +1,17 @@
 import Redirect from './Redirect';
-import { useRedirect } from '../context/RedirectContext';
+import { useEffect, useState } from 'react';
 
 const HeaderNav = () => {
   const BASE_URL = "/streamflix/";
-  const { redirectUrl, setRedirectUrl } = useRedirect();
+  const [ redirectUrl, setRedirectUrl ] = useState<string | null>(null);
 
   const handleClick = (url: string) => {
     setRedirectUrl(url);
   };
+
+  useEffect(() => {
+    setRedirectUrl(null);
+  }, [redirectUrl]);
 
   return (
     <section className="flex justify-between px-4 gap-3 mt-4">

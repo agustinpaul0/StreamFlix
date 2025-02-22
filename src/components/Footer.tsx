@@ -2,15 +2,19 @@ import Redirect from "./Redirect";
 import homeIcon from "../assets/img/home-icon.svg";
 import userIcon from "../assets/img/user-account-icon.svg";
 import settingsIcon from "../assets/img/settings-icon.svg";
-import { useRedirect } from "../context/RedirectContext";
+import { useEffect, useState } from "react";
 
 const Footer = () => {
   const BASE_URL = "/streamflix/";
-  const { redirectUrl, setRedirectUrl } = useRedirect();
+  const [ redirectUrl, setRedirectUrl ] = useState<string | null>(null);
 
   const handleClick = (url: string) => {
     setRedirectUrl(url);
   };
+
+  useEffect(() => {
+    setRedirectUrl(null);
+  }, [redirectUrl]);
 
   const footerIcons = [
     { label: "HOME", src: homeIcon, alt: "Home Icon" },
