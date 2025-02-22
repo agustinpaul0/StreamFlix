@@ -8,7 +8,7 @@ const SeriesCatalogue = () => {
   return (
     <>
       {series.map((series: Series) => (
-        <MediaCard key={series.id} posterPath={series.poster_path} />
+        <MediaCard key={series.id} media={series} />
       ))}
     </>
   );

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getAllPopularTVSeriesCatalogue, getAllSeriesCatalogue, getSeriesGenres, groupMediaByGenre } from "../utils/mediaUtils";
-import MovieCard from "./MediaCard";
+import MediaCard from "./MediaCard";
 import MediaSection from "./MediaSection";
 import Series from "../types/Series";
 
@@ -24,15 +24,15 @@ const SeriesCatalogueByGenre = () => {
     <>
       <MediaSection title="Popular Series">
         {popularSeriesCatalogue.map((series)=>(
-          <MovieCard key={series.id} posterPath={series.poster_path} />
+          <MediaCard key={series.id} media={series} />
         ))}
       </MediaSection>
       {Array.from(seriesByGenre.entries())
         .sort(([genreA], [genreB]) => genreA.localeCompare(genreB))
-        .map(([genre, movies]) => (
+        .map(([genre, allSeries]) => (
           <MediaSection key={genre} title={genre}>
-            {movies.map((movie) => (
-              <MovieCard key={movie.id} posterPath={movie.poster_path} />
+            {allSeries.map((series) => (
+              <MediaCard key={series.id} media={series} />
             ))}
           </MediaSection>
         ))}

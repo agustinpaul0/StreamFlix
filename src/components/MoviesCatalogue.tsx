@@ -1,5 +1,5 @@
 import Movie from "../types/Movie";
-import MovieCard from "./MediaCard";
+import MediaCard from "./MediaCard";
 import { getAllMoviesCatalogue } from "../utils/mediaUtils";
 
 const MoviesCatalogue = () => {
@@ -8,7 +8,7 @@ const MoviesCatalogue = () => {
   return (
     <>
       {movies.map((movie: Movie) => (
-        <MovieCard key={movie.id} posterPath={movie.poster_path} />
+        <MediaCard key={movie.id} media={movie} />
       ))}
     </>
   );

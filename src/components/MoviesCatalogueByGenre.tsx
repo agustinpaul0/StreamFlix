@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Movie from "../types/Movie";
 import { getAllMoviesCatalogue, getAllPopularMoviesCatalogue, getMoviesGenres, groupMediaByGenre } from "../utils/mediaUtils";
-import MovieCard from "./MediaCard";
+import MediaCard from "./MediaCard";
 import MediaSection from "./MediaSection";
 
 const MoviesCatalogueByGenre = () => {
@@ -24,7 +24,7 @@ const MoviesCatalogueByGenre = () => {
     <>
       <MediaSection title="Popular Movies">
         {popularMoviesCatalogue.map((movie)=>(
-          <MovieCard key={movie.id} posterPath={movie.poster_path} />
+          <MediaCard key={movie.id} media={movie} />
         ))}
       </MediaSection>
       {Array.from(moviesByGenre.entries())
@@ -32,7 +32,7 @@ const MoviesCatalogueByGenre = () => {
         .map(([genre, movies]) => (
           <MediaSection key={genre} title={genre}>
             {movies.map((movie) => (
-              <MovieCard key={movie.id} posterPath={movie.poster_path} />
+              <MediaCard key={movie.id} media={movie} />
             ))}
           </MediaSection>
         ))}

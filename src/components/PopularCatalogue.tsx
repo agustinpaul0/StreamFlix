@@ -8,7 +8,7 @@ const PopularCatalogue = () => {
   return (
     <>
       {popularMedia.slice().reverse().map((popularMedia: Media) => (
-        <MediaCard key={popularMedia.id} posterPath={popularMedia.poster_path} />
+        <MediaCard key={popularMedia.id} media={popularMedia} />
       ))}
     </>
   );

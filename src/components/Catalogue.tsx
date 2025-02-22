@@ -9,10 +9,10 @@ const Catalogue = () => {
   return (
     <>
       {movies.slice().reverse().map((movie: Movie) => (
-        <MediaCard key={movie.id} posterPath={movie.poster_path} />
+        <MediaCard key={movie.id} media={movie} />
       ))}
       {series.slice().reverse().map((series: Series) => (
-        <MediaCard key={series.id} posterPath={series.poster_path} />
+        <MediaCard key={series.id} media={series} />
       ))}
     </>
   );

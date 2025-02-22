@@ -1,11 +1,26 @@
 import FeaturedMediaCard from "./FeaturedMediaCard";
 import { getAllPopularMedia } from "../utils/mediaUtils";
+import { useEffect, useState } from "react";
+import { useSelectedMedia } from "../context/SelectedMediaContext";
 
 const PopularMedia = () => {
   const popularMedia = getAllPopularMedia();
-  const randomPopularMediaToDisplay = popularMedia[Math.floor(Math.random() * popularMedia.length)];
+  const { setSelectedMedia } = useSelectedMedia();
+  const [randomMedia] = useState(
+    (popularMedia.length > 0)
+      ? popularMedia[Math.floor(Math.random() * popularMedia.length)]
+      : null
+  );
 
-  return <FeaturedMediaCard media={randomPopularMediaToDisplay} />;
+  useEffect(() => {
+    if(randomMedia) {
+      setSelectedMedia(randomMedia);
+    }
+  }, [randomMedia]);
+
+  if(!randomMedia) return null;
+
+  return <FeaturedMediaCard media={randomMedia} />;
 };
 
 export default PopularMedia;
