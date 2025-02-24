@@ -20,17 +20,13 @@ const FeaturedMediaCard: React.FC<{ media: Media }> = ({ media }) => {
 
   const { data: trailer } = getMediaTrailer(selectedMedia);
 
-  const displayMediaScreen = (url: string) => {
-    setRedirectUrl(url);
-  };
-
   return (
     <>
       <section className="relative flex flex-col justify-center p-4">
         <button
           type="button"
           className="shadow-[0_4px_10px_rgba(255,255,255,0.1)] w-full h-full border-t-2 border-l-3 border-r-3 rounded-tl-md rounded-tr-md border-[#FFFFFF] hover:cursor-pointer"
-          onClick={() => displayMediaScreen(`${MEDIA_SCREEN_URL}`)}
+          onClick={() => setRedirectUrl(`${MEDIA_SCREEN_URL}`)}
         >
           <img
             src={BANNER_URL}

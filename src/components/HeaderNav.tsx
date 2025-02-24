@@ -1,17 +1,9 @@
 import Redirect from "./Redirect";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const HeaderNav = () => {
   const BASE_URL = "/streamflix/";
   const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
-
-  const handleClick = (url: string) => {
-    setRedirectUrl(url);
-  };
-
-  useEffect(() => {
-    setRedirectUrl(null);
-  }, [redirectUrl]);
 
   return (
     <>
@@ -21,7 +13,7 @@ const HeaderNav = () => {
             type="button"
             key={label}
             className="p-3 flex-grow rounded-full border-2 border-[#ADADAD] hover:bg-[#151515c5] cursor-pointer"
-            onClick={() => handleClick(`${BASE_URL}${label.toLowerCase()}`)}
+            onClick={() => setRedirectUrl(`${BASE_URL}${label.toLowerCase()}`)}
           >
             {label}
           </button>

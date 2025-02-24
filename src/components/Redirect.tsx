@@ -7,7 +7,11 @@ const Redirect = ({ url }: RedirectProps) => {
   const location = useLocation();
 
   useEffect(() => {
-    navigate(url, { replace: location.pathname === "/" });
+    if (url === "../") {
+      navigate(-1); 
+    } else {
+      navigate(url, { replace: location.pathname === "/" });
+    }
   }, [url]);
 
   return null;

@@ -8,10 +8,6 @@ const Footer = () => {
   const BASE_URL = "/streamflix/";
   const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
 
-  const handleClick = (url: string) => {
-    setRedirectUrl(url);
-  };
-
   useEffect(() => {
     setRedirectUrl(null);
   }, [redirectUrl]);
@@ -30,7 +26,7 @@ const Footer = () => {
             type="button"
             key={label}
             className="cursor-pointer"
-            onClick={() => handleClick(`${BASE_URL}${label.toLowerCase()}`)}
+            onClick={() => setRedirectUrl(`${BASE_URL}${label.toLowerCase()}`)}
           >
             <img src={src} alt={alt} className="w-8 h-8" />
           </button>

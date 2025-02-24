@@ -5,6 +5,7 @@ import Layout from "../screens/Layout";
 import Movies from "../screens/Movies";
 import Series from "../screens/Series";
 import SelectedMedia from "../screens/SelectedMedia"; 
+import MediaDetails from "../screens/MediaDetails";
 
 const Home = lazy(() => import("../screens/Home"));
 
@@ -34,6 +35,10 @@ const appRoutes: AppRoute[] = [
   {
     path: "/streamflix/media", 
     element: <SelectedMedia /> 
+  },
+  {
+    path: "/streamflix/media/details",
+    element: <MediaDetails />
   }
 ];
 
