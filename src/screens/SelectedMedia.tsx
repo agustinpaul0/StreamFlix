@@ -10,6 +10,7 @@ import AddToMyListButton from "../components/AddToMyListButton";
 import PlayButton from "../components/PlayButton";
 import { useState } from "react";
 import Redirect from "../components/Redirect";
+import buttonBackIcon from "../assets/img/button-back-icon.svg";
 
 const isMovie = (media: Media): media is Movie => {
   return "video" in media;
@@ -27,10 +28,21 @@ const SelectedMedia: React.FC = () => {
     : [selectedMedia.name, selectedMedia.first_air_date];
   const mediaReleaseYear = mediaReleaseDate.split("-")[0];
   const { data: trailer } = getMediaTrailer(selectedMedia);
-  const [canRedirectToShowDetails, setCanRedirectToShowDetails] = useState(false);
+  const [canRedirectToShowDetails, setCanRedirectToShowDetails] =
+    useState(false);
+  const [canRedirectToPreviousScreen, setCanRedirectToPreviousScreen] =
+    useState(false);
 
   return (
     <main className="min-h-screen bg-[#080808] text-[#FFFFFF] font-family-inter mb-[7vh] overflow-hidden">
+      <nav className="flex p-4 gap-3 items-center">
+        <button 
+          type="button" 
+          className="flex items-center"
+          onClick={() => setCanRedirectToPreviousScreen(true)}>
+          <img src={buttonBackIcon} alt="Back" className="w-6 h-6" />
+        </button>
+      </nav>{" "}
       <section className="h-full w-full max-h-[30vh]">
         <img
           src={BANNER_URL}
@@ -57,9 +69,7 @@ const SelectedMedia: React.FC = () => {
           )}
           <AddToMyListButton addToMyListIcon={addToMyListAIcon} />
         </div>
-        <p>
-          {selectedMedia.overview}
-        </p>
+        <p>{selectedMedia.overview}</p>
         <button
           type="button"
           className="py-[40px]"
@@ -67,7 +77,10 @@ const SelectedMedia: React.FC = () => {
         >
           Show more...
         </button>
-        {canRedirectToShowDetails && <Redirect url={SELECTED_MEDIA_DETAILS_SCREEN_URL} />}
+        {canRedirectToPreviousScreen && <Redirect url={"../"} />}
+        {canRedirectToShowDetails && (
+          <Redirect url={SELECTED_MEDIA_DETAILS_SCREEN_URL} />
+        )}
       </section>
       <Footer />
     </main>
