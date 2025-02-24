@@ -1,8 +1,8 @@
 import logo from "../assets/img/logo.svg";
 import playIcon from "../assets/img/play-icon.svg";
 import addToMyListAIcon from "../assets/img/add-icon.svg";
-import AddToMyListButton from "../components/AddToMyListButton";
-import PlayButton from "../components/PlayButton";
+import AddToMyListButton from "./AddToMyListButton";
+import PlayButton from "./PlayButton";
 import Movie from "../types/Movie";
 import Media from "../types/Media";
 import { getMediaTrailer } from "../utils/mediaUtils";
@@ -16,7 +16,7 @@ const isMovie = (media: Media): media is Movie => {
   return "video" in media;
 };
 
-const MediaDetails: React.FC<MediaDetailsProps> = ({ media, onShowMore }) => {
+const MediaDescription: React.FC<MediaDetailsProps> = ({ media, onShowMore }) => {
   const [mediaTitle, mediaReleaseDate] = isMovie(media)
     ? [media.title, media.release_date]
     : [media.name, media.first_air_date];
@@ -52,4 +52,4 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({ media, onShowMore }) => {
   );
 };
 
-export default MediaDetails;
+export default MediaDescription;
