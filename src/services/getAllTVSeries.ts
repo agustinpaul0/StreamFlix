@@ -5,7 +5,7 @@ import Media from "../types/Media";
 const getAllTVSeries = async (url: string) => {
   const MAX_PAGES = 3;
   const allTVSeriesMap = new Map<number, Series>();
-  const mediaType = "series";
+  const mediaType = "tv";
 
   let page = 1;
 

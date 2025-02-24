@@ -4,7 +4,7 @@ import Redirect from "../components/Redirect";
 import Layout from "../screens/Layout";
 import Movies from "../screens/Movies";
 import Series from "../screens/Series";
-import Media from "../screens/Media"; 
+import SelectedMedia from "../screens/SelectedMedia"; 
 
 const Home = lazy(() => import("../screens/Home"));
 
@@ -33,7 +33,7 @@ const appRoutes: AppRoute[] = [
   },
   {
     path: "/streamflix/media", 
-    element: <Media /> 
+    element: <SelectedMedia /> 
   }
 ];
 

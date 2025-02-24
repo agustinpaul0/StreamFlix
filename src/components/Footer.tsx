@@ -27,6 +27,7 @@ const Footer = () => {
       <footer className="fixed bottom-0 w-full flex justify-center gap-[10vw] bg-[#080808] p-4 h-[7vh]">
         {footerIcons.map(({ label, src, alt }) => (
           <button
+            type="button"
             key={label}
             className="cursor-pointer"
             onClick={() => handleClick(`${BASE_URL}${label.toLowerCase()}`)}

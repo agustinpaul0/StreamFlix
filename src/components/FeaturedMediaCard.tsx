@@ -1,31 +1,34 @@
 import playIcon from "../assets/img/play-icon.svg";
 import addToMyListAIcon from "../assets/img/add-icon.svg";
 import mediaBannerAppLogo from "../assets/img/media-banner-app-logo.svg";
-import Media from "../types/Media";
-import { getMediaGenres } from "../utils/mediaUtils";
-import PlayButton from "./PlayButton";
+import { useState } from "react";
+import { getMediaGenres, getMediaTrailer } from "../utils/mediaUtils";
 import AddToMyListButton from "./AddToMyListButton";
+import PlayButton from "./PlayButton";
 import Redirect from "./Redirect";
-import { useEffect, useState } from "react";
+import Media from "../types/Media";
+import { useSelectedMedia } from "../context/SelectedMediaContext";
 
 const FeaturedMediaCard: React.FC<{ media: Media }> = ({ media }) => {
   const MEDIA_SCREEN_URL = "/streamflix/media";
   const mediaGenres = getMediaGenres(media);
   const BANNER_URL = `https://image.tmdb.org/t/p/w500${media?.poster_path}`;
   const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
+  const { selectedMedia } = useSelectedMedia();
+
+  if (!selectedMedia) return <></>;
+
+  const { data: trailer } = getMediaTrailer(selectedMedia);
 
   const displayMediaScreen = (url: string) => {
     setRedirectUrl(url);
   };
 
-  useEffect(() => {
-    setRedirectUrl(null);
-  }, [redirectUrl]);
-
   return (
     <>
       <section className="relative flex flex-col justify-center p-4">
         <button
+          type="button"
           className="shadow-[0_4px_10px_rgba(255,255,255,0.1)] w-full h-full border-t-2 border-l-3 border-r-3 rounded-tl-md rounded-tr-md border-[#FFFFFF] hover:cursor-pointer"
           onClick={() => displayMediaScreen(`${MEDIA_SCREEN_URL}`)}
         >
@@ -50,10 +53,19 @@ const FeaturedMediaCard: React.FC<{ media: Media }> = ({ media }) => {
 
           <h3 className="text-lg text-white text-center p-2">{mediaGenres}</h3>
 
-          <div className="flex gap-4 w-full">
-            <PlayButton playIcon={playIcon} />
-            <AddToMyListButton addToMyListIcon={addToMyListAIcon} />
-          </div>
+          {trailer ? (
+            <div className="flex gap-2 w-full">
+              <PlayButton playIcon={playIcon} url={trailer} />
+              <AddToMyListButton addToMyListIcon={addToMyListAIcon} />
+            </div>
+          ) : (
+            <div className="flex flex-col ">
+              <h3 className="text-lg font-medium mb-2 text-[#FF0000] text-center">
+                Sorry, we can't play this media right now.
+              </h3>
+              <AddToMyListButton addToMyListIcon={addToMyListAIcon} />
+            </div>
+          )}
         </div>
       </section>
       {redirectUrl && <Redirect url={redirectUrl} />}

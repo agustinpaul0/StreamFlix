@@ -5,7 +5,7 @@ import { useSelectedMedia } from "../context/SelectedMediaContext";
 
 const PopularMedia = () => {
   const popularMedia = getAllPopularMedia();
-  const { setSelectedMedia } = useSelectedMedia();
+  const { selectedMedia, setSelectedMedia } = useSelectedMedia();
   const [randomPopularMedia] = useState(
     (popularMedia.length > 0)
       ? popularMedia[Math.floor(Math.random() * popularMedia.length)]
@@ -18,9 +18,7 @@ const PopularMedia = () => {
     }
   }, [randomPopularMedia]);
 
-  if(!randomPopularMedia) return null;
-
-  return <FeaturedMediaCard media={randomPopularMedia} />;
+  return (selectedMedia && <FeaturedMediaCard media={selectedMedia} />);
 };
 
 export default PopularMedia;

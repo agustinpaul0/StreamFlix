@@ -1,6 +1,7 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import getAllMovies from "../services/getAllMovies";
 import getAllTVSeries from "../services/getAllTVSeries";
+import getTrailer from "../services/getTrailer";
 import Movie from "../types/Movie";
 import Series from "../types/Series";
 import Media from "../types/Media";
@@ -100,4 +101,14 @@ export const groupMediaByGenre = <T extends Media>(
   });
 
   return groupedMedia;
+};
+
+export const getMediaTrailer = (media: Media) => {
+  return useSuspenseQuery<string | null, Error>({
+    queryKey: [`${media.media_type}-${media.id}-trailer`],
+    queryFn: async () => {
+      const trailer = await getTrailer(media.id, media.media_type);
+      return trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null;
+    },
+  });
 };

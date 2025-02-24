@@ -21,6 +21,7 @@ const MediaCard: React.FC<{ media: Media }> = ({ media }) => {
   return (
     <>
       <button
+        type="button"
         className="w-32 h-48 overflow-hidden rounded-md shadow-md flex-none hover:cursor-pointer"
         onClick={() => displayMediaScreen(`${MEDIA_SCREEN_URL}`, media)}
       >
