@@ -1,11 +1,12 @@
 import AppRoute from "../types/AppRoute";
 import { lazy } from "react";
 import Redirect from "../components/Redirect";
-import Layout from "../screens/Layout";
+import AppLayout from "../screens/AppLayout";
 import Movies from "../screens/Movies";
 import Series from "../screens/Series";
-import SelectedMedia from "../screens/SelectedMedia"; 
+import SelectedMediaDisplay from "../screens/SelectedMediaDisplay"; 
 import MediaDetails from "../screens/MediaDetails";
+import SelectedMediaLayout from "../screens/SelectedMediaLayout";
 
 const Home = lazy(() => import("../screens/Home"));
 
@@ -16,7 +17,7 @@ const appRoutes: AppRoute[] = [
   },
   {
     path: "/streamflix",
-    element: <Layout />,
+    element: <AppLayout />,
     children: [
       {
         path: "home", 
@@ -34,11 +35,17 @@ const appRoutes: AppRoute[] = [
   },
   {
     path: "/streamflix/media", 
-    element: <SelectedMedia /> 
-  },
-  {
-    path: "/streamflix/media/details",
-    element: <MediaDetails />
+    element: <SelectedMediaLayout />,
+    children: [
+      {
+        path: "selectedMedia",
+        element: <SelectedMediaDisplay />
+      },
+      {
+        path: "details",
+        element: <MediaDetails />
+      }
+    ]
   }
 ];
 

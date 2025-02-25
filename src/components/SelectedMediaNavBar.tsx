@@ -4,12 +4,12 @@ interface SelectedMediaNavProps {
   onBack: () => void;
 }
 
-const SelectedMediaNav: React.FC<SelectedMediaNavProps> = ({ onBack }) => {
+const SelectedMediaNavBar: React.FC<SelectedMediaNavProps> = ({ onBack }) => {
   return (
-    <nav className="flex p-7 gap-3 items-center">
+    <nav className="fixed top-0 left-0 flex gap-3 items-center z-40 w-full  bg-[#080808] h-15">
       <button
         type="button"
-        className="fixed top-0 left-0 w-full p-4 gap-4 bg-[#080808] z-50 flex items-center"
+        className="flex items-center flex-1 p-4"
         onClick={onBack}
       >
         <img src={buttonBackIcon} alt="Back" className="w-6 h-6" />
@@ -18,4 +18,4 @@ const SelectedMediaNav: React.FC<SelectedMediaNavProps> = ({ onBack }) => {
   );
 };
 
-export default SelectedMediaNav;
+export default SelectedMediaNavBar;

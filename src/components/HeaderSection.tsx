@@ -1,7 +1,7 @@
 import Redirect from "./Redirect";
 import { useState } from "react";
 
-const LayoutHeaderNav = () => {
+const HeaderSection = () => {
   const BASE_URL = "/streamflix/";
   const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
 
@@ -24,4 +24,4 @@ const LayoutHeaderNav = () => {
   );
 };
 
-export default LayoutHeaderNav;
+export default HeaderSection;

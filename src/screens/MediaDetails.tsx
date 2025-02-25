@@ -1,17 +1,14 @@
-import { useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import Redirect from "../components/Redirect";
+import SelectedMediaContextProps from "../types/SelectedMediaContextProps";
 
 const MediaDetails = () => {
-  const [canRedirect, setCanRedirect] = useState(false);
+  const { canRedirectToPreviousScreen } = useOutletContext<SelectedMediaContextProps>();
+
   return (
-    <div className="absolute inset-0 bg-[#080808] text-[#FFFFFF] flex flex-col items-center justify-center p-4 z-50">
-      <button
-        type="button"
-        onClick={() => setCanRedirect(true)}>
-        X
-      </button>
-      {canRedirect && <Redirect url={"../"}/>}
-    </div>
+    <>
+      {canRedirectToPreviousScreen && <Redirect url={"../"} />}
+    </>
   );
 };
 

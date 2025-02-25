@@ -4,7 +4,7 @@ import Media from "../types/Media";
 import { useSelectedMedia } from "../context/SelectedMediaContext";
 
 const MediaCard: React.FC<{ media: Media }> = ({ media }) => {
-  const MEDIA_SCREEN_URL = "/streamflix/media";
+  const MEDIA_SCREEN_URL = "/streamflix/media/selectedMedia";
   const BANNER_URL = `https://image.tmdb.org/t/p/w500${media.poster_path}`;
   const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
   const { setSelectedMedia } = useSelectedMedia();

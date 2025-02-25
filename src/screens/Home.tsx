@@ -1,4 +1,4 @@
-import LayoutHeaderNav from "../components/LayoutHeaderNav";
+import HeaderSection from "../components/HeaderSection";
 import MediaSection from "../components/MediaSection";
 import Catalogue from "../components/Catalogue";
 import MoviesCatalogue from "../components/MoviesCatalogue";
@@ -9,7 +9,7 @@ import PopularCatalogue from "../components/PopularCatalogue";
 const Home = () => {
   return (
     <>
-      <LayoutHeaderNav />
+      <HeaderSection />
       <PopularMedia />
       <MediaSection title="Catalogue">
         <Catalogue />
