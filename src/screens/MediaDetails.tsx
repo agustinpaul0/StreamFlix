@@ -56,7 +56,7 @@ const MediaDetails = () => {
           {genres.map((genre, index) => (
             <li
               key={index}
-              className="text-[#827E7E] px-3 py-1 rounded-md text-xl"
+              className="text-[#827E7E] rounded-md text-xl"
             >
               {genre}
             </li>
