@@ -17,9 +17,9 @@ const getPopularTVSeries = async (url: string) => {
     }
 
     return Array.from(allTVShowsMap.values());
-  } catch (e) {
-    console.error("Unexpected error while fetching popular TV shows: ", e);
-    throw e;
+  } catch (error) {
+    console.error("Unexpected error while fetching popular TV shows: ", error);
+    throw error;
   }
 };
 

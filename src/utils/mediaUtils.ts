@@ -8,6 +8,8 @@ import Media from "../types/Media";
 import getPopularMovies from "../services/getPopularMovies";
 import getPopularTVSeries from "../services/getPopularTVSeries";
 import { fetchGenres } from "./fetchUtils";
+import CreditsResponse from "../types/CreditsResponse";
+import { getCredits } from "../services/getCredits";
 
 export const getAllMedia = () => {
   const { data: movies } = getAllMoviesCatalogue();
@@ -110,5 +112,16 @@ export const getMediaTrailer = (media: Media) => {
       const trailer = await getTrailer(media.id, media.media_type);
       return trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null;
     },
+  });
+};
+
+export const isMovie = (media: Media): media is Movie => {
+  return "video" in media;
+};
+
+export const getMediaCredits = (media: Media) => {
+  return useSuspenseQuery<CreditsResponse, Error>({
+    queryKey: [`${media.media_type}-${media.id}-credits`],
+    queryFn: () => getCredits(media.id, media.media_type),
   });
 };

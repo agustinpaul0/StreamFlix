@@ -17,9 +17,9 @@ const getPopularMovies = async (url: string) => {
     }
 
     return Array.from(allMoviesMap.values());
-  } catch (e) {
-    console.error("Unexpected error while fetching popular movies: ", e);
-    throw e;
+  } catch (error) {
+    console.error("Unexpected error while fetching popular movies: ", error);
+    throw error;
   }
 };
 

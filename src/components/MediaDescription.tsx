@@ -3,18 +3,13 @@ import playIcon from "../assets/img/play-icon.svg";
 import addToMyListAIcon from "../assets/img/add-icon.svg";
 import AddToMyListButton from "./AddToMyListButton";
 import PlayButton from "./PlayButton";
-import Movie from "../types/Movie";
 import Media from "../types/Media";
-import { getMediaTrailer } from "../utils/mediaUtils";
+import { getMediaTrailer, isMovie } from "../utils/mediaUtils";
 
 interface MediaDetailsProps {
   media: Media;
   onShowMore: () => void;
 }
-
-const isMovie = (media: Media): media is Movie => {
-  return "video" in media;
-};
 
 const MediaDescription: React.FC<MediaDetailsProps> = ({ media, onShowMore }) => {
   const [mediaTitle, mediaReleaseDate] = isMovie(media)
@@ -45,7 +40,7 @@ const MediaDescription: React.FC<MediaDetailsProps> = ({ media, onShowMore }) =>
         <AddToMyListButton addToMyListIcon={addToMyListAIcon} />
       </div>
       <p className="text-base py-4">{media.overview}</p>
-      <button type="button" className="py-4" onClick={onShowMore}>
+      <button type="button" className="py-4 text-[#827E7E]" onClick={onShowMore}>
         Show more...
       </button>
     </section>

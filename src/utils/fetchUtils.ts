@@ -42,8 +42,8 @@ export const fetchGenres = async (mediaType: "movie" | "tv"): Promise<Record<num
     ));
 
     return genreMap;
-  } catch (e) {
-    console.error("Error while fetching genres:", e);
-    throw e;
+  } catch (error) {
+    console.error("Error while fetching genres:", error);
+    throw error;
   }
 };

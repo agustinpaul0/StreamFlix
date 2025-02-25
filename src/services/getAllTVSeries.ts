@@ -17,9 +17,9 @@ const getAllTVSeries = async (url: string) => {
     }
 
     return Array.from(allTVSeriesMap.values());
-  } catch (e) {
-    console.error("Unexpected error while fetching all TV shows: ", e);
-    throw e;
+  } catch (error) {
+    console.error("Unexpected error while fetching all TV shows: ", error);
+    throw error;
   }
 };
 

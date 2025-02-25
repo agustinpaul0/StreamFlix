@@ -17,9 +17,9 @@ const getAllMovies = async (url: string) => {
     }
 
     return Array.from(allMoviesMap.values());
-  } catch (e) {
-    console.error("Unexpected error while fetching all movies: ", e);
-    throw e;
+  } catch (error) {
+    console.error("Unexpected error while fetching all movies: ", error);
+    throw error;
   }
 };
 
