@@ -2,7 +2,7 @@ import Redirect from "./Redirect";
 import { useState } from "react";
 
 const HeaderSection = () => {
-  const BASE_URL = "/streamflix/";
+  const BASE_URL = "/streamflix/search/";
   const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
 
   return (

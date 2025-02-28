@@ -5,7 +5,6 @@ import settingsIcon from "../assets/img/settings-icon.svg";
 import { useEffect, useState } from "react";
 
 const Footer = () => {
-  const BASE_URL = "/streamflix/";
   const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
 
   useEffect(() => {
@@ -13,20 +12,20 @@ const Footer = () => {
   }, [redirectUrl]);
 
   const footerIcons = [
-    { label: "HOME", src: homeIcon, alt: "Home Icon" },
-    { label: "ACCOUNT", src: userIcon, alt: "User Account Icon" },
-    { label: "SETTINGS", src: settingsIcon, alt: "Settings Icon" },
+    { label: "HOME", path: "/streamflix/search/home",src: homeIcon, alt: "Home Icon" },
+    { label: "ACCOUNT", path: "/streamflix/user/account", src: userIcon, alt: "User Account Icon" },
+    { label: "SETTINGS", path: "/streamflix/user/settings", src: settingsIcon, alt: "Settings Icon" },
   ];
 
   return (
     <>
       <footer className="fixed bottom-0 w-full flex justify-center gap-[10vw] bg-[#080808] p-4 h-[7vh]">
-        {footerIcons.map(({ label, src, alt }) => (
+        {footerIcons.map(({ label, path, src, alt }) => (
           <button
             type="button"
             key={label}
             className="cursor-pointer"
-            onClick={() => setRedirectUrl(`${BASE_URL}${label.toLowerCase()}`)}
+            onClick={() => setRedirectUrl(path)}
           >
             <img src={src} alt={alt} className="w-8 h-8" />
           </button>
