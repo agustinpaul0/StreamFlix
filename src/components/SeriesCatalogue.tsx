@@ -1,9 +1,9 @@
 import Series from "../types/Series";
 import MediaCard from "./MediaCard";
-import { getAllSeriesCatalogue } from "../utils/mediaUtils";
+import { getAllTVSeriesCatalogue } from "../utils/mediaUtils";
 
 const SeriesCatalogue = () => {
-  const { data: series } = getAllSeriesCatalogue();
+  const { data: series } = getAllTVSeriesCatalogue();
   
   return (
     <>

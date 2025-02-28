@@ -2,11 +2,11 @@ import { fetchMediaFromPage, addMediaToMap } from "../utils/fetchUtils";
 import Movie from "../types/Movie";
 import Media from "../types/Media";
 
-const getPopularMovies = async (url: string) => {
+const getAllMoviesCatalogueService = async (url: string) => {
   const MAX_PAGES = 3;
   const allMoviesMap = new Map<number, Movie>();
   const mediaType = "movie";
-
+  
   let page = 1;
 
   try {
@@ -18,9 +18,9 @@ const getPopularMovies = async (url: string) => {
 
     return Array.from(allMoviesMap.values());
   } catch (error) {
-    console.error("Unexpected error while fetching popular movies: ", error);
+    console.error("Unexpected error while fetching all movies: ", error);
     throw error;
   }
 };
 
-export default getPopularMovies;
+export default getAllMoviesCatalogueService;

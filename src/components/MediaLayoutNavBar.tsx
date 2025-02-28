@@ -4,7 +4,7 @@ interface SelectedMediaNavProps {
   onBack: () => void;
 }
 
-const SelectedMediaNavBar: React.FC<SelectedMediaNavProps> = ({ onBack }) => {
+const MediaLayoutNavBar: React.FC<SelectedMediaNavProps> = ({ onBack }) => {
   return (
     <nav className="fixed top-0 left-0 flex gap-3 items-center z-40 w-full  bg-[#080808] h-15">
       <button
@@ -18,4 +18,4 @@ const SelectedMediaNavBar: React.FC<SelectedMediaNavProps> = ({ onBack }) => {
   );
 };
 
-export default SelectedMediaNavBar;
+export default MediaLayoutNavBar;

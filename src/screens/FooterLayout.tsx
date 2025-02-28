@@ -2,13 +2,13 @@ import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import OperationFailed from "./OperationFailed";
-import Splash from "./Splash";
+import OperationFailedScreen from "./OperationFailedScreen";
+import SplashScreen from "./SplashScreen";
 
 const FooterLayout = () => {
   return (
-    <ErrorBoundary FallbackComponent={OperationFailed}>
-      <Suspense fallback={<Splash />}>
+    <ErrorBoundary FallbackComponent={OperationFailedScreen}>
+      <Suspense fallback={<SplashScreen />}>
         <Outlet />
         <Footer />
       </Suspense>

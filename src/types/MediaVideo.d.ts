@@ -1,4 +1,4 @@
-export default interface Video {
+export default interface MediaVideo {
   id: string;
   iso_639_1: string;
   iso_3166_1: string;

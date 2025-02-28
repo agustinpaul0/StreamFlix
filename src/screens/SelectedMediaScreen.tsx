@@ -5,7 +5,7 @@ import Redirect from "../components/Redirect";
 import { useState } from "react";
 import Media from "../types/Media";
 
-const SelectedMediaDisplay = () => {
+const SelectedMediaScreen = () => {
   const SELECTED_MEDIA_DETAILS_SCREEN_URL = "/streamflix/media/details";
   const { selectedMedia } = useOutletContext<{ selectedMedia: Media}>();
   const [canRedirectToShowDetails, setCanRedirectToShowDetails] = useState(false);
@@ -19,4 +19,4 @@ const SelectedMediaDisplay = () => {
   );
 };
 
-export default SelectedMediaDisplay;
+export default SelectedMediaScreen;

@@ -2,9 +2,9 @@ import { fetchMediaFromPage, addMediaToMap } from "../utils/fetchUtils";
 import Series from "../types/Series";
 import Media from "../types/Media";
 
-const getPopularTVSeries = async (url: string) => {
+const getAllTVSeriesCatalogueService = async (url: string) => {
   const MAX_PAGES = 3;
-  const allTVShowsMap = new Map<number, Series>();
+  const allTVSeriesMap = new Map<number, Series>();
   const mediaType = "tv";
 
   let page = 1;
@@ -12,15 +12,15 @@ const getPopularTVSeries = async (url: string) => {
   try {
     while (page <= MAX_PAGES) {
       const series: Omit<Media, "media_type">[] = await fetchMediaFromPage(url, page);
-      addMediaToMap(series, allTVShowsMap, mediaType);
+      addMediaToMap(series, allTVSeriesMap, mediaType);
       page++;
     }
 
-    return Array.from(allTVShowsMap.values());
+    return Array.from(allTVSeriesMap.values());
   } catch (error) {
-    console.error("Unexpected error while fetching popular TV shows: ", error);
+    console.error("Unexpected error while fetching all TV shows: ", error);
     throw error;
   }
 };
 
-export default getPopularTVSeries;
+export default getAllTVSeriesCatalogueService;

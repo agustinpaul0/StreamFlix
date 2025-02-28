@@ -1,6 +1,6 @@
 import { FallbackProps } from "react-error-boundary";
 
-const OperationFailed = ({ error }: FallbackProps) => {
+const OperationFailedScreen = ({ error }: FallbackProps) => {
   console.log("Caught error: ", error);
   return (
     <section className="flex flex-col items-center justify-center h-screen bg-[#080808] overflow-hidden">
@@ -27,4 +27,4 @@ const OperationFailed = ({ error }: FallbackProps) => {
   );
 };
 
-export default OperationFailed;
+export default OperationFailedScreen;

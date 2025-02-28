@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { getAllPopularTVSeriesCatalogue, getAllSeriesCatalogue, getSeriesGenres, groupMediaByGenre } from "../utils/mediaUtils";
+import { getAllPopularTVSeriesCatalogue, getAllTVSeriesCatalogue, getSeriesGenres, groupMediaByGenre } from "../utils/mediaUtils";
 import MediaCard from "./MediaCard";
 import MediaSection from "./MediaSection";
 import Series from "../types/Series";
 
 const SeriesCatalogueByGenre = () => {
-  const { data: series } = getAllSeriesCatalogue();
+  const { data: series } = getAllTVSeriesCatalogue();
   const { data: popularSeriesCatalogue } = getAllPopularTVSeriesCatalogue();
   const [genres, setGenres] = useState<Record<number, string>>({});
   const [seriesByGenre, setMoviesByGenre] = useState<Map<string, Series[]>>(new Map<string, Series[]>());

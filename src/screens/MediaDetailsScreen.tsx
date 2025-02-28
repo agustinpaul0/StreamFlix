@@ -7,7 +7,7 @@ import CrewMember from "../types/CrewMember";
 import CastMember from "../types/CastMember";
 import noProfilePictureIcon from "../assets/img/no-profile-picture-icon.svg";
 
-const MediaDetails = () => {
+const MediaDetailsScreen = () => {
   const { selectedMedia } = useOutletContext<{ selectedMedia: Media }>();
   const [genres, setGenres] = useState<string[] | null>(null);
 
@@ -86,4 +86,4 @@ const MediaDetails = () => {
   );
 };
 
-export default MediaDetails;
+export default MediaDetailsScreen;

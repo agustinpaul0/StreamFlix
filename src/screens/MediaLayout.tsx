@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
-import SelectedMediaNavBar from "../components/SelectedMediaNavBar";
+import MediaLayoutNavBar from "../components/MediaLayoutNavBar";
 import { useSelectedMedia } from "../context/SelectedMediaContext";
 import Redirect from "../components/Redirect";
 
-const MediaRouteLayout = () => {
+const MediaLayout = () => {
   const { selectedMedia } = useSelectedMedia();
   const [canRedirectToPreviousScreen, setCanRedirectToPreviousScreen] = useState(false);
 
@@ -16,14 +16,12 @@ const MediaRouteLayout = () => {
 
   return (
     <>
-      <SelectedMediaNavBar
+      <MediaLayoutNavBar
         onBack={() => setCanRedirectToPreviousScreen(true)}
       />
       <main className="min-h-screen bg-[#080808] text-[#FFFFFF] font-family-inter mt-15 mb-[7vh]">
         <Outlet
-          context={{
-            selectedMedia,
-          }}
+          context={{ selectedMedia }}
         />
       </main>
       {canRedirectToPreviousScreen && <Redirect url={"../"} />}
@@ -31,4 +29,4 @@ const MediaRouteLayout = () => {
   );
 };
 
-export default MediaRouteLayout;
+export default MediaLayout;

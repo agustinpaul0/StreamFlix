@@ -1,7 +1,7 @@
 import search from "../assets/img/search-icon.svg";
 import logo from "../assets/img/logo.svg";
 
-const MainNavBar = () => {
+const SearchLayoutNavBar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full flex p-4 gap-4 bg-[#080808] z-40 h-21">
       <img src={logo} alt="App Logo" />
@@ -22,4 +22,4 @@ const MainNavBar = () => {
   );
 };
 
-export default MainNavBar;
+export default SearchLayoutNavBar;

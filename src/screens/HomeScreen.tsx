@@ -6,7 +6,7 @@ import SeriesCatalogue from "../components/SeriesCatalogue";
 import PopularMedia from "../components/PopularMedia";
 import PopularCatalogue from "../components/PopularCatalogue";
 
-const Home = () => {
+const HomeScreen = () => {
   return (
     <>
       <HeaderSection />
@@ -27,4 +27,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomeScreen;

@@ -1,31 +1,21 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
-import getAllMovies from "../services/getAllMovies";
-import getAllTVSeries from "../services/getAllTVSeries";
-import getTrailer from "../services/getTrailer";
+import getAllMoviesCatalogueService from "../services/getAllMoviesCatalogueService";
+import getAllTVSeriesCatalogueService from "../services/getAllTVSeriesCatalogueService";
+import getMediaTrailerService from "../services/getMediaTrailerService";
 import Movie from "../types/Movie";
 import Series from "../types/Series";
 import Media from "../types/Media";
-import getPopularMovies from "../services/getPopularMovies";
-import getPopularTVSeries from "../services/getPopularTVSeries";
+import getAllPopularMoviesCatalogueService from "../services/getAllPopularMoviesCatalogueService";
+import getAllPopularTVSeriesCatalogueService from "../services/getAllPopularTVSeriesCatalogueService";
 import { fetchGenres } from "./fetchUtils";
 import CreditsResponse from "../types/CreditsResponse";
-import { getCredits } from "../services/getCredits";
+import { getMediaCreditsService } from "../services/getMediaCreditsService";
 
 export const getAllMedia = () => {
   const { data: movies } = getAllMoviesCatalogue();
-  const { data: series } = getAllSeriesCatalogue();
+  const { data: series } = getAllTVSeriesCatalogue();
 
   return { movies, series };
-};
-
-export const getAllSeriesCatalogue = () => {
-  const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
-  const ALL_SERIES_URL = `${BASE_URL}discover/tv?language=en-US`;
-
-  return useSuspenseQuery<Series[], Error>({
-    queryKey: ["tvSeriesCatalogue"],
-    queryFn: () => getAllTVSeries(ALL_SERIES_URL),
-  });
 };
 
 export const getAllMoviesCatalogue = () => {
@@ -34,7 +24,17 @@ export const getAllMoviesCatalogue = () => {
 
   return useSuspenseQuery<Movie[], Error>({
     queryKey: ["moviesCatalogue"],
-    queryFn: () => getAllMovies(ALL_MOVIES_URL),
+    queryFn: () => getAllMoviesCatalogueService(ALL_MOVIES_URL),
+  });
+};
+
+export const getAllTVSeriesCatalogue = () => {
+  const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
+  const ALL_SERIES_URL = `${BASE_URL}discover/tv?language=en-US`;
+
+  return useSuspenseQuery<Series[], Error>({
+    queryKey: ["tvSeriesCatalogue"],
+    queryFn: () => getAllTVSeriesCatalogueService(ALL_SERIES_URL),
   });
 };
 
@@ -51,7 +51,7 @@ export const getAllPopularMoviesCatalogue = () => {
 
   return useSuspenseQuery<Movie[], Error>({
     queryKey: ["popularMoviesCatalogue"],
-    queryFn: () => getPopularMovies(POPULAR_MOVIES_URL),
+    queryFn: () => getAllPopularMoviesCatalogueService(POPULAR_MOVIES_URL),
   });
 };
 
@@ -61,7 +61,7 @@ export const getAllPopularTVSeriesCatalogue = () => {
 
   return useSuspenseQuery<Series[], Error>({
     queryKey: ["popularTVSeriesCatalogue"],
-    queryFn: () => getPopularTVSeries(POPULAR_SERIES_URL),
+    queryFn: () => getAllPopularTVSeriesCatalogueService(POPULAR_SERIES_URL),
   });
 };
 
@@ -109,7 +109,7 @@ export const getMediaTrailer = (media: Media) => {
   return useSuspenseQuery<string | null, Error>({
     queryKey: [`${media.media_type}-${media.id}-trailer`],
     queryFn: async () => {
-      const trailer = await getTrailer(media.id, media.media_type);
+      const trailer = await getMediaTrailerService(media.id, media.media_type);
       return trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null;
     },
   });
@@ -122,6 +122,6 @@ export const isMovie = (media: Media): media is Movie => {
 export const getMediaCredits = (media: Media) => {
   return useSuspenseQuery<CreditsResponse, Error>({
     queryKey: [`${media.media_type}-${media.id}-credits`],
-    queryFn: () => getCredits(media.id, media.media_type),
+    queryFn: () => getMediaCreditsService(media.id, media.media_type),
   });
 };
