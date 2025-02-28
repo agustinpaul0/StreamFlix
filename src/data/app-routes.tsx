@@ -2,17 +2,17 @@ import AppRoute from "../types/AppRoute";
 import { lazy } from "react";
 import Redirect from "../components/Redirect";
 
-const Movies = lazy(() => import("../screens/MoviesScreen"));
-const Series = lazy(() => import("../screens/SeriesScreen"));
-const SelectedMediaDisplay = lazy(() => import("../screens/SelectedMediaScreen"));
-const MediaDetails = lazy(() => import("../screens/MediaDetailsScreen"));
+const MoviesScreen = lazy(() => import("../screens/MoviesScreen"));
+const SeriesScreen = lazy(() => import("../screens/SeriesScreen"));
+const SelectedMediaScreen = lazy(() => import("../screens/SelectedMediaScreen"));
+const MediaDetailsScreen = lazy(() => import("../screens/MediaDetailsScreen"));
 const SearchLayout = lazy(() => import("../screens/SearchLayout"));
-const MediaRouteLayout = lazy(() => import("../screens/MediaLayout"));
+const MediaLayout = lazy(() => import("../screens/MediaLayout"));
 const FooterLayout = lazy(() => import("../screens/FooterLayout"));
 const UserLayout = lazy(() => import("../screens/UserLayout"));
-const Home = lazy(() => import("../screens/HomeScreen"));
-const Account = lazy(() => import("../screens/AccountScreen"));
-const Settings = lazy(() => import("../screens/SettingsScreen"));
+const HomeScreen = lazy(() => import("../screens/HomeScreen"));
+const AccountScreen = lazy(() => import("../screens/AccountScreen"));
+const SettingsScreen = lazy(() => import("../screens/SettingsScreen"));
 
 const appRoutes: AppRoute[] = [
   {
@@ -27,25 +27,25 @@ const appRoutes: AppRoute[] = [
         path: "search",
         element: <SearchLayout />,
         children: [
-          { path: "home", element: <Home /> },
-          { path: "movies", element: <Movies /> },
-          { path: "series", element: <Series /> },
+          { path: "home", element: <HomeScreen /> },
+          { path: "movies", element: <MoviesScreen /> },
+          { path: "series", element: <SeriesScreen /> },
         ],
       },
       {
         path: "media",
-        element: <MediaRouteLayout />,
+        element: <MediaLayout />,
         children: [
-          { path: "selected", element: <SelectedMediaDisplay /> },
-          { path: "details", element: <MediaDetails /> },
+          { path: "selected", element: <SelectedMediaScreen /> },
+          { path: "details", element: <MediaDetailsScreen /> },
         ],
       },
       {
         path: "user",
         element: <UserLayout />,
         children: [
-          { path: "account", element: <Account /> },
-          { path: "settings", element: <Settings /> },
+          { path: "account", element: <AccountScreen /> },
+          { path: "settings", element: <SettingsScreen /> },
         ],
       },
     ],

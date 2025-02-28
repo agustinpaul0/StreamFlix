@@ -36,7 +36,7 @@ const MediaDetailsScreen = () => {
 
       {directors.length > 0 && (
         <>
-          <h2 className="text-center mt-15 text-2xl">Director</h2>
+          <h2 className="text-center mt-10 text-2xl">Director</h2>
           <ul className="text-center">
             {directors.map((director: CrewMember) => (
               <li
@@ -50,9 +50,9 @@ const MediaDetailsScreen = () => {
         </>
       )}
 
-      <h2 className="text-center mt-15 text-2xl">Genres</h2>
+      <h2 className="text-center mt-10 text-2xl">Genres</h2>
       {genres && (
-        <ul className="flex flex-col flex-wrap justify-center items-center gap-2 p-2">
+        <ul className="flex flex-col flex-wrap justify-center items-center gap-2 pt-2">
           {genres.map((genre, index) => (
             <li
               key={index}
@@ -64,7 +64,7 @@ const MediaDetailsScreen = () => {
         </ul>
       )}
 
-      <h2 className="text-center mt-15 text-2xl">Cast</h2>
+      <h2 className="text-center mt-10 text-2xl">Cast</h2>
       <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
         {cast.map((actor: CastMember) => (
           <li key={actor.id} className="text-center flex flex-col items-center">
