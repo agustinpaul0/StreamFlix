@@ -1,5 +1,5 @@
-import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import appRoutes from "../data/app-routes";
 import AppRoute from "../types/AppRoute";
 import { getSessionDataService } from "../services/sessionStorageServices";
