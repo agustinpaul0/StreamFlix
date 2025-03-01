@@ -4,7 +4,7 @@ import SelectedMedia from "../types/SelectedMedia";
 
 const SelectedMediaContext = createContext<SelectedMedia | null>(null);
 
-export const SelectedMediaContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const SelectedMediaContextProvider = ({ children }: { children: ReactNode }) => {
   const [selectedMedia, setSelectedMedia] = useState<Media | null>(null);
 
   return (

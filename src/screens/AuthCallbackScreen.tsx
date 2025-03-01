@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { fetchAccountId, fetchSessionId, fetchUserDetails } from "../utils/fetchUtils";
-import { saveSessionDataService } from "../services/sessionStorageServices";
+import { setSessionDataService } from "../services/sessionStorageServices";
 import useRedirect from "../hooks/useRedirect";
 
 const AuthCallbackScreen = () => {
   const HOME_SCREEN_URL = "/streamflix/search/home";
-  
+
   const handleRedirect = useRedirect();
   const [requestToken, setRequestToken] = useState<string>("");
   const location = useLocation();
@@ -24,7 +24,7 @@ const AuthCallbackScreen = () => {
       const sessionId = await fetchSessionId(requestToken);
       const accountId = await fetchAccountId(sessionId);
       const userDetails = await fetchUserDetails(accountId);
-      saveSessionDataService(sessionId, userDetails, accountId);
+      setSessionDataService(sessionId, userDetails, accountId);
       handleRedirect(HOME_SCREEN_URL, true);
     } catch (error) {
       console.error(error);

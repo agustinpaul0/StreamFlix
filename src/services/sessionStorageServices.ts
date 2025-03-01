@@ -1,6 +1,7 @@
+import SessionData from "../types/SessionData";
 import UserDetails from "../types/UserDetails";
 
-export const saveSessionDataService = (sessionId: string, userDetails: UserDetails, accountId: number) => {
+export const setSessionDataService = (sessionId: string, userDetails: UserDetails, accountId: number) => {
   const sessionData = {
     sessionId,
     userDetails,
@@ -9,7 +10,7 @@ export const saveSessionDataService = (sessionId: string, userDetails: UserDetai
   sessionStorage.setItem("session_data", JSON.stringify(sessionData)); 
 };
 
-export const getSessionDataService = (): { sessionId: string, userDetails: UserDetails, accountId: number } | null => {
+export const getSessionDataService = (): SessionData | null => {
   const sessionData = sessionStorage.getItem("session_data");
   if (sessionData) {
     return JSON.parse(sessionData);
