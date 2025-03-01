@@ -1,6 +1,7 @@
 import axios from "axios";
 import Media from "../types/Media";
 import MediaGenre from "../types/MediaGenre";
+import UserDetails from "../types/UserDetails";
 
 export const getAuthHeaders = () => ({
   Authorization: `Bearer ${import.meta.env.VITE_TMDB_ACCESS_TOKEN}`,
@@ -22,10 +23,8 @@ export const addMediaToMap = <T extends Media>(media: Omit<Media, "media_type">[
 };
 
 export const fetchGenres = async (mediaType: "movie" | "tv"): Promise<Record<number, string>> => {
-  const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
-
   try {
-    const response = await axios.get(`${BASE_URL}genre/${mediaType}/list`, {
+    const response = await axios.get(`${import.meta.env.VITE_TMDB_BASE_URL}genre/${mediaType}/list`, {
       headers: getAuthHeaders(),
       params: { language: "en" },
     });
@@ -38,6 +37,53 @@ export const fetchGenres = async (mediaType: "movie" | "tv"): Promise<Record<num
     return genreMap;
   } catch (error) {
     console.error("Error while fetching genres:", error);
+    throw error;
+  }
+};
+
+export const fetchRequestToken = async (): Promise<string> => {
+  try {
+    const res = await axios.get(`https://api.themoviedb.org/3/authentication/token/new?api_key=${import.meta.env.VITE_TMDB_API_KEY}`);
+    return res.data.request_token;
+  } catch (error) {
+    console.error("Error fetching request token:", error);
+    throw error;
+  }
+};
+
+export const fetchSessionId = async (requestToken: string): Promise<string> => {
+  try {
+    const res = await axios.post(`https://api.themoviedb.org/3/authentication/session/new?api_key=${import.meta.env.VITE_TMDB_API_KEY}`, {
+      request_token: requestToken,
+    });
+    return res.data.session_id;
+  } catch (error) {
+    console.error("Error fetching session ID:", error);
+    throw error;
+  }
+};
+
+export const fetchAccountId = async (sessionId: string): Promise<number> => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/account?api_key=${import.meta.env.VITE_TMDB_API_KEY}&session_id=${sessionId}`
+    );
+    return response.data.id; // This is the account_id
+  } catch (error) {
+    console.error("Error fetching account ID:", error);
+    throw error;
+  }
+};
+
+export const fetchUserDetails = async (accountId: number): Promise<UserDetails> => {
+  try {
+    const response = await axios.get(`https://api.themoviedb.org/3/account/${accountId}`, {
+      headers: getAuthHeaders(),
+    });
+    const { id, name, username } = response.data; 
+    return { id, name, username };
+  } catch (error) {
+    console.error("Error fetching user info:", error);
     throw error;
   }
 };

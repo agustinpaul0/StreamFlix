@@ -1,7 +1,7 @@
 import AppRoute from "../types/AppRoute";
 import { lazy } from "react";
-import Redirect from "../components/Redirect";
 
+const LoginScreen = lazy(() => import("../screens/LoginScreen"));
 const MoviesScreen = lazy(() => import("../screens/MoviesScreen"));
 const SeriesScreen = lazy(() => import("../screens/SeriesScreen"));
 const SelectedMediaScreen = lazy(() => import("../screens/SelectedMediaScreen"));
@@ -17,7 +17,7 @@ const SettingsScreen = lazy(() => import("../screens/SettingsScreen"));
 const appRoutes: AppRoute[] = [
   {
     path: "/",
-    element: <Redirect url="/streamflix/search/home" />,
+    element: <LoginScreen />,
   },
   {
     path: "/streamflix",

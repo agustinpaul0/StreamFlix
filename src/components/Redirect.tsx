@@ -6,11 +6,9 @@ const Redirect = ({ url }: {url: string}) => {
   const location = useLocation();
 
   useEffect(() => {
-    if (url === "../") {
-      navigate(-1); 
-    } else {
-      navigate(url, { replace: location.pathname === "/" });
-    }
+    (url === "../") 
+      ? navigate(-1) 
+      : navigate(url, { replace: location.pathname === "/" });
   }, [url]);
 
   return null;
