@@ -11,7 +11,7 @@ const HeaderSection = () => {
             type="button"
             key={label}
             className="p-3 flex-grow rounded-full border-2 border-[#ADADAD] hover:bg-[#151515c5] cursor-pointer"
-            onClick={() => handleRedirect(`"/streamflix/search/"${label.toLowerCase()}`)}
+            onClick={() => handleRedirect(`/streamflix/search/${label.toLowerCase()}`)}
           >
             {label}
           </button>
