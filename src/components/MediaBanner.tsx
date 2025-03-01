@@ -1,6 +1,6 @@
 import Media from "../types/Media";
 
-const MediaBanner: React.FC<{media: Media}> = ({ media }) => {
+const MediaBanner = ({ media }: { media: Media }) => {
   const BANNER_URL = (media.backdrop_path)
     ? (`https://image.tmdb.org/t/p/w500${media.backdrop_path}`)
     : (`https://image.tmdb.org/t/p/w500${media.poster_path}`)

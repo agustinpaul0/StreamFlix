@@ -1,15 +1,10 @@
-import Redirect from "./Redirect";
 import homeIcon from "../assets/img/home-icon.svg";
 import userIcon from "../assets/img/user-account-icon.svg";
 import settingsIcon from "../assets/img/settings-icon.svg";
-import { useEffect, useState } from "react";
+import useRedirect from "../hooks/useRedirect";
 
 const Footer = () => {
-  const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
-
-  useEffect(() => {
-    setRedirectUrl(null);
-  }, [redirectUrl]);
+  const handleRedirect = useRedirect();
 
   const footerIcons = [
     { label: "HOME", path: "/streamflix/search/home",src: homeIcon, alt: "Home Icon" },
@@ -25,13 +20,12 @@ const Footer = () => {
             type="button"
             key={label}
             className="cursor-pointer"
-            onClick={() => setRedirectUrl(path)}
+            onClick={() => handleRedirect(path, false)}
           >
             <img src={src} alt={alt} className="w-8 h-8" />
           </button>
         ))}
       </footer>
-      {redirectUrl && <Redirect url={redirectUrl} />}
     </>
   );
 };

@@ -1,9 +1,8 @@
-import Redirect from "./Redirect";
-import { useState } from "react";
+import useRedirect from "../hooks/useRedirect";
 
 const HeaderSection = () => {
   const BASE_URL = "/streamflix/search/";
-  const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
+  const handleRedirect = useRedirect();
 
   return (
     <>
@@ -13,13 +12,12 @@ const HeaderSection = () => {
             type="button"
             key={label}
             className="p-3 flex-grow rounded-full border-2 border-[#ADADAD] hover:bg-[#151515c5] cursor-pointer"
-            onClick={() => setRedirectUrl(`${BASE_URL}${label.toLowerCase()}`)}
+            onClick={() => handleRedirect(`${BASE_URL}${label.toLowerCase()}`, false)}
           >
             {label}
           </button>
         ))}
       </section>
-      {redirectUrl && <Redirect url={redirectUrl} />}
     </>
   );
 };

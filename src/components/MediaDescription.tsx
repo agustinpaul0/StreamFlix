@@ -5,19 +5,18 @@ import AddToMyListButton from "./AddToMyListButton";
 import PlayButton from "./PlayButton";
 import Media from "../types/Media";
 import { getMediaTrailer, isMovie } from "../utils/mediaUtils";
+import useRedirect from "../hooks/useRedirect";
 
-interface MediaDetailsProps {
-  media: Media;
-  onShowMore: () => void;
-}
+const MediaDescription = ({ media }: { media: Media }) => {
+  const SELECTED_MEDIA_DETAILS_SCREEN_URL = "/streamflix/media/details";
 
-const MediaDescription: React.FC<MediaDetailsProps> = ({ media, onShowMore }) => {
   const [mediaTitle, mediaReleaseDate] = isMovie(media)
     ? [media.title, media.release_date]
     : [media.name, media.first_air_date];
 
   const mediaReleaseYear = mediaReleaseDate.split("-")[0];
   const { data: trailer } = getMediaTrailer(media);
+  const handleRedirect = useRedirect();
 
   return (
     <section className="p-2">
@@ -40,7 +39,7 @@ const MediaDescription: React.FC<MediaDetailsProps> = ({ media, onShowMore }) =>
         <AddToMyListButton addToMyListIcon={addToMyListAIcon} />
       </div>
       <p className="text-base py-4">{media.overview}</p>
-      <button type="button" className="py-4 text-[#827E7E]" onClick={onShowMore}>
+      <button type="button" className="py-4 text-[#827E7E]" onClick={() => handleRedirect(SELECTED_MEDIA_DETAILS_SCREEN_URL, false)}>
         Show more...
       </button>
     </section>

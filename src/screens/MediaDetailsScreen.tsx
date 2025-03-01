@@ -12,12 +12,13 @@ const MediaDetailsScreen = () => {
   const [genres, setGenres] = useState<string[] | null>(null);
 
   useEffect(() => {
+    // This is because when the user clicks the show more button the scrollbar does not update itself
     window.scrollTo(0, 0);
 
     getMediaGenres(selectedMedia).then((genresString) => {
       setGenres(genresString.split("|").map((genre) => genre.trim()));
     });
-    
+
   }, [selectedMedia]);
 
   const { data: credits } = getMediaCredits(selectedMedia);

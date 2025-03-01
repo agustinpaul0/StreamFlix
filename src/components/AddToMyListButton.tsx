@@ -1,4 +1,4 @@
-const AddToMyListButton: React.FC<{ addToMyListIcon: string }> = ({ addToMyListIcon }) => {
+const AddToMyListButton = ({ addToMyListIcon }: { addToMyListIcon: string }) => {
   return (
     <button
       type="button"

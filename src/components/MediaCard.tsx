@@ -1,22 +1,17 @@
-import React, { useEffect, useState } from "react";
-import Redirect from "./Redirect";
 import Media from "../types/Media";
 import { useSelectedMedia } from "../context/SelectedMediaContext";
+import useRedirect from "../hooks/useRedirect";
 
-const MediaCard: React.FC<{ media: Media }> = ({ media }) => {
+const MediaCard = ({ media }: { media: Media }) => {
   const MEDIA_SCREEN_URL = "/streamflix/media/selected";
   const BANNER_URL = `https://image.tmdb.org/t/p/w500${media.poster_path}`;
-  const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
   const { setSelectedMedia } = useSelectedMedia();
+  const handleRedirect = useRedirect();
 
   const displayMediaScreen = (url: string, mediaToDisplay: Media) => {
     setSelectedMedia(mediaToDisplay);
-    setRedirectUrl(url);
+    handleRedirect(url, false);
   };
-
-  useEffect(() => {
-    setRedirectUrl(null);
-  }, [redirectUrl]);
 
   return (
     <>
@@ -31,7 +26,6 @@ const MediaCard: React.FC<{ media: Media }> = ({ media }) => {
           className="w-full h-full object-fill rounded-md"
         />
       </button>
-      {redirectUrl && <Redirect url={redirectUrl} />}
     </>
   );
 };

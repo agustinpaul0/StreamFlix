@@ -1,3 +1,4 @@
+import AuthCallbackScreen from "../screens/AuthCallbackScreen";
 import AppRoute from "../types/AppRoute";
 import { lazy } from "react";
 
@@ -18,6 +19,10 @@ const appRoutes: AppRoute[] = [
   {
     path: "/",
     element: <LoginScreen />,
+  },
+  {
+    path: "/auth",
+    element: <AuthCallbackScreen />,
   },
   {
     path: "/streamflix",

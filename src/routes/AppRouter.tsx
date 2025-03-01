@@ -1,7 +1,9 @@
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import appRoutes from "../data/app-routes";
 import AppRoute from "../types/AppRoute";
+import { getSessionDataService } from "../services/sessionStorageServices";
+import useRedirect from "../hooks/useRedirect";
 
 const renderRoutes = (routes: AppRoute[]) => {
   return routes.map((route) => (
@@ -12,11 +14,15 @@ const renderRoutes = (routes: AppRoute[]) => {
 };
 
 const AppRouter = () => {
-  const navigate = useNavigate();
+  const handleRedirect = useRedirect();
 
   useEffect(() => {
-    if (window.location.pathname !== "/") {
-      navigate("/", { replace: true });
+    const sessionData = getSessionDataService();
+    
+    if (sessionData !== null) {
+      handleRedirect("/streamflix/search/home", true);
+    } else if (location.pathname !== "/auth") {
+      handleRedirect("/", true);
     }
   }, []);
 

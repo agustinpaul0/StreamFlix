@@ -1,20 +1,19 @@
 import playIcon from "../assets/img/play-icon.svg";
 import addToMyListAIcon from "../assets/img/add-icon.svg";
 import mediaBannerAppLogo from "../assets/img/media-banner-app-logo.svg";
-import { useState } from "react";
 import { getMediaGenres, getMediaTrailer } from "../utils/mediaUtils";
 import AddToMyListButton from "./AddToMyListButton";
 import PlayButton from "./PlayButton";
-import Redirect from "./Redirect";
 import Media from "../types/Media";
 import { useSelectedMedia } from "../context/SelectedMediaContext";
+import useRedirect from "../hooks/useRedirect";
 
 const FeaturedMediaCard: React.FC<{ media: Media }> = ({ media }) => {
   const MEDIA_SCREEN_URL = "/streamflix/media/selected";
   const mediaGenres = getMediaGenres(media);
   const BANNER_URL = `https://image.tmdb.org/t/p/w500${media?.poster_path}`;
-  const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
   const { selectedMedia } = useSelectedMedia();
+  const handleRedirect = useRedirect();
 
   if (!selectedMedia) return <></>;
 
@@ -26,7 +25,7 @@ const FeaturedMediaCard: React.FC<{ media: Media }> = ({ media }) => {
         <button
           type="button"
           className="shadow-[0_4px_10px_rgba(255,255,255,0.1)] w-full h-full border-t-2 border-l-3 border-r-3 rounded-tl-md rounded-tr-md border-[#FFFFFF] hover:cursor-pointer"
-          onClick={() => setRedirectUrl(`${MEDIA_SCREEN_URL}`)}
+          onClick={() => handleRedirect(`${MEDIA_SCREEN_URL}`, false)}
         >
           <img
             src={BANNER_URL}
@@ -64,7 +63,6 @@ const FeaturedMediaCard: React.FC<{ media: Media }> = ({ media }) => {
           )}
         </div>
       </section>
-      {redirectUrl && <Redirect url={redirectUrl} />}
     </>
   );
 };
