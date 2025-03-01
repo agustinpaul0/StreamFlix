@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import { getMediaGenres, isMovie, getMediaCredits } from "../utils/mediaUtils";
 import Media from "../types/Media";
+import CrewMember from "../types/CrewMember";
 import MediaGenresList from "../components/MediaGenresList";
 import MediaCastList from "../components/MediaCastList";
-import CrewMember from "../types/CrewMember";
 import MediaDirectorList from "../components/MediaDirectorList";
-import { useOutletContext } from "react-router-dom";
 
 const MediaDetailsScreen = () => {
   const { selectedMedia } = useOutletContext<{ selectedMedia: Media }>();

@@ -1,10 +1,11 @@
+import { useEffect, useState } from "react";
 import FeaturedMediaCard from "./FeaturedMediaCard";
 import { getAllPopularMoviesCatalogue } from "../utils/mediaUtils";
 import { useSelectedMedia } from "../context/SelectedMediaContext";
-import { useEffect, useState } from "react";
 
 const PopularMovie = () => {
   const { data: popularMovies } = getAllPopularMoviesCatalogue();
+
   const { setSelectedMedia } = useSelectedMedia();
   const [randomPopularMovieToDisplay] = useState(
     (popularMovies.length > 0)

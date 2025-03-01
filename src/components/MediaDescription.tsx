@@ -15,7 +15,9 @@ const MediaDescription = ({ media }: { media: Media }) => {
     : [media.name, media.first_air_date];
 
   const mediaReleaseYear = mediaReleaseDate.split("-")[0];
+
   const { data: trailer } = getMediaTrailer(media);
+
   const handleRedirect = useRedirect();
 
   return (
@@ -39,7 +41,7 @@ const MediaDescription = ({ media }: { media: Media }) => {
         <AddToMyListButton addToMyListIcon={addToMyListAIcon} />
       </div>
       <p className="text-base py-4">{media.overview}</p>
-      <button type="button" className="py-4 text-[#827E7E]" onClick={() => handleRedirect(SELECTED_MEDIA_DETAILS_SCREEN_URL, false)}>
+      <button type="button" className="py-4 text-[#827E7E]" onClick={() => handleRedirect(SELECTED_MEDIA_DETAILS_SCREEN_URL)}>
         Show more...
       </button>
     </section>

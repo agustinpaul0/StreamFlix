@@ -10,7 +10,7 @@ const MediaLayoutNavBar = () => {
       <button
         type="button"
         className="flex items-center p-4"
-        onClick={() => handleRedirect("../", false)}
+        onClick={() => handleRedirect("../")}
       >
         <img src={buttonBackIcon} alt="Back" className="w-6 h-6" />
       </button>

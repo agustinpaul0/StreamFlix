@@ -1,4 +1,4 @@
-const PlayButton: React.FC<{ playIcon: string; url: string }> = ({ playIcon, url }) => {
+const PlayButton = ({ playIcon, url }: { playIcon: string; url: string }) => {
   return (
     <a
       href={url}

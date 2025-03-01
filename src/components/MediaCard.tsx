@@ -5,12 +5,13 @@ import useRedirect from "../hooks/useRedirect";
 const MediaCard = ({ media }: { media: Media }) => {
   const MEDIA_SCREEN_URL = "/streamflix/media/selected";
   const BANNER_URL = `https://image.tmdb.org/t/p/w500${media.poster_path}`;
+
   const { setSelectedMedia } = useSelectedMedia();
   const handleRedirect = useRedirect();
 
   const displayMediaScreen = (url: string, mediaToDisplay: Media) => {
     setSelectedMedia(mediaToDisplay);
-    handleRedirect(url, false);
+    handleRedirect(url);
   };
 
   return (

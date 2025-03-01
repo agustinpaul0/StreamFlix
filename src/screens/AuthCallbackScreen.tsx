@@ -6,6 +6,7 @@ import useRedirect from "../hooks/useRedirect";
 
 const AuthCallbackScreen = () => {
   const HOME_SCREEN_URL = "/streamflix/search/home";
+  
   const handleRedirect = useRedirect();
   const [requestToken, setRequestToken] = useState<string>("");
   const location = useLocation();

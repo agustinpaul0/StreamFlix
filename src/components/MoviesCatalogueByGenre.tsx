@@ -7,6 +7,7 @@ import MediaSection from "./MediaSection";
 const MoviesCatalogueByGenre = () => {
   const { data: moviesCatalogue } = getAllMoviesCatalogue();
   const { data: popularMoviesCatalogue } = getAllPopularMoviesCatalogue();
+  
   const [genres, setGenres] = useState<Record<number, string>>({});
   const [moviesByGenre, setMoviesByGenre] = useState<Map<string, Movie[]>>(new Map<string, Movie[]>());
 

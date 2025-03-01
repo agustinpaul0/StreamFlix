@@ -1,10 +1,11 @@
+import { useEffect, useState } from "react";
 import FeaturedMediaCard from "./FeaturedMediaCard";
 import { getAllPopularMedia } from "../utils/mediaUtils";
-import { useEffect, useState } from "react";
 import { useSelectedMedia } from "../context/SelectedMediaContext";
 
 const PopularMedia = () => {
   const popularMedia = getAllPopularMedia();
+
   const { selectedMedia, setSelectedMedia } = useSelectedMedia();
   const [randomPopularMedia] = useState(
     (popularMedia.length > 0)

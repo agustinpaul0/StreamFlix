@@ -20,7 +20,7 @@ const Footer = () => {
             type="button"
             key={label}
             className="cursor-pointer"
-            onClick={() => handleRedirect(path, false)}
+            onClick={() => handleRedirect(path)}
           >
             <img src={src} alt={alt} className="w-8 h-8" />
           </button>
