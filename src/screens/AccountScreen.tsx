@@ -1,13 +1,13 @@
 import useRedirect from "../hooks/useRedirect";
-import { clearSessionDataService } from "../services/sessionStorageServices";
+import { clearCurrentUserService } from "../services/sessionStorageServices";
 
 const AccountScreen = () => {
 
   const handleRedirect = useRedirect();
 
   const logout = () => {
-    handleRedirect("/");
-    clearSessionDataService();
+    handleRedirect("/auth");
+    clearCurrentUserService();
   }
 
   return (

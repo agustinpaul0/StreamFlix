@@ -1,7 +1,7 @@
-import AuthCallbackScreen from "../screens/AuthCallbackScreen";
 import AppRoute from "../types/AppRoute";
 import { lazy } from "react";
 
+const AuthCallbackScreen = lazy(() => import("../screens/AuthCallbackScreen"));
 const LoginScreen = lazy(() => import("../screens/LoginScreen"));
 const MoviesScreen = lazy(() => import("../screens/MoviesScreen"));
 const SeriesScreen = lazy(() => import("../screens/SeriesScreen"));
@@ -22,7 +22,7 @@ const appRoutes: AppRoute[] = [
   },
   {
     path: "/auth",
-    element: <AuthCallbackScreen />,
+    element: <AuthCallbackScreen />
   },
   {
     path: "/streamflix",

@@ -1,23 +1,15 @@
-import SessionData from "../types/SessionData";
-import UserDetails from "../types/UserDetails";
-
-export const setSessionDataService = (sessionId: string, userDetails: UserDetails, accountId: number) => {
-  const sessionData = {
-    sessionId,
-    userDetails,
-    accountId,
-  };
-  sessionStorage.setItem("session_data", JSON.stringify(sessionData)); 
+export const setCurrentUserService = (id: number) => {
+  sessionStorage.setItem("current_user", JSON.stringify(id)); 
 };
 
-export const getSessionDataService = (): SessionData | null => {
-  const sessionData = sessionStorage.getItem("session_data");
-  if (sessionData) {
-    return JSON.parse(sessionData);
+export const getCurrentUserService = (): number => {
+  const currentUserData = sessionStorage.getItem("current_user");
+  if (currentUserData) {
+    return JSON.parse(currentUserData);
   }
-  return null;
+  return -1;
 };
 
-export const clearSessionDataService = () => {
-  sessionStorage.removeItem("session_data"); 
+export const clearCurrentUserService = () => {
+  sessionStorage.removeItem("current_user"); 
 };

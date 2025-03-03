@@ -1,40 +1,51 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { fetchAccountId, fetchSessionId, fetchUserDetails } from "../utils/fetchUtils";
-import { setSessionDataService } from "../services/sessionStorageServices";
-import useRedirect from "../hooks/useRedirect";
+import { fetchSessionId, fetchUserDetails } from "../utils/fetchUtils";
+import { addUserToLocalStorageService, getAllUsersFromLocalStorageService } from "../services/localStorageServices";
+import User from "../types/User";
+import UserCard from "../components/UserCard";
+import LoadingModal from "../components/LoadingModal";
 
 const AuthCallbackScreen = () => {
-  const HOME_SCREEN_URL = "/streamflix/search/home";
-
-  const handleRedirect = useRedirect();
-  const [requestToken, setRequestToken] = useState<string>("");
+  const [users, setUsers] = useState<Map<string, User> | null>(null);
   const location = useLocation();
 
   useEffect(() => {
+
+    const handleSessionConfirmation = async (requestToken: string) => {
+      try {
+        const sessionId = await fetchSessionId(requestToken);
+        const userDetails = await fetchUserDetails(sessionId);
+        addUserToLocalStorageService(userDetails);
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
+    };
+
     const queryParams = new URLSearchParams(location.search);
     const token = queryParams.get("request_token");
+
     if (token) {
-      setRequestToken(token);
+      console.log(token);
+      handleSessionConfirmation(token).then(() => {
+        setUsers(getAllUsersFromLocalStorageService());
+      });
+    } else {
+      setUsers(getAllUsersFromLocalStorageService());
     }
   }, []);
 
-  const handleSessionConfirmation = async () => {
-    try {
-      const sessionId = await fetchSessionId(requestToken);
-      const accountId = await fetchAccountId(sessionId);
-      const userDetails = await fetchUserDetails(accountId);
-      setSessionDataService(sessionId, userDetails, accountId);
-      handleRedirect(HOME_SCREEN_URL, true);
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
-  };
-
   return (
     <div className="w-screen h-screen bg-[#080808] flex justify-center items-center text-white text-2xl">
-      {requestToken && <button onClick={handleSessionConfirmation}>CONTINUAR</button>}
+      {users ? (
+        Array.from(users.values()).map((user) => {
+          console.log("mapeando");
+          return <UserCard key={user.id} user={user} />;
+        })
+      ) : (
+        <LoadingModal />
+      )}
     </div>
   );
 };
