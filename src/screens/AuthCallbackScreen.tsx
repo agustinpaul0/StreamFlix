@@ -27,7 +27,6 @@ const AuthCallbackScreen = () => {
     const token = queryParams.get("request_token");
 
     if (token) {
-      console.log(token);
       handleSessionConfirmation(token).then(() => {
         setUsers(getAllUsersFromLocalStorageService());
       });
