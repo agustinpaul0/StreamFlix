@@ -1,5 +1,8 @@
 import useRedirect from "../hooks/useRedirect";
-import { clearCurrentUserService, getCurrentUserService } from "../services/sessionStorageServices";
+import { 
+  clearCurrentUserService, 
+  getCurrentUserService 
+} from "../services/sessionStorageServices";
 
 import {
   AlertDialog,

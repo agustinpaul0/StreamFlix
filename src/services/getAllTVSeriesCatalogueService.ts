@@ -1,4 +1,7 @@
-import { fetchMediaFromPage, addMediaToMap } from "../utils/fetchUtils";
+import { 
+  fetchMediaFromPage, 
+  addMediaToMap 
+} from "../utils/fetchUtils";
 import Series from "../types/Series";
 import Media from "../types/Media";
 

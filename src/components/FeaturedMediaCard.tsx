@@ -1,7 +1,10 @@
 import playIcon from "../assets/img/play-icon.svg";
 import addToMyListAIcon from "../assets/img/add-icon.svg";
 import mediaBannerAppLogo from "../assets/img/media-banner-app-logo.svg";
-import { getMediaGenres, getMediaTrailer } from "../utils/mediaUtils";
+import { 
+  getMediaGenres, 
+  getMediaTrailer 
+} from "../utils/mediaUtils";
 import Media from "../types/Media";
 import { useSelectedMedia } from "../context/SelectedMediaContext";
 import useRedirect from "../hooks/useRedirect";

@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
-import { getMediaGenres, isMovie, getMediaCredits } from "../utils/mediaUtils";
+import { 
+  getMediaGenres, 
+  isMovie, 
+  getMediaCredits 
+} from "../utils/mediaUtils";
 import Media from "../types/Media";
 import CrewMember from "../types/CrewMember";
 import MediaGenresList from "../components/MediaGenresList";

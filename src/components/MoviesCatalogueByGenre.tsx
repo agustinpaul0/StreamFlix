@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import Movie from "../types/Movie";
-import { getAllMoviesCatalogue, getAllPopularMoviesCatalogue, getMoviesGenres, groupMediaByGenre } from "../utils/mediaUtils";
+import { 
+  getAllMoviesCatalogue, 
+  getAllPopularMoviesCatalogue, 
+  getMoviesGenres, 
+  groupMediaByGenre 
+} from "../utils/mediaUtils";
 import MediaCard from "./MediaCard";
 import MediaSection from "./MediaSection";
 

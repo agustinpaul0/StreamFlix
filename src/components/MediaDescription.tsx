@@ -4,7 +4,10 @@ import addToMyListAIcon from "../assets/img/add-icon.svg";
 import AddToMyListButton from "./AddToMyListButton";
 import PlayButton from "./PlayButton";
 import Media from "../types/Media";
-import { getMediaTrailer, isMovie } from "../utils/mediaUtils";
+import { 
+  getMediaTrailer, 
+  isMovie 
+} from "../utils/mediaUtils";
 import useRedirect from "../hooks/useRedirect";
 
 const MediaDescription = ({ media }: { media: Media }) => {

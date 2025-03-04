@@ -1,4 +1,9 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import { 
+  createContext, 
+  useContext, 
+  useState, 
+  ReactNode 
+} from "react";
 import Media from "../types/Media";
 import SelectedMedia from "../types/SelectedMedia";
 

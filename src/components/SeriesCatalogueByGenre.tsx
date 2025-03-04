@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
-import { getAllPopularTVSeriesCatalogue, getAllTVSeriesCatalogue, getSeriesGenres, groupMediaByGenre } from "../utils/mediaUtils";
+import { 
+  getAllPopularTVSeriesCatalogue, 
+  getAllTVSeriesCatalogue, 
+  getSeriesGenres, 
+  groupMediaByGenre 
+} from "../utils/mediaUtils";
 import Series from "../types/Series";
 import MediaCard from "./MediaCard";
 import MediaSection from "./MediaSection";
