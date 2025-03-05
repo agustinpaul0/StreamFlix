@@ -19,7 +19,6 @@ import redUserIccon from "../assets/img/red-user-icon.jpg";
 import greenUserIccon from "../assets/img/green-user-icon.jpg";
 import yellowUserIccon from "../assets/img/yellow-user-icon.jpg";
 import turquoiseUserIccon from "../assets/img/turquoise-user-icon.jpg";
-import addUserIcon from "../assets/img/add-user-icon.svg";
 
 const availableIcons = [
   blueUserIccon,
