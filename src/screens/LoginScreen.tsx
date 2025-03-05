@@ -4,10 +4,12 @@ import loginBanner from "../assets/img/login-banner.jpg";
 import logo from "../assets/img/logo.svg";
 
 const LoginScreen = () => {
+  const REDIRECT_URL = `${window.location.origin}/auth`;
+
   const handleLogin = async () => {
     try {
       const token = await fetchRequestToken();
-      window.location.href = `https://www.themoviedb.org/authenticate/${token}?redirect_to=http://localhost:5173/auth`;
+      window.location.href = `https://www.themoviedb.org/authenticate/${token}?redirect_to=${REDIRECT_URL}`;
     } catch (error) {
       console.error(error);
       throw error;
