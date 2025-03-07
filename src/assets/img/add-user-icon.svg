@@ -1,10 +1,5 @@
-<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="0.5" y="0.5" width="119" height="119" rx="4.5" fill="#1E1E1E" stroke="white"/>
-<rect x="20" y="20" width="79" height="79" fill="url(#pattern0_152_2)"/>
-<defs>
-<pattern id="pattern0_152_2" patternContentUnits="objectBoundingBox" width="1" height="1">
-<use xlink:href="#image0_152_2" transform="scale(0.0416667)"/>
-</pattern>
-<image id="image0_152_2" width="24" height="24" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAGRJREFUSEtjZKAxYKSx+QwjzIL///+fAgUpIyOjGbFBS1IQ/f///z/UAqL1Ea0QZPCoBQTjbWgEETQpmhL0DnYFp9GTMEYqorkF+Fw+NOJg1AfoITDoyiLaFtfkZD6SgmhkWgAAuwdCGQhDCRkAAAAASUVORK5CYII="/>
-</defs>
+<rect x="56" y="33" width="7" height="53" fill="white"/>
+<rect x="33" y="56" width="53" height="7" fill="white"/>
 </svg>

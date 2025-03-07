@@ -8,9 +8,9 @@ export const addUserToLocalStorageService = ({ id, username, name }: User) => {
   }));
 };
 
-export const getUserFromLocalStorageService = (id: number): User => {
-  const user: string | null = localStorage.getItem(`user_${id}`);
-  return user ? JSON.parse(user) : {};
+export const getUserFromLocalStorageService = (userId: number): User => {
+  const user: string | null = localStorage.getItem(`user_${userId}`);
+  return user ? JSON.parse(user) : { id: 0, username: "", name: "" };
 };
 
 export const removeUserFromLocalStorageService = (id: number) => {
