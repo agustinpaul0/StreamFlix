@@ -1,9 +1,7 @@
-import { getCurrentUserListCatalogue } from "../utils/mediaUtils";
+import Media from "../types/Media";
 import MediaCard from "./MediaCard";
 
-const MyListCatalogue = () => {
-  const catalogue = getCurrentUserListCatalogue();
-  console.log(catalogue);
+const MyListCatalogue = ( { catalogue }: {catalogue: Media[]} ) => {
   return (
     <>
       {catalogue.map((media) => (

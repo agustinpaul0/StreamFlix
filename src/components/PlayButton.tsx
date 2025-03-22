@@ -9,7 +9,7 @@ const PlayButton = ({ playIcon, url }: { playIcon: string; url: string }) => {
     >
       <div className="flex items-center justify-center gap-3">
         <img src={playIcon} alt="" className="w-6 h-6" />
-        <span>Play</span>
+        <span className="text-xl">Play</span>
       </div>
     </a>
   );

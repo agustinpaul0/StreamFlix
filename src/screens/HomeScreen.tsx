@@ -6,8 +6,20 @@ import SeriesCatalogue from "../components/SeriesCatalogue";
 import PopularMedia from "../components/PopularMedia";
 import PopularCatalogue from "../components/PopularCatalogue";
 import MyListCatalogue from "../components/MyListCatalogue";
+import { useMyListCatalogue } from "../context/MyListCatalogueContext";
+import { getCurrentUserListCatalogue } from "../utils/mediaUtils";
+import { useEffect } from "react";
 
 const HomeScreen = () => {
+
+  const { myListCatalogue, setMyListCatalogue } = useMyListCatalogue();
+  const initialMyListCatalogue = getCurrentUserListCatalogue();
+  console.log(myListCatalogue);
+  
+  useEffect(() => {
+    setMyListCatalogue(initialMyListCatalogue);
+  }, []);
+
   return (
     <>
       <HeaderSection />
@@ -18,9 +30,11 @@ const HomeScreen = () => {
       <MediaSection title="Popular">
         <PopularCatalogue />
       </MediaSection>
-      <MediaSection title="My List">
-        <MyListCatalogue />
-      </MediaSection>
+      {myListCatalogue.length > 0 && (
+        <MediaSection title="My List">
+          <MyListCatalogue catalogue={myListCatalogue} />
+        </MediaSection>
+      )}
       <MediaSection title="Movies">
         <MoviesCatalogue />
       </MediaSection>

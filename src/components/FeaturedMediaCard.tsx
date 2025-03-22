@@ -1,5 +1,4 @@
 import playIcon from "../assets/img/play-icon.svg";
-import addToMyListAIcon from "../assets/img/add-icon.svg";
 import mediaBannerAppLogo from "../assets/img/media-banner-app-logo.svg";
 import { 
   getMediaGenres, 
@@ -8,7 +7,7 @@ import {
 import Media from "../types/Media";
 import { useSelectedMedia } from "../context/SelectedMediaContext";
 import useRedirect from "../hooks/useRedirect";
-import AddToMyListButton from "./AddToMyListButton";
+import MyListButton from "./MyListButton";
 import PlayButton from "./PlayButton";
 
 const FeaturedMediaCard = ({ media }: { media: Media }) => {
@@ -56,14 +55,14 @@ const FeaturedMediaCard = ({ media }: { media: Media }) => {
           {trailer ? (
             <div className="flex gap-2 w-full">
               <PlayButton playIcon={playIcon} url={trailer} />
-              <AddToMyListButton addToMyListIcon={addToMyListAIcon} />
+              <MyListButton />
             </div>
           ) : (
             <div className="flex flex-col ">
               <h3 className="text-lg font-medium mb-2 text-[#FF0000] text-center">
                 Sorry, we can't play this media right now.
               </h3>
-              <AddToMyListButton addToMyListIcon={addToMyListAIcon} />
+              <MyListButton />
             </div>
           )}
         </div>

@@ -5,9 +5,9 @@ import {
   ReactNode 
 } from "react";
 import Media from "../types/Media";
-import SelectedMedia from "../types/SelectedMedia";
+import SelectedMediaContextInterface from "../types/SelectedMediaContextInterface";
 
-const SelectedMediaContext = createContext<SelectedMedia | null>(null);
+const SelectedMediaContext = createContext<SelectedMediaContextInterface | null>(null);
 
 export const SelectedMediaContextProvider = ({ children }: { children: ReactNode }) => {
   const [selectedMedia, setSelectedMedia] = useState<Media | null>(null);
@@ -19,7 +19,7 @@ export const SelectedMediaContextProvider = ({ children }: { children: ReactNode
   );
 };
 
-export const useSelectedMedia = (): SelectedMedia => {
+export const useSelectedMedia = (): SelectedMediaContextInterface => {
   const context = useContext(SelectedMediaContext);
   if (!context) {
     throw new Error("useSelectedMedia must be used within a SelectedMediaContextProvider");

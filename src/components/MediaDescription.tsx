@@ -1,7 +1,6 @@
 import logo from "../assets/img/logo.svg";
 import playIcon from "../assets/img/play-icon.svg";
-import addToMyListAIcon from "../assets/img/add-icon.svg";
-import AddToMyListButton from "./AddToMyListButton";
+import MyListButton from "./MyListButton";
 import PlayButton from "./PlayButton";
 import Media from "../types/Media";
 import { 
@@ -41,7 +40,7 @@ const MediaDescription = ({ media }: { media: Media }) => {
             Sorry, we can't play this media right now.
           </h3>
         )}
-        <AddToMyListButton addToMyListIcon={addToMyListAIcon} />
+        <MyListButton />
       </div>
       <p className="text-base py-4">{media.overview}</p>
       <button type="button" className="py-4 text-[#827E7E]" onClick={() => handleRedirect(SELECTED_MEDIA_DETAILS_SCREEN_URL)}>
