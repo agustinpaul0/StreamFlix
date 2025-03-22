@@ -22,7 +22,8 @@ const LoginScreen = () => {
       style={{ backgroundImage: `url(${loginBanner})` }}
     >
       <motion.div
-        className="w-[95vw] bg-[#1c1c1c]/80 text-center px-6 py-8 rounded-lg shadow-lg flex flex-col"
+        className="w-[95vw] text-center px-6 py-8 rounded-lg shadow-lg flex flex-col"
+        style={{ backgroundColor: "rgba(28, 28, 28, 0.8)" }}
         initial={{ y: 300, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: "easeInOut" }}
