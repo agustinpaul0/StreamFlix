@@ -16,7 +16,10 @@ export const fetchMediaFromPage = async (url: string, page: number): Promise<Omi
   return res.data.results as Omit<Media, "media_type">[];
 };
 
-export const addMediaToMap = <T extends Media>(media: Omit<Media, "media_type">[], allMediaMap: Map<number, T>, mediaType: string) => {
+export const addMediaToMap = <T extends Media>(
+  media: Omit<Media, "media_type">[],
+  allMediaMap: Map<number, T>,
+  mediaType: string) => {
   media.forEach((item) => (
     allMediaMap.set(item.id, { ...item, media_type: mediaType } as T)
   ));
@@ -71,11 +74,11 @@ export const fetchUserDetails = async (sessionId: string): Promise<User> => {
   try {
     const response = await axios.get(`https://api.themoviedb.org/3/account`, {
       params: {
-        session_id: sessionId, 
+        session_id: sessionId,
       },
       headers: getAuthHeaders(),
     });
-    const { id, name, username } = response.data; 
+    const { id, name, username } = response.data;
     return { id, name, username };
   } catch (error) {
     console.error("Error fetching user info:", error);
@@ -86,12 +89,41 @@ export const fetchUserDetails = async (sessionId: string): Promise<User> => {
 export const fetchPrivateMedia = async (url: string, accountId: number, sessionId: string) => {
   try {
     const response = await axios.get(url, {
-      headers: getAuthHeaders(), 
+      headers: getAuthHeaders(),
       params: { session_id: sessionId, account_id: accountId },
     });
     return response.data;
   } catch (error) {
     console.error("Error fetching private data:", error);
+    throw error;
+  }
+};
+
+export const postMediaToCurrentUserListCatalogue = async (
+  accountId: number,
+  sessionId: string,
+  media: Media,
+  favorite: boolean
+): Promise<void> => {
+  try {
+    const url = `${import.meta.env.VITE_TMDB_BASE_URL}account/${accountId}/favorite`;
+
+    await axios.post(
+      url,
+      {
+        media_type: media.media_type,
+        media_id: media.id,
+        // If 'favorite' is true, the media is added to the favorites list 
+        // If 'favorite' is false, the media is removed from the favorites list
+        favorite: favorite,
+      },
+      {
+        headers: getAuthHeaders(),
+        params: { session_id: sessionId },
+      }
+    );
+  } catch (error) {
+    console.error("Error adding media to favorites:", error);
     throw error;
   }
 };

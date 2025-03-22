@@ -1,4 +1,7 @@
-import { useEffect, useState } from "react";
+import { 
+  useEffect, 
+  useState 
+} from "react";
 import FeaturedMediaCard from "./FeaturedMediaCard";
 import { getAllPopularTVSeriesCatalogue } from "../utils/mediaUtils";
 import { useSelectedMedia } from "../context/SelectedMediaContext";

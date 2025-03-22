@@ -15,7 +15,7 @@ const getCurrentUserSeriesListCatalogueService = async (url: string, sessionId: 
       const totalPages = firstPageSeries.total_pages;
   
       for (let page = 1; page <= totalPages; page++) {
-        const series = await fetchPrivateMedia(`${url}&page=${page}`, accountId, sessionId);
+        const series = await fetchPrivateMedia(`${url}?page=${page}`, accountId, sessionId);
         addMediaToMap(series.results, allSeriesMap, mediaType);
       }
   

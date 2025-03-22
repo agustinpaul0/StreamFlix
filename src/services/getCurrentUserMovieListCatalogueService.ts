@@ -1,5 +1,8 @@
 import Movie from "../types/Movie";
-import { addMediaToMap, fetchPrivateMedia } from "../utils/fetchUtils";
+import { 
+  addMediaToMap,
+  fetchPrivateMedia 
+} from "../utils/fetchUtils";
 import { getCurrentUserService } from "./sessionStorageServices";
 
 const getCurrentUserMovieListCatalogueService = async (url: string, sessionId: string) => {
@@ -12,7 +15,7 @@ const getCurrentUserMovieListCatalogueService = async (url: string, sessionId: s
     const totalPages = firstPageMovies.total_pages;
 
     for (let page = 1; page <= totalPages; page++) {
-      const movies = await fetchPrivateMedia(`${url}&page=${page}`, accountId, sessionId);
+      const movies = await fetchPrivateMedia(`${url}?page=${page}`, accountId, sessionId);
       addMediaToMap(movies.results, allMoviesMap, mediaType);
     }
 
