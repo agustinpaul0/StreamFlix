@@ -20,9 +20,9 @@ export const setCurrentUserSessionIdService = (sessionId: string) => {
 }
 
 export const getCurrentUserSessionIdService = () => {
-  const currentUserSessionId = localStorage.getItem("session_id");
+  const currentUserSessionId = sessionStorage.getItem("session_id");
   if(currentUserSessionId) {
-      //Use JSON.parse for defensive programming purposes
+    //Use JSON.parse for defensive programming purposes
     return JSON.parse(currentUserSessionId);
   }
   return -1;

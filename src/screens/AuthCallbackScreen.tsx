@@ -1,6 +1,12 @@
-import { useEffect, useState } from "react";
+import { 
+  useEffect, 
+  useState 
+} from "react";
 import { useLocation } from "react-router-dom";
-import { fetchSessionId, fetchUserDetails } from "../utils/fetchUtils";
+import { 
+  fetchSessionId, 
+  fetchUserDetails 
+} from "../utils/fetchUtils";
 import User from "../types/User";
 import UserCard from "../components/UserCard";
 import LoadingModal from "../components/LoadingModal";

@@ -10,7 +10,7 @@ import getAllPopularTVSeriesCatalogueService from "../services/getAllPopularTVSe
 import { fetchGenres } from "./fetchUtils";
 import CreditsResponse from "../types/CreditsResponse";
 import { getMediaCreditsService } from "../services/getMediaCreditsService";
-import { getCurrentUserService } from "../services/sessionStorageServices";
+import { getCurrentUserService, getCurrentUserSessionIdService } from "../services/sessionStorageServices";
 import getCurrentUserMovieListCatalogueService from "../services/getCurrentUserMovieListCatalogueService";
 import getCurrentUserSeriesListCatalogueService from "../services/getCurrentUserSeriesListCatalogueService";
 
@@ -79,10 +79,11 @@ export const getCurrentUserMovieListCatalogue = () => {
   const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
   const currentUserAccountId = getCurrentUserService();
   const USER_MOVIE_LIST_CATALOGUE = `${BASE_URL}/account/${currentUserAccountId}/favorite/movies`;
+  console.log("SI: ",getCurrentUserSessionIdService());
 
   return useSuspenseQuery<Media[], Error>({
     queryKey: ["userMovieListCatalogue"],
-    queryFn: () => getCurrentUserMovieListCatalogueService(USER_MOVIE_LIST_CATALOGUE),
+    queryFn: () => getCurrentUserMovieListCatalogueService(USER_MOVIE_LIST_CATALOGUE, getCurrentUserSessionIdService()),
   });
 }
 
@@ -93,7 +94,7 @@ export const getCurrentUserSeriesListCatalogue = () => {
 
   return useSuspenseQuery<Media[], Error>({
     queryKey: ["userSeriesListCatalogue"],
-    queryFn: () => getCurrentUserSeriesListCatalogueService(USER_SERIES_LIST_CATALOGUE),
+    queryFn: () => getCurrentUserSeriesListCatalogueService(USER_SERIES_LIST_CATALOGUE, getCurrentUserSessionIdService()),
   });
 }
 
