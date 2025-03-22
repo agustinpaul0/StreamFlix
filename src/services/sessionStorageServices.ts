@@ -13,3 +13,17 @@ export const getCurrentUserService = (): number => {
 export const clearCurrentUserService = () => {
   sessionStorage.removeItem("current_user"); 
 };
+
+export const setCurrentUserSessionIdService = (sessionId: string) => {
+  //Use JSON.stringify for defensive programming purposes
+  sessionStorage.setItem("session_id", JSON.stringify(sessionId));
+}
+
+export const getCurrentUserSessionIdService = () => {
+  const currentUserSessionId = localStorage.getItem("session_id");
+  if(currentUserSessionId) {
+      //Use JSON.parse for defensive programming purposes
+    return JSON.parse(currentUserSessionId);
+  }
+  return -1;
+}

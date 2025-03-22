@@ -10,6 +10,9 @@ import getAllPopularTVSeriesCatalogueService from "../services/getAllPopularTVSe
 import { fetchGenres } from "./fetchUtils";
 import CreditsResponse from "../types/CreditsResponse";
 import { getMediaCreditsService } from "../services/getMediaCreditsService";
+import { getCurrentUserService } from "../services/sessionStorageServices";
+import getCurrentUserMovieListCatalogueService from "../services/getCurrentUserMovieListCatalogueService";
+import getCurrentUserSeriesListCatalogueService from "../services/getCurrentUserSeriesListCatalogueService";
 
 export const getAllMedia = () => {
   const { data: movies } = getAllMoviesCatalogue();
@@ -64,6 +67,35 @@ export const getAllPopularTVSeriesCatalogue = () => {
     queryFn: () => getAllPopularTVSeriesCatalogueService(POPULAR_SERIES_URL),
   });
 };
+
+export const getCurrentUserListCatalogue = () => {
+  const { data: movies } = getCurrentUserMovieListCatalogue();
+  const { data: series } = getCurrentUserSeriesListCatalogue();
+
+  return [ ...movies, ...series ];
+}
+
+export const getCurrentUserMovieListCatalogue = () => {
+  const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
+  const currentUserAccountId = getCurrentUserService();
+  const USER_MOVIE_LIST_CATALOGUE = `${BASE_URL}/account/${currentUserAccountId}/favorite/movies`;
+
+  return useSuspenseQuery<Media[], Error>({
+    queryKey: ["userMovieListCatalogue"],
+    queryFn: () => getCurrentUserMovieListCatalogueService(USER_MOVIE_LIST_CATALOGUE),
+  });
+}
+
+export const getCurrentUserSeriesListCatalogue = () => {
+  const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
+  const currentUserAccountId = getCurrentUserService();
+  const USER_SERIES_LIST_CATALOGUE = `${BASE_URL}/account/${currentUserAccountId}/favorite/tv`;
+
+  return useSuspenseQuery<Media[], Error>({
+    queryKey: ["userSeriesListCatalogue"],
+    queryFn: () => getCurrentUserSeriesListCatalogueService(USER_SERIES_LIST_CATALOGUE),
+  });
+}
 
 export const getMediaGenres = async (media: Media): Promise<string> => {
   const genresRecord = media.media_type === "movie" ? await fetchGenres("movie") : await fetchGenres("tv");

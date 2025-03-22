@@ -1,10 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import appRoutes from "../data/app-routes";
 import AppRoute from "../types/AppRoute";
-import { useEffect } from "react";
-import useRedirect from "../hooks/useRedirect";
-import { getCurrentUserService } from "../services/sessionStorageServices";
-import { getAllUsersFromLocalStorageService } from "../services/localStorageServices";
 
 const renderRoutes = (routes: AppRoute[]) => {
   return routes.map((route) => (
@@ -15,18 +11,6 @@ const renderRoutes = (routes: AppRoute[]) => {
 };
 
 const AppRouter = () => {
-  const HOME_SCREEN_URL = "/streamflix/search/home";
-  const AUTH_SCREEN_URL = "/auth";
-  const handleRedirect = useRedirect();
-
-  useEffect(() => {
-    if (getCurrentUserService() >= 0) {
-      handleRedirect(HOME_SCREEN_URL);
-    } else if (getAllUsersFromLocalStorageService().size > 0) {
-      handleRedirect(AUTH_SCREEN_URL);
-    }
-  }, []);
-
   return <Routes>{renderRoutes(appRoutes)}</Routes>;
 };
 

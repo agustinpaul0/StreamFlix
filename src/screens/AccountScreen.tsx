@@ -3,7 +3,6 @@ import {
   clearCurrentUserService, 
   getCurrentUserService 
 } from "../services/sessionStorageServices";
-
 import {
   AlertDialog,
   AlertDialogAction,
@@ -26,14 +25,8 @@ const AccountScreen = () => {
     clearCurrentUserService();
   };
 
-  const exit = () => {
-    handleRedirect("/auth");
-    clearCurrentUserService();
-  }
-
   return (
     <section className="flex flex-1">
-      <button onClick={() => exit()} className="p-8">Exit</button>
       <AlertDialog>
         <AlertDialogTrigger className="text-[#FF0000] p-8">Log out</AlertDialogTrigger>
         <AlertDialogContent>

@@ -1,5 +1,10 @@
 import User from "../types/User";
 
+/**
+ * 
+ * Not used due to problems with some API endpoints params that did not allow this implementation
+ */
+
 export const addUserToLocalStorageService = ({ id, username, name }: User) => {
   localStorage.setItem(`user_${id}`, JSON.stringify({
     id,

@@ -82,3 +82,16 @@ export const fetchUserDetails = async (sessionId: string): Promise<User> => {
     throw error;
   }
 };
+
+export const fetchPrivateMedia = async (url: string, accountId: number, sessionId: string) => {
+  try {
+    const response = await axios.get(url, {
+      headers: getAuthHeaders(), 
+      params: { session_id: sessionId, account_id: accountId },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching private data:", error);
+    throw error;
+  }
+};
