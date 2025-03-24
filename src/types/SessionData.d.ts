@@ -4,4 +4,4 @@ export default interface SessionData {
   accountId: number
   sessionId: string,
   userDetails: UserDetails,
-}
+};

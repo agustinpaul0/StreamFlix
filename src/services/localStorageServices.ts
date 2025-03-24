@@ -1,9 +1,5 @@
+import Media from "../types/Media";
 import User from "../types/User";
-
-/**
- * 
- * Not used due to problems with some API endpoints params that did not allow this implementation
- */
 
 export const addUserToLocalStorageService = ({ id, username, name }: User) => {
   localStorage.setItem(`user_${id}`, JSON.stringify({
@@ -34,4 +30,17 @@ export const getAllUsersFromLocalStorageService = () => {
   }
 
   return items;
+};
+
+export const isUserMyListCatalogueService = () => {
+  return localStorage.getItem("my_list_catalogue") !== null;
+};
+
+export const getUserMyListCatalogueService = (): Media[] | null => {
+  const userMyListCatalogue: string | null = localStorage.getItem("my_list_catalogue");
+  return userMyListCatalogue ? JSON.parse(userMyListCatalogue) : null;
+}
+
+export const setUserMyListCatalogueService = (myListCatalogue: Media[]) => {
+  localStorage.setItem("my_list_catalogue", JSON.stringify(myListCatalogue));
 };

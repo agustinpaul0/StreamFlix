@@ -14,11 +14,33 @@ const HomeScreen = () => {
 
   const { myListCatalogue, setMyListCatalogue } = useMyListCatalogue();
   const initialMyListCatalogue = getCurrentUserListCatalogue();
+
   console.log(myListCatalogue);
   
   useEffect(() => {
-    setMyListCatalogue(initialMyListCatalogue);
-  }, []);
+    const storedCatalogue = localStorage.getItem("my_list_catalogue");
+    
+    if (storedCatalogue) {
+      setMyListCatalogue(JSON.parse(storedCatalogue));
+    } else {
+      setMyListCatalogue(initialMyListCatalogue);
+      localStorage.setItem("my_list_catalogue", JSON.stringify(initialMyListCatalogue));
+    }
+
+    const handleStorageChange = () => {
+      const updatedCatalogue = localStorage.getItem("my_list_catalogue");
+      if (updatedCatalogue) {
+        setMyListCatalogue(JSON.parse(updatedCatalogue));
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []); 
+
 
   return (
     <>

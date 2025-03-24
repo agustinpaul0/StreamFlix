@@ -4,4 +4,4 @@ export default interface CrewMember {
   job: string;  
   department: string; 
   profile_path: string | null;
-}
+};

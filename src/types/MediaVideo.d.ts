@@ -9,4 +9,4 @@ export default interface MediaVideo {
   site: string;
   size: number;
   type: string;
-}
+};

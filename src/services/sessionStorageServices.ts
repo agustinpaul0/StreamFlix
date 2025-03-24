@@ -17,7 +17,7 @@ export const clearCurrentUserService = () => {
 export const setCurrentUserSessionIdService = (sessionId: string) => {
   //Use JSON.stringify for defensive programming purposes
   sessionStorage.setItem("session_id", JSON.stringify(sessionId));
-}
+};
 
 export const getCurrentUserSessionIdService = () => {
   const currentUserSessionId = sessionStorage.getItem("session_id");
@@ -26,4 +26,4 @@ export const getCurrentUserSessionIdService = () => {
     return JSON.parse(currentUserSessionId);
   }
   return -1;
-}
+};

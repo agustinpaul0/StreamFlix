@@ -24,6 +24,6 @@ const getCurrentUserSeriesListCatalogueService = async (url: string, sessionId: 
       console.error("Unexpected error while fetching user favorite series: ", error);
       throw error;
     }
-}
+};
 
 export default getCurrentUserSeriesListCatalogueService;

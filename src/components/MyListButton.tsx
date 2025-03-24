@@ -17,13 +17,16 @@ const MyListButton = () => {
   );
 
   const handleClick = (media: Media) => {
+    let updatedCatalogue;
     if (selectedMediaIsInMyList) {
       removeMediaFromCurrentUserListCatalogueService(media);
-      setMyListCatalogue(myListCatalogue.filter((item) => item.id !== media.id));
+      updatedCatalogue = myListCatalogue.filter((item) => item.id !== media.id);
     } else {
       addMediaToCurrentUserListCatalogueService(media);
-      setMyListCatalogue([...myListCatalogue, media]);
+      updatedCatalogue = [...myListCatalogue, media];
     }
+    setMyListCatalogue(updatedCatalogue);
+    localStorage.setItem("my_list_catalogue", JSON.stringify(updatedCatalogue));
     setSelectedMediaIsInMyList((prevState) => !prevState);
   };
 

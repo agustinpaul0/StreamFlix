@@ -13,4 +13,4 @@ export default interface Series {
   vote_average: number;
   vote_count: number;
   media_type: "tv";
-}
+};
