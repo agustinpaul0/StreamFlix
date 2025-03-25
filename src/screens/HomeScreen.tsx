@@ -26,19 +26,6 @@ const HomeScreen = () => {
       setMyListCatalogue(initialMyListCatalogue);
       localStorage.setItem("my_list_catalogue", JSON.stringify(initialMyListCatalogue));
     }
-
-    const handleStorageChange = () => {
-      const updatedCatalogue = localStorage.getItem("my_list_catalogue");
-      if (updatedCatalogue) {
-        setMyListCatalogue(JSON.parse(updatedCatalogue));
-      }
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
   }, []); 
 
 
