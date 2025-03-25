@@ -2,7 +2,7 @@ export const setCurrentUserService = (id: number) => {
   sessionStorage.setItem("current_user", JSON.stringify(id)); 
 };
 
-export const getCurrentUserService = (): number => {
+export const getCurrentUserAccountIdService = (): number => {
   const currentUserData = sessionStorage.getItem("current_user");
   if (currentUserData) {
     return JSON.parse(currentUserData);

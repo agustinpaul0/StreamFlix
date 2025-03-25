@@ -1,4 +1,8 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { 
+  Routes, 
+  Route, 
+  useLocation 
+} from "react-router-dom";
 import appRoutes from "../data/app-routes";
 import AppRoute from "../types/AppRoute";
 import { useEffect } from "react";
@@ -15,11 +19,11 @@ const renderRoutes = (routes: AppRoute[]) => {
 const AppRouter = () => {
   const handleRedirect = useRedirect();
   const location = useLocation();
-  const HOME_SCREEN_URL = "/streamflix/search/home";
+  const LOGIN_SCREEN_URL = "/";
 
   useEffect(() => {
     if(location.pathname !== "/" && location.pathname !== "/auth") {
-      handleRedirect(HOME_SCREEN_URL, true);
+      handleRedirect(LOGIN_SCREEN_URL, true);
     }
   },[]);
 

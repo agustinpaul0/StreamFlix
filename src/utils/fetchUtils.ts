@@ -106,9 +106,9 @@ export const postMediaToCurrentUserListCatalogue = async (
   favorite: boolean
 ): Promise<void> => {
   try {
+    console.log("Media to add/remove: ", media);
     const url = `${import.meta.env.VITE_TMDB_BASE_URL}account/${accountId}/favorite`;
-
-    await axios.post(
+    const res = await axios.post(
       url,
       {
         media_type: media.media_type,
@@ -122,6 +122,7 @@ export const postMediaToCurrentUserListCatalogue = async (
         params: { session_id: sessionId },
       }
     );
+    console.log(res);
   } catch (error) {
     console.error("Error adding media to favorites:", error);
     throw error;

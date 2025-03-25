@@ -3,10 +3,8 @@ import {
   addMediaToMap,
   fetchPrivateMedia 
 } from "../utils/fetchUtils";
-import { getCurrentUserService } from "./sessionStorageServices";
 
-const getCurrentUserMovieListCatalogueService = async (url: string, sessionId: string) => {
-  const accountId = getCurrentUserService();
+const getCurrentUserMovieListCatalogueService = async (url: string, accountId: number, sessionId: string) => {
   const allMoviesMap = new Map<number, Movie>();
   const mediaType = "movie";
   

@@ -7,27 +7,12 @@ import PopularMedia from "../components/PopularMedia";
 import PopularCatalogue from "../components/PopularCatalogue";
 import MyListCatalogue from "../components/MyListCatalogue";
 import { useMyListCatalogue } from "../context/MyListCatalogueContext";
-import { getCurrentUserListCatalogue } from "../utils/mediaUtils";
-import { useEffect } from "react";
 
 const HomeScreen = () => {
 
-  const { myListCatalogue, setMyListCatalogue } = useMyListCatalogue();
-  const initialMyListCatalogue = getCurrentUserListCatalogue();
+  const { myListCatalogue } = useMyListCatalogue();
 
-  console.log(myListCatalogue);
-  
-  useEffect(() => {
-    const storedCatalogue = localStorage.getItem("my_list_catalogue");
-    
-    if (storedCatalogue) {
-      setMyListCatalogue(JSON.parse(storedCatalogue));
-    } else {
-      setMyListCatalogue(initialMyListCatalogue);
-      localStorage.setItem("my_list_catalogue", JSON.stringify(initialMyListCatalogue));
-    }
-  }, []); 
-
+  console.log("My list catalogue from home: ", myListCatalogue);
 
   return (
     <>

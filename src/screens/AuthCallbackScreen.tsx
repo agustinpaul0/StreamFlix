@@ -17,6 +17,8 @@ import yellowUserIcon from "../assets/img/yellow-user-icon.jpg";
 import turquoiseUserIcon from "../assets/img/turquoise-user-icon.jpg";
 import logo from "../assets/img/logo.svg";
 import { setCurrentUserSessionIdService } from "../services/sessionStorageServices";
+import { getCurrentUserListCatalogue } from "../utils/mediaUtils";
+import { useMyListCatalogue } from "../context/MyListCatalogueContext";
 
 const availableIcons = [
   blueUserIcon,
@@ -34,6 +36,7 @@ const getRandomIcon = () => {
 const AuthCallbackScreen = () => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const location = useLocation();
+  const { setMyListCatalogue } = useMyListCatalogue();
 
   useEffect(() => {
     const handleSessionConfirmation = async (requestToken: string) => {
@@ -42,6 +45,8 @@ const AuthCallbackScreen = () => {
         const userDetails = await fetchUserDetails(sessionId);
         setCurrentUserSessionIdService(sessionId);
         setCurrentUser(userDetails);
+        const initialMyListCatalogue = await getCurrentUserListCatalogue();
+        setMyListCatalogue(initialMyListCatalogue);
       } catch (error) {
         console.error(error);
       }

@@ -11,7 +11,7 @@ import { fetchGenres } from "./fetchUtils";
 import CreditsResponse from "../types/CreditsResponse";
 import { getMediaCreditsService } from "../services/getMediaCreditsService";
 import { 
-  getCurrentUserService, 
+  getCurrentUserAccountIdService, 
   getCurrentUserSessionIdService 
 } from "../services/sessionStorageServices";
 import getCurrentUserMovieListCatalogueService from "../services/getCurrentUserMovieListCatalogueService";
@@ -71,33 +71,27 @@ export const getAllPopularTVSeriesCatalogue = () => {
   });
 };
 
-export const getCurrentUserListCatalogue = () => {
-  const { data: movies } = getCurrentUserMovieListCatalogue();
-  const { data: series } = getCurrentUserSeriesListCatalogue();
+export const getCurrentUserListCatalogue = async (): Promise<Media[]> => {
+  const movies = await getCurrentUserMovieListCatalogue();
+  const series = await getCurrentUserSeriesListCatalogue();
 
   return [ ...movies, ...series ];
 }
 
-export const getCurrentUserMovieListCatalogue = () => {
+export const getCurrentUserMovieListCatalogue = async () => {
   const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
-  const currentUserAccountId = getCurrentUserService();
+  const currentUserAccountId = getCurrentUserAccountIdService();
   const USER_MOVIE_LIST_CATALOGUE = `${BASE_URL}account/${currentUserAccountId}/favorite/movies`;
 
-  return useSuspenseQuery<Media[], Error>({
-    queryKey: ["userMovieListCatalogue"],
-    queryFn: () => getCurrentUserMovieListCatalogueService(USER_MOVIE_LIST_CATALOGUE, getCurrentUserSessionIdService()),
-  });
+  return await getCurrentUserMovieListCatalogueService(USER_MOVIE_LIST_CATALOGUE, currentUserAccountId, getCurrentUserSessionIdService());
 }
 
-export const getCurrentUserSeriesListCatalogue = () => {
+export const getCurrentUserSeriesListCatalogue = async () => {
   const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
-  const currentUserAccountId = getCurrentUserService();
+  const currentUserAccountId = getCurrentUserAccountIdService();
   const USER_SERIES_LIST_CATALOGUE = `${BASE_URL}account/${currentUserAccountId}/favorite/tv`;
 
-  return useSuspenseQuery<Media[], Error>({
-    queryKey: ["userSeriesListCatalogue"],
-    queryFn: () => getCurrentUserSeriesListCatalogueService(USER_SERIES_LIST_CATALOGUE, getCurrentUserSessionIdService()),
-  });
+  return await getCurrentUserSeriesListCatalogueService(USER_SERIES_LIST_CATALOGUE, currentUserAccountId, getCurrentUserSessionIdService());
 }
 
 export const getMediaGenres = async (media: Media): Promise<string> => {
