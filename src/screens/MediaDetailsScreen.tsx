@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import { 
   getMediaGenres, 
@@ -13,21 +13,14 @@ import MediaDirectorList from "../components/MediaDirectorList";
 
 const MediaDetailsScreen = () => {
   const { selectedMedia } = useOutletContext<{ selectedMedia: Media }>();
-  const [genres, setGenres] = useState<string[] | null>(null);
 
   useEffect(() => {
-    // This is because when the user clicks the show more button the scrollbar does not update itself
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0); // Scroll to top when first mounted
+  }, []);
 
-    getMediaGenres(selectedMedia).then((genresString) => {
-      setGenres(genresString.split("|").map((genre) => genre.trim()));
-    });
-
-  }, [selectedMedia]);
-
+  const { data: mediaGenres } = getMediaGenres(selectedMedia);
+  const genresToDisplay = mediaGenres.split("|").map((genre) => genre.trim());
   const { data: credits } = getMediaCredits(selectedMedia);
-
-  if (!credits) return <></>;
 
   const { cast, crew } = credits;
   const directors = crew.filter(
@@ -39,9 +32,8 @@ const MediaDetailsScreen = () => {
       <h1 className="text-center pt-10">
         {isMovie(selectedMedia) ? selectedMedia.title : selectedMedia.name}
       </h1>
-
       <MediaDirectorList directors={directors} />
-      <MediaGenresList genres={genres || []} />
+      <MediaGenresList genres={genresToDisplay || []} />
       <MediaCastList cast={cast} />
     </>
   );

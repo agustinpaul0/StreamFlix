@@ -1,6 +1,7 @@
 import AppRoute from "../types/AppRoute";
 import { lazy } from "react";
 
+const SearchMedia = lazy(() => import("../screens/SearchMediaScreen"));
 const AuthCallbackScreen = lazy(() => import("../screens/AuthCallbackScreen"));
 const LoginScreen = lazy(() => import("../screens/LoginScreen"));
 const MoviesScreen = lazy(() => import("../screens/MoviesScreen"));
@@ -32,6 +33,7 @@ const appRoutes: AppRoute[] = [
         path: "search",
         element: <SearchLayout />,
         children: [
+          { path: "media", element: <SearchMedia />},
           { path: "home", element: <HomeScreen /> },
           { path: "movies", element: <MoviesScreen /> },
           { path: "series", element: <SeriesScreen /> },

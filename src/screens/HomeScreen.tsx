@@ -7,12 +7,17 @@ import PopularMedia from "../components/PopularMedia";
 import PopularCatalogue from "../components/PopularCatalogue";
 import MyListCatalogue from "../components/MyListCatalogue";
 import { useMyListCatalogue } from "../context/MyListCatalogueContext";
+import { useEffect } from "react";
 
 const HomeScreen = () => {
 
   const { myListCatalogue } = useMyListCatalogue();
 
   console.log("My list catalogue from home: ", myListCatalogue);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top when first mounted
+  }, []);
 
   return (
     <>

@@ -94,13 +94,20 @@ export const getCurrentUserSeriesListCatalogue = async () => {
   return await getCurrentUserSeriesListCatalogueService(USER_SERIES_LIST_CATALOGUE, currentUserAccountId, getCurrentUserSessionIdService());
 }
 
-export const getMediaGenres = async (media: Media): Promise<string> => {
-  const genresRecord = media.media_type === "movie" ? await fetchGenres("movie") : await fetchGenres("tv");
-  return media.genre_ids
-    .map((genreId) => (
-      genresRecord[genreId] || "Unknown"
-    ))
-    .join(" | ");
+export const getMediaGenres = (media: Media) => {
+  return useSuspenseQuery<string, Error>({
+    queryKey: [`${media.media_type}-${media.id}-genres`],
+    queryFn: async () => {
+      const genresRecord =
+        media.media_type === "movie"
+          ? await fetchGenres("movie")
+          : await fetchGenres("tv");
+
+      return media.genre_ids
+        .map((genreId) => genresRecord[genreId] || "Unknown")
+        .join(" | ");
+    },
+  });
 };
 
 export const getMoviesGenres = async (): Promise<Record<number, string>> => {

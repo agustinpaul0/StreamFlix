@@ -20,26 +20,34 @@ const MyListButton = () => {
   const [showLoadingModal, setShowLoadingModal] = useState(false);
 
   const handleClick = async (media: Media) => {
-    setShowLoadingModal(true);
-    selectedMediaIsInMyList
-      ? await removeMediaFromCurrentUserListCatalogueService(media)
-      : await addMediaToCurrentUserListCatalogueService(media);
-    const updatedCatalogue = await getCurrentUserListCatalogue();
-    setMyListCatalogue(updatedCatalogue);
-    setSelectedMediaIsInMyList((prevState) => !prevState);
-    setShowLoadingModal(false);
+    try {
+      setShowLoadingModal(true);
+  
+      if (selectedMediaIsInMyList) {
+        await removeMediaFromCurrentUserListCatalogueService(media);
+      } else {
+        await addMediaToCurrentUserListCatalogueService(media);
+      }
+  
+      const updatedCatalogue = await getCurrentUserListCatalogue();
+      setMyListCatalogue(updatedCatalogue);
+      setSelectedMediaIsInMyList((prevState) => !prevState);
+    } catch (error) {
+      console.error("Error in handleClick:", error);
+      throw error;
+    } finally {
+      setShowLoadingModal(false);
+    }
   };
 
   return (
     <>
       {showLoadingModal ? (
-        <>
-          <div 
+        <div 
             className="fixed inset-0 flex justify-center items-center z-50"
             style={{ backgroundColor: "rgba(8, 8, 8, 0.8)" }}>
             <LoadingModal />
-          </div>
-        </>
+        </div>
       ) : (
         selectedMedia && (
           <button

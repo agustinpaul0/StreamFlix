@@ -1,5 +1,10 @@
-import Media from "../types/Media";
 import User from "../types/User";
+
+/* Not used file due to permission limitations for accessing certain API endpoints
+ * Some functions in this file rely on user-related data that cannot be fetched 
+ * or updated from the API due to restricted access or insufficient permissions 
+ * for using specific endpoints that manage user information.
+ * */
 
 export const addUserToLocalStorageService = ({ id, username, name }: User) => {
   localStorage.setItem(`user_${id}`, JSON.stringify({
@@ -30,17 +35,4 @@ export const getAllUsersFromLocalStorageService = () => {
   }
 
   return items;
-};
-
-export const isUserMyListCatalogueService = () => {
-  return localStorage.getItem("my_list_catalogue") !== null;
-};
-
-export const getUserMyListCatalogueService = (): Media[] | null => {
-  const userMyListCatalogue: string | null = localStorage.getItem("my_list_catalogue");
-  return userMyListCatalogue ? JSON.parse(userMyListCatalogue) : null;
-}
-
-export const setUserMyListCatalogueService = (myListCatalogue: Media[]) => {
-  localStorage.setItem("my_list_catalogue", JSON.stringify(myListCatalogue));
 };

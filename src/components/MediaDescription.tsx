@@ -8,19 +8,23 @@ import {
   isMovie 
 } from "../utils/mediaUtils";
 import useRedirect from "../hooks/useRedirect";
+import { useEffect } from "react";
 
 const MediaDescription = ({ media }: { media: Media }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top when first mounted
+  }, []);
+
+  const handleRedirect = useRedirect();
+
   const SELECTED_MEDIA_DETAILS_SCREEN_URL = "/streamflix/media/details";
 
   const [mediaTitle, mediaReleaseDate] = isMovie(media)
     ? [media.title, media.release_date]
     : [media.name, media.first_air_date];
-
   const mediaReleaseYear = mediaReleaseDate.split("-")[0];
 
   const { data: trailer } = getMediaTrailer(media);
-
-  const handleRedirect = useRedirect();
 
   return (
     <section className="p-2">

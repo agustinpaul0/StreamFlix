@@ -17,6 +17,8 @@ const MediaCard = ({ media }: { media: Media }) => {
     handleRedirect(url);
   };
 
+  const imageClass = BANNER_URL === noMediaPoster ? "object-cover" : "object-fill";
+
   return (
     <>
       <button
@@ -27,7 +29,7 @@ const MediaCard = ({ media }: { media: Media }) => {
         <img
           src={BANNER_URL}
           alt="Movie Banner"
-          className="w-full h-full object-cover rounded-md"
+          className={`w-full h-full ${imageClass} rounded-md`}
         />
       </button>
     </>

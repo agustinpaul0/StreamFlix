@@ -5,23 +5,23 @@ import {
   getMediaTrailer 
 } from "../utils/mediaUtils";
 import Media from "../types/Media";
-import { useSelectedMedia } from "../context/SelectedMediaContext";
 import useRedirect from "../hooks/useRedirect";
 import MyListButton from "./MyListButton";
 import PlayButton from "./PlayButton";
+import noMediaPoster from "../assets/img/no-media-poster.svg";
 
 const FeaturedMediaCard = ({ media }: { media: Media }) => {
   const MEDIA_SCREEN_URL = "/streamflix/media/selected";
-  const BANNER_URL = `https://image.tmdb.org/t/p/w500${media?.poster_path}`;
-
-  const mediaGenres = getMediaGenres(media);
+  const BANNER_URL = media.poster_path
+    ? `https://image.tmdb.org/t/p/w500${media.poster_path}`
+    : noMediaPoster;
 
   const handleRedirect = useRedirect();
-  const { selectedMedia } = useSelectedMedia();
 
-  if (!selectedMedia) return <></>;
+  const { data: mediaGenres } = getMediaGenres(media);
+  const { data: trailer } = getMediaTrailer(media);
 
-  const { data: trailer } = getMediaTrailer(selectedMedia);
+  const imageClass = BANNER_URL === noMediaPoster ? "object-cover" : "object-fill";
 
   return (
     <>
@@ -34,7 +34,7 @@ const FeaturedMediaCard = ({ media }: { media: Media }) => {
           <img
             src={BANNER_URL}
             alt="Banner Popular Media"
-            className="object-fill max-h-[450px] w-full p-1"
+            className={`${imageClass} max-h-[450px] w-full p-1`}
           />
         </button>
 

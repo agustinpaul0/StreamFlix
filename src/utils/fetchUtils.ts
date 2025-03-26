@@ -9,20 +9,31 @@ export const getAuthHeaders = () => ({
 });
 
 export const fetchMediaFromPage = async (url: string, page: number): Promise<Omit<Media, "media_type">[]> => {
-  const res = await axios.get(`${url}&page=${page}`, {
-    headers: getAuthHeaders(),
-  });
+  try {
+    const res = await axios.get(`${url}&page=${page}`, {
+      headers: getAuthHeaders(),
+    });
 
-  return res.data.results as Omit<Media, "media_type">[];
+    return res.data.results as Omit<Media, "media_type">[];
+  } catch (error) {
+    console.error("Error fetching media from page:", error);
+    throw error;
+  }
 };
 
 export const addMediaToMap = <T extends Media>(
   media: Omit<Media, "media_type">[],
   allMediaMap: Map<number, T>,
-  mediaType: string) => {
-  media.forEach((item) => (
-    allMediaMap.set(item.id, { ...item, media_type: mediaType } as T)
-  ));
+  mediaType: string
+) => {
+  try {
+    media.forEach((item) => {
+      allMediaMap.set(item.id, { ...item, media_type: mediaType } as T);
+    });
+  } catch (error) {
+    console.error("Error adding media to map:", error);
+    throw error;
+  }
 };
 
 export const fetchGenres = async (mediaType: "movie" | "tv"): Promise<Record<number, string>> => {
@@ -113,8 +124,6 @@ export const postMediaToCurrentUserListCatalogue = async (
       {
         media_type: media.media_type,
         media_id: media.id,
-        // If 'favorite' is true, the media is added to the favorites list 
-        // If 'favorite' is false, the media is removed from the favorites list
         favorite: favorite,
       },
       {

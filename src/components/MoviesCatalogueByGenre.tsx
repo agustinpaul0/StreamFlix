@@ -1,4 +1,7 @@
-import { useState, useEffect } from "react";
+import { 
+  useState, 
+  useEffect 
+} from "react";
 import Movie from "../types/Movie";
 import { 
   getAllMoviesCatalogue, 
