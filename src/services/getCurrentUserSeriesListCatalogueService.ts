@@ -6,7 +6,7 @@ import {
 
 const getCurrentUserSeriesListCatalogueService = async (url: string, accountId: number, sessionId: string) => {
   const allSeriesMap = new Map<number, Series>();
-    const mediaType = "movie";
+    const mediaType = "tv";
     
     try {
       const firstPageSeries = await fetchPrivateMedia(url, accountId, sessionId);

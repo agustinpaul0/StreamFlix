@@ -55,7 +55,7 @@ const FeaturedMediaCard = ({ media }: { media: Media }) => {
           {trailer ? (
             <div className="flex gap-2 w-full">
               <PlayButton playIcon={playIcon} url={trailer} />
-              <MyListButton />
+              <MyListButton key="Home My List Button" />
             </div>
           ) : (
             <div className="flex flex-col ">

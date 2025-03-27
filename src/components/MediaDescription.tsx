@@ -44,7 +44,7 @@ const MediaDescription = ({ media }: { media: Media }) => {
             Sorry, we can't play this media right now.
           </h3>
         )}
-        <MyListButton />
+        <MyListButton key="Media Description My List Button" />
       </div>
       <p className="text-base py-4">{media.overview}</p>
       <button type="button" className="py-4 text-[#827E7E]" onClick={() => handleRedirect(SELECTED_MEDIA_DETAILS_SCREEN_URL)}>
