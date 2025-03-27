@@ -110,14 +110,19 @@ export const getMediaGenres = (media: Media) => {
   });
 };
 
-export const getMoviesGenres = async (): Promise<Record<number, string>> => {
-  const genresRecord = await fetchGenres("movie");
-  return genresRecord;
+
+export const getMoviesGenres = () => {
+  return useSuspenseQuery<Record<number, string>, Error>({
+    queryKey: ["moviesGenres"],
+    queryFn: () => fetchGenres("movie"),
+  });
 };
 
-export const getSeriesGenres = async (): Promise<Record<number, string>> => {
-  const genresRecord = await fetchGenres("tv");
-  return genresRecord;
+export const getSeriesGenres = () => {
+  return useSuspenseQuery<Record<number, string>, Error>({
+    queryKey: ["seriesGenres"],
+    queryFn: () => fetchGenres("tv"),
+  });
 };
 
 export const groupMediaByGenre = <T extends Media>(

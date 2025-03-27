@@ -1,8 +1,4 @@
 import { 
-  useState, 
-  useEffect 
-} from "react";
-import { 
   getAllPopularTVSeriesCatalogue, 
   getAllTVSeriesCatalogue, 
   getSeriesGenres, 
@@ -15,24 +11,14 @@ import MediaSection from "./MediaSection";
 const SeriesCatalogueByGenre = () => {
   const { data: series } = getAllTVSeriesCatalogue();
   const { data: popularSeriesCatalogue } = getAllPopularTVSeriesCatalogue();
+  const { data: genres } = getSeriesGenres();
 
-  const [genres, setGenres] = useState<Record<number, string>>({});
-  const [seriesByGenre, setMoviesByGenre] = useState<Map<string, Series[]>>(new Map<string, Series[]>());
-
-  useEffect(() => {
-    getSeriesGenres().then((seriesGenres) => setGenres(seriesGenres));
-  }, []);
-
-  useEffect(() => {
-    if (!series.length || !Object.keys(genres).length) return;
-    const groupedSeries = groupMediaByGenre<Series>(series, genres);
-    setMoviesByGenre(groupedSeries);
-  }, [series, genres]);
+  const seriesByGenre = groupMediaByGenre<Series>(series, genres);
 
   return (
     <>
       <MediaSection title="Popular Series">
-        {popularSeriesCatalogue.map((series)=>(
+        {popularSeriesCatalogue.map((series) => (
           <MediaCard key={series.id} media={series} />
         ))}
       </MediaSection>
