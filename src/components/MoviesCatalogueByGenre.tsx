@@ -7,18 +7,13 @@ import {
 import Movie from "../types/Movie";
 import MediaCard from "./MediaCard";
 import MediaSection from "./MediaSection";
-import { useEffect } from "react";
 
 const MoviesCatalogueByGenre = () => {
-
   const { data: moviesCatalogue } = getAllMoviesCatalogue();
   const { data: popularMoviesCatalogue } = getAllPopularMoviesCatalogue();
   const { data: genres } = getMoviesGenres();
-  const moviesByGenre = groupMediaByGenre<Movie>(moviesCatalogue, genres);
 
-  useEffect(() => {
-    console.log("movies catalogue by genre montado");
-  }, []);
+  const moviesByGenre = groupMediaByGenre<Movie>(moviesCatalogue, genres);
 
   return (
     <>

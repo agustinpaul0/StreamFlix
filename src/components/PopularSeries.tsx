@@ -22,7 +22,7 @@ const PopularSeries = () => {
     }
   }, [randomPopularSeriesToDisplay]);
 
-  if(!randomPopularSeriesToDisplay) return null;
+  if(!randomPopularSeriesToDisplay) return <></>;
 
   return <FeaturedMediaCard media={randomPopularSeriesToDisplay} />;
 };

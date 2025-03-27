@@ -22,7 +22,7 @@ const PopularMovie = () => {
     }
   }, [randomPopularMovieToDisplay]);
 
-  if(!randomPopularMovieToDisplay) return null;
+  if(!randomPopularMovieToDisplay) return <></>;
 
   return <FeaturedMediaCard media={randomPopularMovieToDisplay} />;
 };

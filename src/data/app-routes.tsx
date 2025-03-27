@@ -4,8 +4,6 @@ import { lazy } from "react";
 const SearchMedia = lazy(() => import("../screens/SearchMediaScreen"));
 const AuthCallbackScreen = lazy(() => import("../screens/AuthCallbackScreen"));
 const LoginScreen = lazy(() => import("../screens/LoginScreen"));
-const MoviesScreen = lazy(() => import("../screens/MoviesScreen"));
-const SeriesScreen = lazy(() => import("../screens/SeriesScreen"));
 const SelectedMediaScreen = lazy(() => import("../screens/SelectedMediaScreen"));
 const MediaDetailsScreen = lazy(() => import("../screens/MediaDetailsScreen"));
 const SearchLayout = lazy(() => import("../screens/SearchLayout"));
@@ -13,6 +11,8 @@ const MediaLayout = lazy(() => import("../screens/MediaLayout"));
 const FooterLayout = lazy(() => import("../screens/FooterLayout"));
 const UserLayout = lazy(() => import("../screens/UserLayout"));
 const HomeScreen = lazy(() => import("../screens/HomeScreen"));
+const MoviesScreen = lazy(() => import("../screens/MoviesScreen"));
+const SeriesScreen = lazy(() => import("../screens/SeriesScreen"));
 const AccountScreen = lazy(() => import("../screens/AccountScreen"));
 const SettingsScreen = lazy(() => import("../screens/SettingsScreen"));
 
