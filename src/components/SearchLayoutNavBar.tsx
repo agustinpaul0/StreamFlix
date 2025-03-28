@@ -42,7 +42,7 @@ const SearchLayoutNavBar = () => {
       <div className="relative flex-grow">
         <input
           type="text"
-          placeholder="Type a title, genre, or actor..."
+          placeholder="Type a title or genre..."
           value={searchMedia}
           onChange={(event) => setSearchMedia(event.target.value)}
           spellCheck={false}
