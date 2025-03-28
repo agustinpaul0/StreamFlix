@@ -146,6 +146,41 @@ export const groupMediaByGenre = <T extends Media>(
   return groupedMedia;
 };
 
+export const filterMediaByTitle = (catalogue: Media[], search: string): Media[] => {
+  return catalogue.filter(media => {
+    const titleToCompare = isMovie(media) ? media.title : media.name;
+    return titleToCompare.toLowerCase().startsWith(search.toLowerCase());
+  });
+};
+
+export const filterMoviesByGenre = (moviesByGenre: Map<string, Movie[]>, search: string): Movie[] => {
+  const filteredMovies: Movie[] = [];
+  for (const [genreId, movies] of moviesByGenre.entries()) {
+    if (genreId.toLowerCase().includes(search.toLowerCase())) {
+      movies.forEach(movie => {
+        if (!filteredMovies.some(m => m.id === movie.id)) {
+          filteredMovies.push(movie);
+        }
+      });
+    }
+  }
+  return filteredMovies;
+};
+
+export const filterSeriesByGenre = (seriesByGenre: Map<string, Series[]>, search: string): Series[] => {
+  const filteredSeries: Series[] = [];
+  for (const [genreId, series] of seriesByGenre.entries()) {
+    if (genreId.toLowerCase().includes(search.toLowerCase())) {
+      series.forEach(serie => {
+        if (!filteredSeries.some(s => s.id === serie.id)) {
+          filteredSeries.push(serie);
+        }
+      });
+    }
+  }
+  return filteredSeries;
+};
+
 export const getMediaTrailer = (media: Media) => {
   return useSuspenseQuery<string | null, Error>({
     queryKey: [`${media.media_type}-${media.id}-trailer`],
