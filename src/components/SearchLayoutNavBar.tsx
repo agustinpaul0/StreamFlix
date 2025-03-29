@@ -1,8 +1,5 @@
 import { motion } from "framer-motion";
-import { 
-  useState, 
-  useEffect 
-} from "react";
+import { useState, useEffect } from "react";
 import search from "../assets/img/search-icon.svg";
 import logo from "../assets/img/logo.svg";
 import useRedirect from "../hooks/useRedirect";
@@ -10,31 +7,31 @@ import { useLocation } from "react-router-dom";
 import { HOME_SCREEN_URL } from "../data/app-routes";
 
 const SearchLayoutNavBar = () => {
-  const [searchMedia, setSearchMedia] = useState("");
+  const [searchMedia, setSearchMedia] = useState<string | null>(null);
   const handleRedirect = useRedirect();
   const location = useLocation();
 
-  const SEARCH_MEDIA_SCREEN_URL = `/streamflix/search/media?user_search=${searchMedia}`;
+  const SEARCH_MEDIA_SCREEN_URL = searchMedia ? `/streamflix/search/media?user_search=${encodeURIComponent(searchMedia)}` : "/streamflix/search/media?user_search=";
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const userSearchParam = queryParams.get('user_search');
     
     if (userSearchParam) {
-      setSearchMedia(userSearchParam);
-    }
-  }, []);
-
-  useEffect(() => {
-    if(location.pathname === HOME_SCREEN_URL) {
-      setSearchMedia("");
+      setSearchMedia(userSearchParam); 
     }
   }, [location]);
 
   useEffect(() => {
-    (searchMedia.length > 0)
-      ? handleRedirect(SEARCH_MEDIA_SCREEN_URL)
-      : handleRedirect(HOME_SCREEN_URL);
+    if (location.pathname === HOME_SCREEN_URL) {
+      setSearchMedia(null); 
+    }
+  }, [location]);
+
+  useEffect(() => {
+    if (searchMedia !== null) {
+      handleRedirect(SEARCH_MEDIA_SCREEN_URL); 
+    }
   }, [searchMedia]);
 
   return (
@@ -44,7 +41,7 @@ const SearchLayoutNavBar = () => {
         <input
           type="text"
           placeholder="Type a title or genre..."
-          value={searchMedia}
+          value={searchMedia || ""}
           onChange={(event) => setSearchMedia(event.target.value)}
           spellCheck={false}
           className="rounded-full bg-[#1E1E1E] text-[#827E7E] pl-3 w-full h-full border-2 flex-grow border-[#1E1E1E] focus:outline-none focus:border-[#1E1E1E]"

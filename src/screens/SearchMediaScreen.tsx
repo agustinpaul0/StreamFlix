@@ -1,5 +1,17 @@
-import { useEffect, useState } from "react";
-import { filterMediaByTitle, filterMoviesByGenre, filterSeriesByGenre, getAllMedia, getAllPopularMedia, getMoviesGenres, getSeriesGenres, groupMediaByGenre } from "../utils/mediaUtils";
+import { 
+  useEffect, 
+  useState 
+} from "react";
+import { 
+  filterMediaByTitle, 
+  filterMoviesByGenre, 
+  filterSeriesByGenre, 
+  getAllMedia, 
+  getAllPopularMedia, 
+  getMoviesGenres, 
+  getSeriesGenres, 
+  groupMediaByGenre 
+} from "../utils/mediaUtils";
 import Media from "../types/Media";
 import { useLocation } from "react-router-dom";
 import MediaCard from "../components/MediaCard";
@@ -19,7 +31,6 @@ const SearchMediaScreen = () => {
   const { movies, series } = getAllMedia();
   const popularMedia = getAllPopularMedia();
 
-  // It can happen that a popular media is not included in the media catalogue due to TMDB API settings
   const catalogue: Media[] = [
     ...movies,
     ...series,
@@ -42,24 +53,31 @@ const SearchMediaScreen = () => {
     const handleSearch = (search: string) => {
       setUserSearch(search);
 
-      const filteredByTitle = filterMediaByTitle(catalogue, search);
-      const filteredMoviesByGenre = filterMoviesByGenre(moviesByGenre, search);
-      const filteredSeriesByGenre = filterSeriesByGenre(seriesByGenre, search);
+      let filteredByTitle: Media[] = [];
+      let filteredMoviesByGenre: Movie[] = [];
+      let filteredSeriesByGenre: Series[] = [];
+
+      if (search.length > 0) {
+        filteredByTitle = filterMediaByTitle(catalogue, search);
+        filteredMoviesByGenre = filterMoviesByGenre(moviesByGenre, search);
+        filteredSeriesByGenre = filterSeriesByGenre(seriesByGenre, search);
+      }
 
       setMediaByTitle(filteredByTitle);
       setMoviesByGenreFiltered(filteredMoviesByGenre);
       setSeriesByGenreFiltered(filteredSeriesByGenre);
-      setIsLoading(false); // Disables loading state once processing is complete
+      setIsLoading(false);
     };
 
     const queryParams = new URLSearchParams(location.search);
     const mediaToSearchParam = queryParams.get("user_search");
 
-    if (mediaToSearchParam) {
-      handleSearch(mediaToSearchParam);
-    } else {
-      setIsLoading(false); // If there's no search, disable loading
+    if (mediaToSearchParam === null) {
+      setIsLoading(false);
+      return;
     }
+
+    handleSearch(mediaToSearchParam);
   }, [location]);
 
   if (isLoading) return <SplashScreen />;  
@@ -107,7 +125,7 @@ const SearchMediaScreen = () => {
             />
           </svg>
           <h2 className="text-2xl font-medium">
-            {`No results found for "${userSearch}". Try searching by title or genre.`}
+            {`No results found for "${userSearch}". Try searching again by title or genre.`}
           </h2>
         </div>
       )}
