@@ -1,4 +1,4 @@
-export const setCurrentUserService = (id: number) => {
+export const setCurrentUserAccountIdService = (id: number) => {
   sessionStorage.setItem("current_user", JSON.stringify(id)); 
 };
 
@@ -10,7 +10,7 @@ export const getCurrentUserAccountIdService = (): number => {
   return -1;
 };
 
-export const clearCurrentUserService = () => {
+export const clearCurrentUserAccountIdService = () => {
   sessionStorage.removeItem("current_user"); 
 };
 
@@ -26,4 +26,8 @@ export const getCurrentUserSessionIdService = () => {
     return JSON.parse(currentUserSessionId);
   }
   return -1;
+};
+
+export const clearCurrentUserSessionIdService = () => {
+  sessionStorage.removeItem("session_id"); 
 };

@@ -1,7 +1,7 @@
 import useRedirect from "../hooks/useRedirect";
 import { 
-  clearCurrentUserService, 
-  getCurrentUserAccountIdService 
+  clearCurrentUserAccountIdService, 
+  clearCurrentUserSessionIdService 
 } from "../services/sessionStorageServices";
 import {
   AlertDialog,
@@ -14,15 +14,15 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../components/ui/alert-dialog";
-import { removeUserFromLocalStorageService } from "../services/localStorageServices";
+import { LOGIN_SCREEN_URL } from "../data/app-routes";
 
 const AccountScreen = () => {
   const handleRedirect = useRedirect();
 
   const logout = () => {
-    handleRedirect("/"); 
-    removeUserFromLocalStorageService(getCurrentUserAccountIdService());
-    clearCurrentUserService();
+    handleRedirect(LOGIN_SCREEN_URL); 
+    clearCurrentUserAccountIdService();
+    clearCurrentUserSessionIdService();
   };
 
   return (

@@ -4,6 +4,7 @@ import { useSelectedMedia } from "../context/SelectedMediaContext";
 
 const MediaLayout = () => {
   const { selectedMedia } = useSelectedMedia();
+  
   if (!selectedMedia) return <></>;
 
   return (

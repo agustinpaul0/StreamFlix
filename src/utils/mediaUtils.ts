@@ -110,7 +110,6 @@ export const getMediaGenres = (media: Media) => {
   });
 };
 
-
 export const getMoviesGenres = () => {
   return useSuspenseQuery<Record<number, string>, Error>({
     queryKey: ["moviesGenres"],
@@ -147,7 +146,7 @@ export const groupMediaByGenre = <T extends Media>(
 };
 
 export const filterMediaByTitle = (catalogue: Media[], search: string): Media[] => {
-  return catalogue.filter(media => {
+  return catalogue.filter((media) => {
     const titleToCompare = isMovie(media) ? media.title : media.name;
     return titleToCompare.toLowerCase().startsWith(search.toLowerCase());
   });
@@ -157,8 +156,8 @@ export const filterMoviesByGenre = (moviesByGenre: Map<string, Movie[]>, search:
   const filteredMovies: Movie[] = [];
   for (const [genreId, movies] of moviesByGenre.entries()) {
     if (genreId.toLowerCase().includes(search.toLowerCase())) {
-      movies.forEach(movie => {
-        if (!filteredMovies.some(m => m.id === movie.id)) {
+      movies.forEach((movie) => {
+        if (!filteredMovies.some((movieFromFilteredMovies) => movieFromFilteredMovies.id === movie.id)) {
           filteredMovies.push(movie);
         }
       });
@@ -172,7 +171,7 @@ export const filterSeriesByGenre = (seriesByGenre: Map<string, Series[]>, search
   for (const [genreId, series] of seriesByGenre.entries()) {
     if (genreId.toLowerCase().includes(search.toLowerCase())) {
       series.forEach(serie => {
-        if (!filteredSeries.some(s => s.id === serie.id)) {
+        if (!filteredSeries.some((seriesFromFilteredSeries) => seriesFromFilteredSeries.id === serie.id)) {
           filteredSeries.push(serie);
         }
       });

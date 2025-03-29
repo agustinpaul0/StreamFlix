@@ -20,9 +20,11 @@ const MediaDetailsScreen = () => {
 
   const { data: mediaGenres } = getMediaGenres(selectedMedia);
   const genresToDisplay = mediaGenres.split("|").map((genre) => genre.trim());
+
   const { data: credits } = getMediaCredits(selectedMedia);
 
   const { cast, crew } = credits;
+  
   const directors = crew.filter(
     (member: CrewMember) => member.job === "Director"
   );

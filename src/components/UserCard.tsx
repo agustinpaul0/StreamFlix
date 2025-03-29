@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import useRedirect from "../hooks/useRedirect";
-import { setCurrentUserService } from "../services/sessionStorageServices";
+import { setCurrentUserAccountIdService } from "../services/sessionStorageServices";
 import User from "../types/User";
 import { HOME_SCREEN_URL } from "../data/app-routes";
 
@@ -8,7 +8,7 @@ const UserCard = ({ user, icon }: { user: User; icon: string }) => {
   const handleRedirect = useRedirect();
 
   const initApp = (user: User) => {
-    setCurrentUserService(user.id);
+    setCurrentUserAccountIdService(user.id);
     handleRedirect(HOME_SCREEN_URL);
   };
 
