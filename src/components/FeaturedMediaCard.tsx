@@ -9,9 +9,9 @@ import useRedirect from "../hooks/useRedirect";
 import MyListButton from "./MyListButton";
 import PlayButton from "./PlayButton";
 import noMediaPoster from "../assets/img/no-media-poster.svg";
+import { MEDIA_SCREEN_URL } from "../data/app-routes";
 
 const FeaturedMediaCard = ({ media }: { media: Media }) => {
-  const MEDIA_SCREEN_URL = "/streamflix/media/selected";
   const BANNER_URL = media.poster_path
     ? `https://image.tmdb.org/t/p/w500${media.poster_path}`
     : noMediaPoster;

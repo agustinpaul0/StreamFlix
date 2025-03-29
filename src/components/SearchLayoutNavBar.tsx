@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { 
   useState, 
   useEffect 
@@ -6,6 +7,7 @@ import search from "../assets/img/search-icon.svg";
 import logo from "../assets/img/logo.svg";
 import useRedirect from "../hooks/useRedirect";
 import { useLocation } from "react-router-dom";
+import { HOME_SCREEN_URL } from "../data/app-routes";
 
 const SearchLayoutNavBar = () => {
   const [searchMedia, setSearchMedia] = useState("");
@@ -13,7 +15,6 @@ const SearchLayoutNavBar = () => {
   const location = useLocation();
 
   const SEARCH_MEDIA_SCREEN_URL = `/streamflix/search/media?user_search=${searchMedia}`;
-  const HOME_SCREEN_URL = `/streamflix/search/home`;
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -48,13 +49,14 @@ const SearchLayoutNavBar = () => {
           spellCheck={false}
           className="rounded-full bg-[#1E1E1E] text-[#827E7E] pl-3 w-full h-full border-2 flex-grow border-[#1E1E1E] focus:outline-none focus:border-[#1E1E1E]"
         />
-        <button
+        <motion.button
           type="button"
           onClick={() => handleRedirect(SEARCH_MEDIA_SCREEN_URL)}
           className="absolute right-0 top-1/2 transform -translate-y-1/2 p-3 bg-[#1E1E1E] text-white rounded-full focus:outline-none cursor-pointer"
+          whileTap={{ scale: 0.95 }}
         >
           <img src={search} alt="Search Icon" className="w-5 h-5" />
-        </button>
+        </motion.button>
       </div>
     </nav>
   );

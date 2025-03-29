@@ -9,6 +9,7 @@ import {
 } from "../utils/mediaUtils";
 import useRedirect from "../hooks/useRedirect";
 import { useEffect } from "react";
+import { SELECTED_MEDIA_DETAILS_SCREEN_URL } from "../data/app-routes";
 
 const MediaDescription = ({ media }: { media: Media }) => {
   useEffect(() => {
@@ -16,8 +17,6 @@ const MediaDescription = ({ media }: { media: Media }) => {
   }, []);
 
   const handleRedirect = useRedirect();
-
-  const SELECTED_MEDIA_DETAILS_SCREEN_URL = "/streamflix/media/details";
 
   const [mediaTitle, mediaReleaseDate] = isMovie(media)
     ? [media.title, media.release_date]

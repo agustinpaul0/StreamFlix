@@ -1,8 +1,12 @@
+import { motion } from "framer-motion";
 import { useSelectedMedia } from "../context/SelectedMediaContext";
 import addMediaToCurrentUserListCatalogueService from "../services/addMediaToCurrentUserListCatalogueService";
 import addToMyListIcon from "../assets/img/add-icon-2.svg";
 import removeFromMyListIcon from "../assets/img/remove-icon.svg";
-import { useState, useMemo } from "react";
+import { 
+  useState, 
+  useMemo 
+} from "react";
 import Media from "../types/Media";
 import removeMediaFromCurrentUserListCatalogueService from "../services/removeMediaFromCurrentUserListCatalogueService";
 import { useMyListCatalogue } from "../context/MyListCatalogueContext";
@@ -25,11 +29,9 @@ const MyListButton = () => {
     try {
       setShowLoadingModal(true);
 
-      if (selectedMediaIsInMyList) {
-        await removeMediaFromCurrentUserListCatalogueService(media);
-      } else {
-        await addMediaToCurrentUserListCatalogueService(media);
-      }
+      selectedMediaIsInMyList
+        ? await removeMediaFromCurrentUserListCatalogueService(media)
+        : await addMediaToCurrentUserListCatalogueService(media);
 
       const updatedCatalogue = await getCurrentUserListCatalogue();
       setMyListCatalogue(updatedCatalogue);
@@ -52,10 +54,11 @@ const MyListButton = () => {
         </div>
       ) : (
         selectedMedia && (
-          <button
+          <motion.button
             type="button"
             onClick={() => handleClick(selectedMedia)}
             className="relative p-4 text-[#FFFFFF] rounded-md overflow-hidden hover:bg-[#6F6F6F] cursor-pointer flex flex-1 items-center justify-center"
+            whileTap={{ scale: 0.95 }}
           >
             <div className="absolute inset-0 bg-[#868181] opacity-75 rounded-md"></div>
             <span className="inline-flex items-center gap-3 relative text-xl">
@@ -74,7 +77,7 @@ const MyListButton = () => {
               )}
               My List
             </span>
-          </button>
+          </motion.button>
         )
       )}
     </>

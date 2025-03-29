@@ -1,6 +1,14 @@
 import AppRoute from "../types/AppRoute";
 import { lazy } from "react";
 
+export const MEDIA_SCREEN_URL = "/streamflix/media/selected";
+export const SELECTED_MEDIA_DETAILS_SCREEN_URL = "/streamflix/media/details";
+export const HOME_SCREEN_URL = "/streamflix/search/home";
+export const ACCOUNT_SCREEN_URL = "/streamflix/user/account";
+export const SETTINGS_SCREEN_URL = "/streamflix/user/settings";
+export const LOGIN_SCREEN_URL = "/";
+export const AUTH_SCREEN_URL = "/auth";
+
 const SearchMedia = lazy(() => import("../screens/SearchMediaScreen"));
 const AuthCallbackScreen = lazy(() => import("../screens/AuthCallbackScreen"));
 const LoginScreen = lazy(() => import("../screens/LoginScreen"));

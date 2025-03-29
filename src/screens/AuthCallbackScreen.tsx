@@ -1,6 +1,7 @@
 import { 
   useEffect, 
-  useState 
+  useState, 
+  useMemo 
 } from "react";
 import { useLocation } from "react-router-dom";
 import { 
@@ -38,6 +39,8 @@ const AuthCallbackScreen = () => {
   const location = useLocation();
   const { setMyListCatalogue } = useMyListCatalogue();
 
+  const randomIcon = useMemo(() => getRandomIcon(), []);
+
   useEffect(() => {
     const handleSessionConfirmation = async (requestToken: string) => {
       try {
@@ -67,7 +70,7 @@ const AuthCallbackScreen = () => {
           <img src={logo} alt="App Logo" />
           <h1 className="text-center">Who's watching?</h1>
           <div className="flex flex-wrap gap-6 justify-center items-center">
-            {<UserCard user={currentUser} icon={getRandomIcon()} />}
+            {<UserCard user={currentUser} icon={randomIcon} />}
           </div>
         </>
       ) : (
