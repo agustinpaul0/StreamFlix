@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { 
+  useState, 
+  useEffect 
+} from "react";
 import search from "../assets/img/search-icon.svg";
 import logo from "../assets/img/logo.svg";
 import useRedirect from "../hooks/useRedirect";
@@ -11,16 +14,9 @@ const SearchLayoutNavBar = () => {
   const handleRedirect = useRedirect();
   const location = useLocation();
 
-  const SEARCH_MEDIA_SCREEN_URL = searchMedia ? `/streamflix/search/media?user_search=${encodeURIComponent(searchMedia)}` : "/streamflix/search/media?user_search=";
-
-  useEffect(() => {
-    const queryParams = new URLSearchParams(location.search);
-    const userSearchParam = queryParams.get('user_search');
-    
-    if (userSearchParam) {
-      setSearchMedia(userSearchParam); 
-    }
-  }, [location]);
+  const SEARCH_MEDIA_SCREEN_URL = searchMedia 
+    ? `/streamflix/search/media?user_search=${encodeURIComponent(searchMedia)}` 
+    : "/streamflix/search/media?user_search=";
 
   useEffect(() => {
     if (location.pathname === HOME_SCREEN_URL) {
