@@ -10,7 +10,7 @@ const MediaLayout = () => {
   return (
     <>
       <MediaLayoutNavBar />
-      <main className="min-h-screen bg-[#080808] text-[#FFFFFF] font-family-inter mt-15 mb-[7vh]">
+      <main className="flex flex-col flex-grow bg-[#080808] text-[#FFFFFF] font-family-inter mt-15 pb-[7vh]">
         <Outlet context={{ selectedMedia }} />
       </main>
     </>

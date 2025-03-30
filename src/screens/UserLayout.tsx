@@ -5,7 +5,7 @@ const UserLayout = () => {
   return (
     <>
       <MediaLayoutNavBar />
-      <main className="flex-1 bg-[#080808] text-[#FFFFFF] font-family-inter pt-[70px] mb-[7vh]">
+      <main className="flex flex-col flex-grow bg-[#080808] text-[#FFFFFF] font-family-inter pt-[70px] mb-[7vh]">
         <Outlet />
       </main>
     </>
