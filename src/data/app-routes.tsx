@@ -1,5 +1,4 @@
 import MyListScreen from "../screens/MyListScreen";
-import MyRatingsScreen from "../screens/MyRatingsScreen";
 import AppRoute from "../types/AppRoute";
 import { lazy } from "react";
 
@@ -11,7 +10,6 @@ export const SETTINGS_SCREEN_URL = "/streamflix/user/settings";
 export const LOGIN_SCREEN_URL = "/";
 export const AUTH_SCREEN_URL = "/auth";
 export const MY_LIST_URL = "/streamflix/user/my-list";
-export const MY_RATINGS_URL = "/streamflix/user/my-ratings";
 
 const SearchMedia = lazy(() => import("../screens/SearchMediaScreen"));
 const AuthCallbackScreen = lazy(() => import("../screens/AuthCallbackScreen"));
@@ -65,7 +63,6 @@ const appRoutes: AppRoute[] = [
         children: [
           { path: "account", element: <AccountScreen /> },
           { path: "my-list", element: <MyListScreen /> },
-          { path: "my-ratings", element: <MyRatingsScreen /> },
           { path: "settings", element: <SettingsScreen /> },
         ],
       },

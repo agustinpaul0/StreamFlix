@@ -61,7 +61,7 @@ const MyListButton = () => {
             whileTap={{ scale: 0.95 }}
           >
             <div className="absolute inset-0 bg-[#868181] opacity-75 rounded-md"></div>
-            <span className="inline-flex items-center gap-3 relative text-xl">
+            <span className="inline-flex items-center gap-3 relative text-xl font-medium">
               {selectedMediaIsInMyList ? (
                 <img
                   src={removeFromMyListIcon}
