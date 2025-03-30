@@ -14,10 +14,18 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../components/ui/alert-dialog";
-import { LOGIN_SCREEN_URL } from "../data/app-routes";
+import { LOGIN_SCREEN_URL, MY_LIST_URL, MY_RATINGS_URL } from "../data/app-routes";
+import AccountButton from "../components/AccountButton";
+import myListIcon from "../assets/img/my-list-icon.svg";
+import ratingIcon from "../assets/img/rating-icon.svg";
+import { useEffect } from "react";
 
 const AccountScreen = () => {
   const handleRedirect = useRedirect();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  })
 
   const logout = () => {
     handleRedirect(LOGIN_SCREEN_URL); 
@@ -26,9 +34,11 @@ const AccountScreen = () => {
   };
 
   return (
-    <section className="flex flex-1">
+    <section className="flex flex-col h-full justify-center items-center text-xl p-4 gap-2">
+      <AccountButton icon={myListIcon} title={"My List"} onClick={() => handleRedirect(MY_LIST_URL)} />
+      <AccountButton icon={ratingIcon} title={"My Ratings"} onClick={() => handleRedirect(MY_RATINGS_URL)} />
       <AlertDialog>
-        <AlertDialogTrigger className="text-[#FF0000] p-8">Log out</AlertDialogTrigger>
+        <AlertDialogTrigger className="text-[#FF0000] p-8 font-medium">Log out</AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>

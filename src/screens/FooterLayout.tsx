@@ -9,8 +9,10 @@ const FooterLayout = () => {
   return (
     <ErrorBoundary FallbackComponent={OperationFailedScreen}>
       <Suspense fallback={<SplashScreen />}>
-        <Outlet />
-        <Footer />
+        <div className="h-screen w-screen flex flex-col">
+          <Outlet />
+          <Footer />
+        </div>
       </Suspense>
     </ErrorBoundary>
   );

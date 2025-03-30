@@ -5,7 +5,7 @@ const SearchLayout = () => {
   return (
     <>
       <SearchLayoutNavBar />
-      <main className="min-h-screen bg-[#080808] text-[#FFFFFF] font-family-inter pt-[70px] mb-[7vh]">
+      <main className="flex flex-col flex-grow bg-[#080808] text-[#FFFFFF] font-family-inter pt-[70px] pb-[6vh]">
         <Outlet />
       </main>
     </>
