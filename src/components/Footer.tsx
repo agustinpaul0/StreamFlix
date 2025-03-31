@@ -15,7 +15,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="fixed bottom-0 w-full flex justify-center gap-[10vw] bg-[#080808] p-4 h-[7vh]">
+    <footer className="fixed bottom-0 flex justify-center gap-[10vw] bg-[#080808] w-screen p-4 flex-grow">
       {footerIcons.map((props) => (
         <FooterButton key={props.label} {...props} onClick={handleRedirect} />
       ))}
