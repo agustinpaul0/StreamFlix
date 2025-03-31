@@ -28,7 +28,7 @@ const FeaturedMediaCard = ({ media }: { media: Media }) => {
       <section className="relative flex flex-col justify-center p-4">
         <button
           type="button"
-          className="shadow-[0_4px_10px_rgba(255,255,255,0.1)] w-full h-full border-t-2 border-l-3 border-r-3 rounded-tl-md rounded-tr-md border-[#FFFFFF] hover:cursor-pointer"
+          className="shadow-[0_4px_10px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_10px_rgba(255,255,255,0.1)] w-full h-full border-t-2 border-l-3 border-r-3 rounded-tl-md rounded-tr-md border-[#000000] dark:border-[#FFFFFF] hover:cursor-pointer"
           onClick={() => handleRedirect(`${MEDIA_SCREEN_URL}`)}
         >
           <img
@@ -38,19 +38,19 @@ const FeaturedMediaCard = ({ media }: { media: Media }) => {
           />
         </button>
 
-        <div className="shadow-[0_4px_10px_rgba(255,255,255,0.1)] p-3 bg-[#080808] border-b-3 border-l-3 border-r-3 rounded-bl-md rounded-br-md border-[#FFFFFF]">
+        <div className="shadow-[0_4px_10px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_10px_rgba(255,255,255,0.1)] p-3 bg-[#FFFFFF] dark:bg-[#080808] border-b-3 border-l-3 border-r-3 rounded-bl-md rounded-br-md border-[#000000] dark:border-[#FFFFFF]">
           <div className="flex justify-center items-center gap-2">
             <img
               src={mediaBannerAppLogo}
               alt="Media Banner App logo"
               className="w-5 h-6"
             />
-            <p className="text-[#FFFFFF] font-medium tracking-[0.2rem]">
+            <p className="text-[#000000] dark:text-[#FFFFFF] font-medium tracking-[0.2rem]">
               {media.media_type.toUpperCase()}
             </p>
           </div>
 
-          <h3 className="text-lg text-white text-center p-2">{mediaGenres}</h3>
+          <h3 className="text-lg font-medium text-[#000000] dark:text-[#FFFFFF] text-center p-2">{mediaGenres}</h3>
 
           {trailer ? (
             <div className="flex gap-2 w-full">

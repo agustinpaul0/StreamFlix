@@ -25,14 +25,14 @@ const MediaCard = ({ media }: { media: Media }) => {
     <>
       <motion.button
         type="button"
-        className="w-32 h-48 overflow-hidden rounded-md shadow-md flex-none hover:cursor-pointer"
+        className="w-32 h-48 overflow-hidden rounded-md shadow-md flex-none hover:cursor-pointer border-1 border-[#000000] dark:border-[#FFFFFF]"
         onClick={() => displayMediaScreen(`${MEDIA_SCREEN_URL}`, media)}
         whileTap={{ scale: 0.95 }}
       >
         <img
           src={BANNER_URL}
           alt="Movie Banner"
-          className={`w-full h-full ${imageClass} rounded-md`}
+          className={`w-full h-full ${imageClass} rounded-md border-1 border-[#000000] dark:border-[#FFFFFF]`}
         />
       </motion.button>
     </>

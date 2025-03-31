@@ -57,7 +57,7 @@ const MyListButton = () => {
           <motion.button
             type="button"
             onClick={() => handleClick(selectedMedia)}
-            className="relative p-4 text-[#FFFFFF] rounded-md overflow-hidden hover:bg-[#6F6F6F] cursor-pointer flex flex-1 items-center justify-center"
+            className="relative p-4 text-[#FFFFFF] rounded-md overflow-hidden cursor-pointer flex flex-1 items-center justify-center"
             whileTap={{ scale: 0.95 }}
           >
             <div className="absolute inset-0 bg-[#868181] opacity-75 rounded-md"></div>

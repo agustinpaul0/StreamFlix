@@ -3,7 +3,7 @@ import { FallbackProps } from "react-error-boundary";
 const OperationFailedScreen = ({ error }: FallbackProps) => {
   console.log("Caught error: ", error);
   return (
-    <section className="flex flex-col items-center justify-center h-screen bg-[#080808] overflow-hidden">
+    <section className="flex flex-col items-center justify-center h-screen bg-[#FFFFFF] dark:bg-[#080808] overflow-hidden">
       <div className="flex items-center justify-center gap-1 text-[#FF0000]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -21,8 +21,8 @@ const OperationFailedScreen = ({ error }: FallbackProps) => {
         </svg>
         <h1 className="text-6xl">Ups!</h1>
       </div>
-      <h2 className="text-2xl text-[#FFFFFF]">Something went wrong</h2>
-      <h3 className="text-lg text-[#FFFFFF]">Check error on console</h3>
+      <h2 className="text-2xl text-[#000000] dark:text-[#FFFFFF]">Something went wrong</h2>
+      <h3 className="text-lg text-[#000000] dark:text-[#FFFFFF]">Check error on console</h3>
     </section>
   );
 };

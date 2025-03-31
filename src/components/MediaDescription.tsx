@@ -8,13 +8,9 @@ import {
   isMovie 
 } from "../utils/mediaUtils";
 import useRedirect from "../hooks/useRedirect";
-import { useEffect } from "react";
 import { SELECTED_MEDIA_DETAILS_SCREEN_URL } from "../data/app-routes";
 
 const MediaDescription = ({ media }: { media: Media }) => {
-  useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to top when first mounted
-  }, []);
 
   const handleRedirect = useRedirect();
 
@@ -29,7 +25,7 @@ const MediaDescription = ({ media }: { media: Media }) => {
     <section className="p-2">
       <div className="flex items-center gap-2 py-1">
         <img src={logo} alt="Media Banner App logo" className="w-6 h-6" />
-        <p className="text-[#FFFFFF] font-medium tracking-[0.2rem]">
+        <p className="text-[#000000] dark:text-[#FFFFFF] font-medium tracking-[0.2rem]">
           {media.media_type.toUpperCase()}
         </p>
       </div>

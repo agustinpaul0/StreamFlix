@@ -1,12 +1,19 @@
+import { 
+  Suspense, 
+  useEffect 
+} from "react";
 import { useOutletContext } from "react-router-dom";
 import MediaBanner from "../components/MediaBanner";
 import MediaDescription from "../components/MediaDescription";
 import Media from "../types/Media";
 import SplashScreen from "./SplashScreen";
-import { Suspense } from "react";
 
 const SelectedMediaScreen = () => {
   const { selectedMedia } = useOutletContext<{ selectedMedia: Media}>();
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top when first mounted
+  }, []);
 
   return (
     <>

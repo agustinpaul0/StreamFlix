@@ -15,7 +15,7 @@ const UserCard = ({ user, icon }: { user: User; icon: string }) => {
   return (
     <>
       <motion.button
-        className="w-auto h-auto rounded-sm flex flex-col items-center justify-center text-white text-3xl font-bold bg-cover bg-center"
+        className="flex flex-col items-center justify-center w-auto h-auto rounded-sm bg-cover bg-center"
         onClick={() => initApp(user)}
         aria-label={`Select ${user.username} to start streaming`}
         whileTap={{ scale: 0.95 }}
@@ -25,7 +25,7 @@ const UserCard = ({ user, icon }: { user: User; icon: string }) => {
           alt={`${user.username}'s profile`}
           className="object-fill w-24 h-24 rounded-sm"
         />
-        <span className="text-white text-lg font-medium">{user.username}</span>
+        <span className="text-xl font-medium text-[#000000] dark:text-[#FFFFFF]">{user.username}</span>
       </motion.button>
     </>
   );

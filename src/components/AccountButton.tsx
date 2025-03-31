@@ -9,7 +9,7 @@ interface AccountButtonProps {
 const AccountButton = ({ icon, title, onClick }: AccountButtonProps) => {
   return (
     <motion.button
-      className="w-full h-16 bg-[#1E1E1E] flex items-center justify-start px-4 py-2 text-xl font-medium rounded-md text-[#FFFFFF]"
+      className="w-full h-16 bg-[#4c4a4a] flex items-center justify-start px-4 py-2 text-xl font-medium rounded-md text-[#FFFFFF]"
       whileTap={{ scale: 0.95 }}
       onClick={onClick} 
     >

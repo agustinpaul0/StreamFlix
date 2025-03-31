@@ -7,10 +7,10 @@ const SettingsScreen = () => {
   });
 
   return (
-    <div className="flex justify-between items-center bg-[#080808] text-white gap-4 p-4">
+    <section className="flex justify-between items-center gap-4 p-4 bg-[#FFFFFF] text-[#000000] dark:bg-[#080808] dark:text-white">
       <span className="text-2xl font-medium">Dark Mode</span>
       <ToggleButton />
-    </div>
+    </section>
   );
 };
 

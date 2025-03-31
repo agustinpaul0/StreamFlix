@@ -6,7 +6,7 @@ const PlayButton = ({ playIcon, url }: { playIcon: string; url: string }) => {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="!bg-[#FFFFFF] p-4 text-black font-medium rounded-md hover:bg-gray-200 cursor-pointer flex flex-1 items-center justify-center"
+      className="flex flex-1 items-center justify-center !bg-[#FFFFFF] p-4 text-[#000000] border-2 border-[#000000] font-medium rounded-md cursor-pointer"
       aria-label="Play Media"
       whileTap={{ scale: 0.95 }}
     >

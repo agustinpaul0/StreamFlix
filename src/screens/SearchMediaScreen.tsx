@@ -21,6 +21,11 @@ import Series from "../types/Series";
 import SplashScreen from "./SplashScreen";
 
 const SearchMediaScreen = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [mediaByTitle, setMediaByTitle] = useState<Media[]>([]);
   const [moviesByGenreFiltered, setMoviesByGenreFiltered] = useState<Movie[]>([]);
   const [seriesByGenreFiltered, setSeriesByGenreFiltered] = useState<Series[]>([]);

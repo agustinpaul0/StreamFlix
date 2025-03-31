@@ -64,11 +64,11 @@ const AuthCallbackScreen = () => {
   }, []);
 
   return (
-    <div className="w-screen h-screen bg-[#080808] flex flex-col justify-center items-center text-white text-2xl">
+    <div className="flex flex-col justify-center items-center w-screen h-screen bg-[#FFFFFF] text-[#000000] dark:bg-[#080808] dark:text-[#FFFFFF] text-2xl">
       {currentUser ? (
         <>
           <img src={logo} alt="App Logo" />
-          <h1 className="text-center">Who's watching?</h1>
+          <h1 className="text-center font-medium">Who's watching?</h1>
           <div className="flex flex-wrap gap-6 justify-center items-center">
             {<UserCard user={currentUser} icon={randomIcon} />}
           </div>
